@@ -86,8 +86,9 @@
                   {% endif %}
                 {% endfor %}
                 {% for cat in site.categories %}
-                  {% unless listed contains cat[0] %}
-                    {% include sidebar-category-link.html name=cat[0] %}
+                  {% assign cat_name = cat[0] %}
+                  {% unless listed contains cat_name %}
+                    {% include sidebar-category-link.html name=cat_name %}
                   {% endunless %}
                 {% endfor %}
               </ul>
