@@ -1,0 +1,8 @@
+# Home page hero (_layouts/home.html). Edit freely.
+catchphrase: 보고, 듣고, 말하는 것들을 만듭니다
+subtitle: Building things that see, hear and talk.
+intro: >-
+  머신비전을 공부하고, 책상 위 로봇과 좋아하는 캐릭터에게 얼굴과 목소리를 입히는 기록입니다.
+image: /assets/img/posts/desktop-mascots.png
+image_alt: 작업 표시줄 위의 케이, 아리스, 메이드 아리스
+section_title: 최근 글

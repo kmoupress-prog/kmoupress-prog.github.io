@@ -1,0 +1,22 @@
+{%- comment -%}
+  Thumbnail URL for a post card: front matter `image`, else the first <img> in the post,
+  else a YouTube thumbnail for an embedded video, else the site avatar.
+  Usage: {% include post-thumb.html post=post %} (prints the URL)
+{%- endcomment -%}
+{%- assign _p = include.post -%}
+{%- assign _src = _p.image.path | default: _p.image -%}
+{%- unless _src -%}
+  {%- assign _parts = _p.content | split: '<img ' -%}
+  {%- if _parts.size > 1 -%}
+    {%- assign _src = _parts[1] | split: 'src="' | slice: 1, 1 | first | split: '"' | first -%}
+  {%- endif -%}
+{%- endunless -%}
+{%- unless _src -%}
+  {%- assign _parts = _p.content | split: 'youtube.com/embed/' -%}
+  {%- if _parts.size > 1 -%}
+    {%- assign _yt = _parts[1] | split: '"' | first | split: '?' | first -%}
+    {%- capture _src -%}https://i.ytimg.com/vi/{{ _yt }}/hqdefault.jpg{%- endcapture -%}
+  {%- endif -%}
+{%- endunless -%}
+{%- assign _src = _src | default: site.avatar -%}
+{%- if _src contains '://' -%}{{ _src }}{%- else -%}{{ _src | relative_url }}{%- endif -%}

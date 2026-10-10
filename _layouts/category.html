@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<!-- Override of Chirpy 7.6.0 category page: same photo-card grid as the home page. -->
+
+<section id="page-category" class="home-posts">
+  <h1 class="category-title">
+    {{ page.title }}<span class="category-count">{{ page.posts | size }}</span>
+  </h1>
+
+  <div class="post-grid">
+    {% for post in page.posts %}
+      {% assign label = post.categories | last %}
+      <article class="post-card">
+        <a href="{{ post.url | relative_url }}">
+          <div class="post-card-thumb">
+            <img src="{% include post-thumb.html post=post %}" alt="{{ post.title | xml_escape }}" loading="lazy">
+          </div>
+          <h3 class="post-card-title">{{ post.title }}</h3>
+          <div class="post-card-meta">
+            {% if label %}<span class="post-card-label">{{ label | upcase }}</span>{% endif %}
+            <span class="post-card-date">{{ post.date | date: '%Y.%m.%d' }}</span>
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+  </div>
+</section>

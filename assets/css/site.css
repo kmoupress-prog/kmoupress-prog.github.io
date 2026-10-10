@@ -1,0 +1,480 @@
+/*
+ * Site look on top of Chirpy 7.6.0, modelled on icd.cs.tut.ac.jp:
+ * boxed centered page, centered title, uppercase top navigation between thin rules,
+ * hero + three-column photo cards, light three-column footer with a dark bar.
+ * Loaded from _includes/metadata-hook.html (after Chirpy's own stylesheet).
+ */
+
+:root {
+  --site-font: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --site-outer-bg: #d9d9d9;
+  --site-ink: #333;
+  --site-muted: #8a8a8a;
+  --site-rule: #c8c8c8;
+  --site-rule-strong: #8f8f8f;
+  --site-accent: #d9733f;     /* active menu, hover */
+  --site-label: #8a3b3b;      /* small category labels */
+  --site-logo: #5ba3c0;
+  --site-box-max: 1120px;
+}
+
+body,
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--site-font);
+}
+
+/* ---------- page frame ---------- */
+
+body {
+  background: var(--site-outer-bg);
+}
+
+.site-box {
+  width: 100%;
+  max-width: var(--site-box-max);
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--main-bg, #fff);
+}
+
+#main-wrapper {
+  margin-left: 0 !important;
+  background: transparent;
+}
+
+#main-wrapper > .container {
+  max-width: 100%;
+}
+
+/* the Chirpy sidebar is only the mobile drawer */
+@media (min-width: 992px) {
+  #sidebar {
+    display: none !important;
+  }
+}
+
+/* ---------- header ---------- */
+
+.site-header {
+  padding: 2.75rem 1.5rem 0;
+  text-align: center;
+}
+
+.site-logo {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none !important;
+  border-bottom: 0 !important;
+}
+
+.site-logo-title {
+  color: var(--site-logo);
+  font-size: 1.9rem;
+  font-weight: 300;
+  letter-spacing: 0.32em;
+  margin-right: -0.32em; /* keep the letter-spaced title optically centered */
+  line-height: 1.2;
+}
+
+.site-logo-tagline {
+  color: #a0a0a0;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+}
+
+.site-nav {
+  max-width: calc(var(--site-box-max) - 6rem);
+  margin: 2.25rem auto 0;
+  border-top: 2px solid var(--site-rule-strong);
+  border-bottom: 1px solid var(--site-rule);
+}
+
+.site-nav > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav li {
+  position: relative;
+}
+
+.site-nav > ul > li > a {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.95rem 1.4rem;
+  margin-top: -2px; /* sit on the top rule so the active bar replaces it */
+  border-top: 3px solid transparent;
+  color: #444;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  border-bottom: 0 !important;
+}
+
+.site-nav > ul > li > a i {
+  font-size: 0.75rem;
+  color: #aaa;
+}
+
+.site-nav > ul > li.active > a {
+  color: var(--site-accent);
+  border-top-color: #555;
+}
+
+.site-nav > ul > li > a:hover {
+  color: var(--site-accent);
+}
+
+.site-subnav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 20;
+  min-width: 190px;
+  margin: 0;
+  padding: 0.4rem 0;
+  list-style: none;
+  background: #fff;
+  border: 1px solid #e3e3e3;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.site-nav li.has-sub:hover > .site-subnav,
+.site-nav li.has-sub:focus-within > .site-subnav {
+  display: block;
+}
+
+.site-subnav a {
+  display: block;
+  padding: 0.55rem 1.2rem;
+  color: #555;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border-bottom: 0 !important;
+}
+
+.site-subnav a:hover {
+  color: var(--site-accent);
+  background: #f7f7f7;
+}
+
+@media (max-width: 991.98px) {
+  .site-header {
+    padding-top: 1.75rem;
+  }
+
+  .site-logo-title {
+    font-size: 1.35rem;
+  }
+
+  .site-nav {
+    display: none; /* the drawer (hamburger in the bar below) takes over */
+  }
+}
+
+/* ---------- topbar: breadcrumb + search ---------- */
+
+#topbar-wrapper {
+  background: transparent;
+  height: 3.25rem;
+}
+
+#topbar {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+#topbar #breadcrumb {
+  font-size: 0.82rem;
+  padding-left: 0;
+}
+
+#topbar-title {
+  visibility: hidden; /* the site title is already in the header */
+}
+
+#search {
+  border-radius: 999px;
+}
+
+#search-input {
+  font-size: 0.85rem;
+}
+
+/* ---------- home ---------- */
+
+.home-hero {
+  text-align: center;
+  padding-top: 2.5rem;
+}
+
+.home-catchphrase {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--site-ink);
+  margin: 0 0 1rem;
+}
+
+.home-subtitle {
+  font-size: 1.05rem;
+  color: #444;
+  margin: 0 0 1.25rem;
+}
+
+.home-intro {
+  max-width: 40rem;
+  margin: 0 auto 2.25rem;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  color: #666;
+  word-break: keep-all;
+}
+
+.home-hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.home-posts {
+  padding: 3rem 0 1rem;
+}
+
+.home-section-title,
+.category-title {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--site-ink);
+  margin: 0 0 2rem;
+}
+
+.category-title .category-count {
+  color: var(--site-muted);
+  font-size: 0.9rem;
+  margin-left: 0.4rem;
+}
+
+/* ---------- post cards ---------- */
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem 1.75rem;
+}
+
+@media (max-width: 991.98px) {
+  .post-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 575.98px) {
+  .post-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.post-card > a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 0 !important;
+}
+
+.post-card-thumb {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #f2f2f2;
+}
+
+.post-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.post-card > a:hover .post-card-thumb img {
+  transform: scale(1.03);
+  opacity: 0.92;
+}
+
+.post-card-title {
+  margin: 0.9rem 0 0.4rem;
+  text-align: center;
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--site-ink);
+  word-break: keep-all;
+}
+
+.post-card-meta {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+.post-card-label {
+  color: var(--site-label);
+}
+
+.post-card-date {
+  color: var(--site-muted);
+}
+
+/* ---------- reading typography (posts and pages) ---------- */
+
+article .content {
+  font-size: 1.125rem;
+  line-height: 1.9;
+  letter-spacing: -0.005em;
+  word-break: keep-all;
+}
+
+@media (min-width: 1200px) {
+  article .content {
+    font-size: 1.0625rem;
+  }
+}
+
+article .content p {
+  margin-bottom: 1.5em;
+}
+
+article .content h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+}
+
+article .content h3 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+article .content ol li,
+article .content ul li {
+  margin: 0.4rem 0;
+}
+
+article .content table {
+  line-height: 1.6;
+}
+
+article .content pre,
+article .content code {
+  word-break: normal;
+}
+
+article > header h1 {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+
+/* ---------- footer ---------- */
+
+footer.site-footer {
+  height: auto;
+  margin-top: 4.5rem;
+  padding: 0;
+  border-top: 0;
+  background: transparent;
+  font-size: 0.85rem;
+}
+
+footer.site-footer p {
+  text-align: left;
+  margin-bottom: 0.6rem;
+}
+
+.site-footer-box {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem 3rem;
+  margin: 0 3rem;
+  padding: 2.5rem 2rem;
+  background: #f4f4f4;
+  color: #555;
+}
+
+.site-footer-box h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  margin: 0 0 1rem;
+}
+
+.site-footer-box ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer-box li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.site-footer-box a,
+.site-footer-bar a {
+  color: var(--site-label);
+  text-decoration: none;
+  border-bottom: 0 !important;
+}
+
+.site-footer-box a:hover,
+.site-footer-bar a:hover {
+  color: var(--site-accent);
+}
+
+.site-footer-sub {
+  display: block;
+  font-size: 0.8rem;
+}
+
+.site-footer-bar {
+  margin: 0 3rem;
+  padding: 1rem 2rem;
+  background: #3f3f3f;
+  color: #c9c9c9;
+  font-size: 0.78rem;
+}
+
+.site-footer-bar a {
+  color: #e6e6e6;
+}
+
+@media (max-width: 767.98px) {
+  .site-footer-box {
+    grid-template-columns: 1fr;
+    margin: 0;
+    padding: 2rem 1.5rem;
+  }
+
+  .site-footer-bar {
+    margin: 0;
+    padding: 1rem 1.5rem;
+  }
+}

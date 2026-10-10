@@ -1,0 +1,99 @@
+---
+layout: compress
+---
+
+<!doctype html>
+
+{% include origin-type.html %}
+
+{% include lang.html %}
+
+<!--
+  Override of Chirpy 7.6.0 default layout: a centered "boxed" page with a header and top
+  navigation (site-header.html) and a three-column footer (site-footer.html), modelled on
+  icd.cs.tut.ac.jp. The Chirpy sidebar stays as the mobile drawer, and the topbar keeps
+  search + breadcrumb, because Chirpy's scripts expect those elements.
+-->
+<html
+  lang="{{ page.lang | default: site.alt_lang | default: site.lang }}"
+  {%- if site.theme_mode == 'light' or site.theme_mode == 'dark' -%}
+    data-bs-theme="{{ site.theme_mode }}"
+  {%- endif -%}
+>
+  {% include head.html lang=lang %}
+
+  <body>
+    {% include sidebar.html lang=lang %}
+
+    <div class="site-box d-flex flex-column">
+      {% include site-header.html lang=lang %}
+
+      <div id="main-wrapper" class="d-flex justify-content-center flex-grow-1">
+        <div class="container d-flex flex-column px-3 px-md-4 px-lg-5">
+          {% include topbar.html lang=lang %}
+
+          <div class="row flex-grow-1">
+            {% if layout.panel_includes %}
+              {% assign main_cols = 'col-12 col-xl-9' %}
+            {% else %}
+              {% assign main_cols = 'col-12' %}
+            {% endif %}
+
+            <main aria-label="Main Content" class="{{ main_cols }} px-md-3">
+              {% if layout.layout == 'default' %}
+                {% include refactor-content.html content=content lang=lang %}
+              {% else %}
+                {{ content }}
+              {% endif %}
+            </main>
+
+            {% if layout.panel_includes %}
+              <!-- panel: only the table of contents on posts -->
+              <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-3 text-muted">
+                {% for _include in layout.panel_includes %}
+                  {% assign _include_path = _include | append: '.html' %}
+                  {% include {{ _include_path }} lang=lang %}
+                {% endfor %}
+              </aside>
+            {% endif %}
+          </div>
+
+          <div class="row">
+            <!-- tail -->
+            <div id="tail-wrapper" class="{{ main_cols }} px-md-3">
+              {% for _include in layout.tail_includes %}
+                {% assign _include_path = _include | append: '.html' %}
+                {% include {{ _include_path }} lang=lang %}
+              {% endfor %}
+            </div>
+          </div>
+
+          {% include_cached search-results.html lang=lang %}
+        </div>
+
+        <aside aria-label="Scroll to Top">
+          <button id="back-to-top" type="button" class="btn btn-lg btn-box-shadow">
+            <i class="fas fa-angle-up"></i>
+          </button>
+        </aside>
+      </div>
+
+      {% include site-footer.html lang=lang %}
+    </div>
+
+    <div id="mask" class="d-none position-fixed w-100 h-100 z-1"></div>
+
+    {% if site.pwa.enabled %}
+      {% include_cached notification.html lang=lang %}
+    {% endif %}
+
+    <!-- Embedded scripts -->
+
+    {% for _include in layout.script_includes %}
+      {% assign _include_path = _include | append: '.html' %}
+      {% include {{ _include_path }} %}
+    {% endfor %}
+
+    {% include_cached search-loader.html lang=lang %}
+  </body>
+</html>

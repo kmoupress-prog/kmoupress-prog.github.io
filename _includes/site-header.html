@@ -1,0 +1,52 @@
+<!-- Site header: centered title and a top navigation bar (desktop). Categories come from site.sidebar_categories. -->
+
+<header class="site-header" aria-label="Site Header">
+  <a class="site-logo" href="{{ '/' | relative_url }}">
+    <span class="site-logo-title">{{ site.title | upcase }}</span>
+    <span class="site-logo-tagline">{{ site.tagline }}</span>
+  </a>
+
+  <nav class="site-nav" aria-label="Main Navigation">
+    <ul>
+      <li class="{% if page.layout == 'home' %}active{% endif %}">
+        <a href="{{ '/' | relative_url }}">HOME</a>
+      </li>
+
+      {% for g in site.sidebar_categories %}
+        {% unless site.categories[g.name] %}{% continue %}{% endunless %}
+
+        {%- assign nav_active = false -%}
+        {%- if page.layout == 'category' -%}
+          {%- if page.title == g.name or g.children contains page.title -%}
+            {%- assign nav_active = true -%}
+          {%- endif -%}
+        {%- elsif page.categories and page.categories[0] == g.name -%}
+          {%- assign nav_active = true -%}
+        {%- endif -%}
+
+        {% capture g_url %}/categories/{{ g.name | slugify | url_encode }}/{% endcapture %}
+        <li class="{% if nav_active %}active{% endif %}{% if g.children %} has-sub{% endif %}">
+          <a href="{{ g_url | relative_url }}">
+            {{- g.name | upcase -}}
+            {%- if g.children %}<i class="fas fa-angle-down"></i>{% endif -%}
+          </a>
+
+          {% if g.children %}
+            <ul class="site-subnav">
+              {% for c in g.children %}
+                {% if site.categories[c] %}
+                  {% capture c_url %}/categories/{{ c | slugify | url_encode }}/{% endcapture %}
+                  <li><a href="{{ c_url | relative_url }}">{{ c }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+
+      <li class="{% if page.url == '/about/' %}active{% endif %}">
+        <a href="{{ '/about/' | relative_url }}">ABOUT</a>
+      </li>
+    </ul>
+  </nav>
+</header>
