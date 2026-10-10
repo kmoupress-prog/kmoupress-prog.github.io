@@ -1,7 +1,7 @@
 ---
 title: 한국어 TTS가 "웅—"만 낼 때 — Style-Bert-VITS2 학습 디버깅기
 date: 2026-10-10 14:40:00 +0900
-categories: [딥러닝, TTS]
+categories: [Blue Archive]
 math: true
 ---
 

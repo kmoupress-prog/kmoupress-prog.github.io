@@ -1,7 +1,7 @@
 ---
 title: Stack-chan 펌웨어 커스텀기 — RAM 18KB, 웨이크워드, 그리고 꺼지는 로봇
 date: 2026-10-10 14:30:00 +0900
-categories: [로보틱스, Stack-chan]
+categories: [Stack-chan]
 mermaid: true
 ---
 
