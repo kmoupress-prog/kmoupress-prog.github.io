@@ -1,52 +1,70 @@
-<!-- Site header: centered title and a top navigation bar (desktop). Categories come from site.sidebar_categories. -->
+<!-- Site header: halo mark + title on the left, top navigation on the right (desktop). Categories come from site.sidebar_categories. -->
 
 <header class="site-header" aria-label="Site Header">
-  <a class="site-logo" href="{{ '/' | relative_url }}">
-    <span class="site-logo-title">{{ site.title | upcase }}</span>
-    <span class="site-logo-tagline">{{ site.tagline }}</span>
-  </a>
+  <div class="site-header-inner">
+    <a class="site-logo" href="{{ '/' | relative_url }}">
+      <!-- Kei's halo: three overlapping pink frames -->
+      <svg class="site-logo-mark" viewBox="0 0 44 30" aria-hidden="true">
+        <defs>
+          <linearGradient id="halo-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f4a6c4" />
+            <stop offset="1" stop-color="#d9578a" />
+          </linearGradient>
+        </defs>
+        <g fill="none" stroke="url(#halo-grad)" stroke-width="2.6" stroke-linejoin="round">
+          <rect x="2" y="2" width="22" height="13" rx="2.5" />
+          <rect x="19" y="6" width="22" height="13" rx="2.5" />
+          <rect x="11" y="15" width="18" height="12" rx="2.5" />
+        </g>
+      </svg>
+      <span class="site-logo-text">
+        <span class="site-logo-title">{{ site.title | upcase }}</span>
+        <span class="site-logo-tagline">{{ site.tagline }}</span>
+      </span>
+    </a>
 
-  <nav class="site-nav" aria-label="Main Navigation">
-    <ul>
-      <li class="{% if page.layout == 'home' %}active{% endif %}">
-        <a href="{{ '/' | relative_url }}">HOME</a>
-      </li>
+    <nav class="site-nav" aria-label="Main Navigation">
+      <ul>
+        <li class="{% if page.layout == 'home' %}active{% endif %}">
+          <a href="{{ '/' | relative_url }}">HOME</a>
+        </li>
 
-      {% for g in site.sidebar_categories %}
-        {% unless site.categories[g.name] %}{% continue %}{% endunless %}
+        {% for g in site.sidebar_categories %}
+          {% unless site.categories[g.name] %}{% continue %}{% endunless %}
 
-        {%- assign nav_active = false -%}
-        {%- if page.layout == 'category' -%}
-          {%- if page.title == g.name or g.children contains page.title -%}
+          {%- assign nav_active = false -%}
+          {%- if page.layout == 'category' -%}
+            {%- if page.title == g.name or g.children contains page.title -%}
+              {%- assign nav_active = true -%}
+            {%- endif -%}
+          {%- elsif page.categories and page.categories[0] == g.name -%}
             {%- assign nav_active = true -%}
           {%- endif -%}
-        {%- elsif page.categories and page.categories[0] == g.name -%}
-          {%- assign nav_active = true -%}
-        {%- endif -%}
 
-        {% capture g_url %}/categories/{{ g.name | slugify | url_encode }}/{% endcapture %}
-        <li class="{% if nav_active %}active{% endif %}{% if g.children %} has-sub{% endif %}">
-          <a href="{{ g_url | relative_url }}">
-            {{- g.name | upcase -}}
-            {%- if g.children %}<i class="fas fa-angle-down"></i>{% endif -%}
-          </a>
+          {% capture g_url %}/categories/{{ g.name | slugify | url_encode }}/{% endcapture %}
+          <li class="{% if nav_active %}active{% endif %}{% if g.children %} has-sub{% endif %}">
+            <a href="{{ g_url | relative_url }}">
+              {{- g.name | upcase -}}
+              {%- if g.children %}<i class="fas fa-angle-down"></i>{% endif -%}
+            </a>
 
-          {% if g.children %}
-            <ul class="site-subnav">
-              {% for c in g.children %}
-                {% if site.categories[c] %}
-                  {% capture c_url %}/categories/{{ c | slugify | url_encode }}/{% endcapture %}
-                  <li><a href="{{ c_url | relative_url }}">{{ c }}</a></li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          {% endif %}
+            {% if g.children %}
+              <ul class="site-subnav">
+                {% for c in g.children %}
+                  {% if site.categories[c] %}
+                    {% capture c_url %}/categories/{{ c | slugify | url_encode }}/{% endcapture %}
+                    <li><a href="{{ c_url | relative_url }}">{{ c }}</a></li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+
+        <li class="{% if page.url == '/about/' %}active{% endif %}">
+          <a href="{{ '/about/' | relative_url }}">ABOUT</a>
         </li>
-      {% endfor %}
-
-      <li class="{% if page.url == '/about/' %}active{% endif %}">
-        <a href="{{ '/about/' | relative_url }}">ABOUT</a>
-      </li>
-    </ul>
-  </nav>
+      </ul>
+    </nav>
+  </div>
 </header>
