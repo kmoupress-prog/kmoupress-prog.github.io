@@ -110,6 +110,7 @@ social_preview_image: # string, local or CORS resources
 sidebar_categories:
   - name: Blue Archive
     children: [Stack-chan, TTS, 나니카]
+  - name: 머신비전
   - name: SLAM
 
 # boolean type, the global switch for TOC in posts.

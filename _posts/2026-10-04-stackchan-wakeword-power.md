@@ -36,4 +36,4 @@ categories: [Blue Archive, Stack-chan]
 
 그 뒤로 꺼지는 횟수는 줄었지만 완전히 없어지진 않았습니다. 이 이야기는 [10월 10일 글](/posts/stackchan-power-hunt/)에서 이어집니다.
 
-> 다음 글: [케이에게 한국어 가르치기](/posts/kei-voice-korean-start/)
+> 다음 글: [꺼지는 로봇 추적기](/posts/stackchan-power-hunt/)

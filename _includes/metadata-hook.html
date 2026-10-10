@@ -100,6 +100,48 @@
     transform: rotate(180deg);
   }
 
+  /* interactive demos in posts (scripts live in assets/js/demos/) */
+  .mv-demo {
+    border: 1px solid var(--main-border-color, #e5e5e5);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin: 1.25rem 0;
+    background: var(--card-bg, transparent);
+  }
+
+  .mv-demo canvas {
+    display: block;
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+    touch-action: none;
+  }
+
+  .mv-demo .mv-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    align-items: center;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-muted-color, #757575);
+  }
+
+  .mv-demo .mv-controls label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .mv-demo .mv-readout {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-color, inherit);
+    font-variant-numeric: tabular-nums;
+  }
+
   #sidebar ul.nav-categories-sublist {
     list-style: none;
     margin: 0.15rem 0 0.25rem;
