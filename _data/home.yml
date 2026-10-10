@@ -15,8 +15,8 @@ projects:
   - category: TTS
     title: TTS
     desc: 케이 목소리 만들기
-    image: /assets/img/projects/tts.png
+    image: /assets/img/projects/tts-kei-sticker.png
   - category: 나니카
     title: 나니카
     desc: 바탕화면 케이와 모모톡
-    image: /assets/img/projects/nanika.png
+    image: /assets/img/projects/nanika-trio.png
