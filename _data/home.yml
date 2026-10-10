@@ -1,8 +1,31 @@
-# Home page hero (_layouts/home.html). Edit freely.
+# Home page (_layouts/home.html). Edit freely.
 catchphrase: 보고, 듣고, 말하는 것들을 만듭니다
 subtitle: Building things that see, hear and talk.
 intro: >-
   머신비전을 공부하고, 책상 위 로봇과 좋아하는 캐릭터에게 얼굴과 목소리를 입히는 기록입니다.
 image: /assets/img/posts/desktop-mascots.png
 image_alt: 작업 표시줄 위의 케이, 아리스, 메이드 아리스
-section_title: 최근 글
+section_title: Projects
+
+# One card per project; `category` is the category the card links to.
+projects:
+  - category: Stack-chan
+    title: Stack-chan
+    desc: 책상 위 로봇을 케이로
+    image: /assets/img/projects/stack-chan.jpg
+  - category: TTS
+    title: TTS
+    desc: 케이 목소리 만들기
+    image: /assets/img/projects/tts.png
+  - category: 나니카
+    title: 나니카
+    desc: 바탕화면 케이와 모모톡
+    image: /assets/img/projects/nanika.png
+  - category: 머신비전
+    title: 머신비전
+    desc: MIT 6.801 강의 공부
+    image: /assets/img/projects/machine-vision.png
+  - category: SLAM
+    title: SLAM
+    desc: 로봇의 방향 계산하기
+    image: /assets/img/projects/slam.png

@@ -1,54 +1,6 @@
-<!-- Site footer: a light three-column box and a dark bottom bar. -->
+<!-- Site footer: a dark bottom bar. -->
 
 <footer class="site-footer" aria-label="Site Info">
-  <div class="site-footer-box">
-    <section>
-      <h2>{{ site.title }}</h2>
-      <p>{{ site.description }}</p>
-      <p><a href="{{ '/about/' | relative_url }}">About</a></p>
-    </section>
-
-    <section>
-      <h2>Categories</h2>
-      <ul>
-        {% for g in site.sidebar_categories %}
-          {% unless site.categories[g.name] %}{% continue %}{% endunless %}
-          {% capture g_url %}/categories/{{ g.name | slugify | url_encode }}/{% endcapture %}
-          <li>
-            <a href="{{ g_url | relative_url }}">{{ g.name }}</a>
-            {% if g.children %}
-              <span class="site-footer-sub">
-                {% for c in g.children %}
-                  {% if site.categories[c] %}
-                    {% capture c_url %}/categories/{{ c | slugify | url_encode }}/{% endcapture %}
-                    <a href="{{ c_url | relative_url }}">{{ c }}</a>
-                    {%- unless forloop.last %} · {% endunless -%}
-                  {% endif %}
-                {% endfor %}
-              </span>
-            {% endif %}
-          </li>
-        {% endfor %}
-      </ul>
-    </section>
-
-    <section>
-      <h2>Links</h2>
-      <ul class="site-footer-links">
-        {% if site.github.username %}
-          <li>
-            <a href="https://github.com/{{ site.github.username }}" target="_blank" rel="noopener noreferrer">
-              <i class="fab fa-github fa-fw"></i> GitHub
-            </a>
-          </li>
-        {% endif %}
-        <li>
-          <a href="{{ '/feed.xml' | relative_url }}"><i class="fas fa-rss fa-fw"></i> RSS</a>
-        </li>
-      </ul>
-    </section>
-  </div>
-
   <div class="site-footer-bar">
     © {{ 'now' | date: '%Y' }} {{ site.social.name }}. Powered by
     <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> &amp;
