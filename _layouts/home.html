@@ -6,6 +6,7 @@ layout: default
 
 {% assign hero = site.data.home %}
 
+{% if hero.catchphrase or hero.subtitle or hero.intro or hero.video or hero.image %}
 <section class="home-hero">
   {% if hero.catchphrase %}<h1 class="home-catchphrase">{{ hero.catchphrase }}</h1>{% endif %}
   {% if hero.subtitle %}<p class="home-subtitle">{{ hero.subtitle }}</p>{% endif %}
@@ -25,6 +26,7 @@ layout: default
     <img class="home-hero-img" src="{{ hero.image | relative_url }}" alt="{{ hero.image_alt | default: site.title }}">
   {% endif %}
 </section>
+{% endif %}
 
 <section class="home-posts">
   <h2 class="home-section-title">{{ hero.section_title | default: 'Projects' }}</h2>
@@ -37,7 +39,19 @@ layout: default
       <article class="post-card">
         <a href="{{ p_url | relative_url }}">
           <div class="post-card-thumb">
-            <img src="{{ p.image | relative_url }}" alt="{{ p.title | xml_escape }}" loading="lazy">
+            {% if p.video %}
+              <video
+                src="{{ p.video | relative_url }}"
+                {% if p.image %}poster="{{ p.image | relative_url }}"{% endif %}
+                autoplay
+                muted
+                loop
+                playsinline
+                aria-label="{{ p.title | xml_escape }}"
+              ></video>
+            {% else %}
+              <img src="{{ p.image | relative_url }}" alt="{{ p.title | xml_escape }}" loading="lazy">
+            {% endif %}
           </div>
           <h3 class="post-card-title">{{ p.title }}</h3>
           <div class="post-card-meta">

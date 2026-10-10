@@ -343,14 +343,16 @@ body {
   margin-right: -0.3em;
 }
 
-.post-card-thumb img {
+.post-card-thumb img,
+.post-card-thumb video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
-.post-card > a:hover .post-card-thumb img {
+.post-card > a:hover .post-card-thumb img,
+.post-card > a:hover .post-card-thumb video {
   transform: scale(1.03);
   opacity: 0.92;
 }

@@ -1,12 +1,11 @@
 # Home page (_layouts/home.html). Edit freely.
 # Optional hero text: catchphrase, subtitle, intro (all omitted for now)
-# Hero: a looping silent video (with a poster image), or `image` for a still picture
-video: /assets/img/home/hero-sit.mp4
-image: /assets/img/home/hero-sit-poster.jpg
-image_alt: 작업 표시줄에 걸터앉은 케이와 아리스
+# Hero (optional): `video` (looping, silent) with `image` as its poster, or just `image`.
+# Left empty for now.
 section_title: Projects
 
 # One card per project; `category` is the category the card links to.
+# A card shows `video` (looping, silent, `image` as poster) or just `image`.
 projects:
   - category: Stack-chan
     title: Stack-chan
@@ -19,4 +18,5 @@ projects:
   - category: 나니카
     title: 나니카
     desc: 바탕화면 케이와 모모톡
-    image: /assets/img/projects/nanika-trio.png
+    video: /assets/img/projects/nanika-sit.mp4
+    image: /assets/img/projects/nanika-sit-poster.jpg
