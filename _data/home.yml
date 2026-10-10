@@ -1,7 +1,9 @@
 # Home page (_layouts/home.html). Edit freely.
 # Optional hero text: catchphrase, subtitle, intro (all omitted for now)
-image: /assets/img/posts/desktop-mascots.png
-image_alt: 작업 표시줄 위의 케이, 아리스, 메이드 아리스
+# Hero: a looping silent video (with a poster image), or `image` for a still picture
+video: /assets/img/home/hero-sit.mp4
+image: /assets/img/home/hero-sit-poster.jpg
+image_alt: 작업 표시줄에 걸터앉은 케이와 아리스
 section_title: Projects
 
 # One card per project; `category` is the category the card links to.

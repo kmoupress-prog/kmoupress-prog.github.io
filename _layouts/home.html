@@ -10,7 +10,18 @@ layout: default
   {% if hero.catchphrase %}<h1 class="home-catchphrase">{{ hero.catchphrase }}</h1>{% endif %}
   {% if hero.subtitle %}<p class="home-subtitle">{{ hero.subtitle }}</p>{% endif %}
   {% if hero.intro %}<p class="home-intro">{{ hero.intro }}</p>{% endif %}
-  {% if hero.image %}
+  {% if hero.video %}
+    <video
+      class="home-hero-img"
+      src="{{ hero.video | relative_url }}"
+      {% if hero.image %}poster="{{ hero.image | relative_url }}"{% endif %}
+      autoplay
+      muted
+      loop
+      playsinline
+      aria-label="{{ hero.image_alt | default: site.title }}"
+    ></video>
+  {% elsif hero.image %}
     <img class="home-hero-img" src="{{ hero.image | relative_url }}" alt="{{ hero.image_alt | default: site.title }}">
   {% endif %}
 </section>
