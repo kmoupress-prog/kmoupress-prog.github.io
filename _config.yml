@@ -104,9 +104,13 @@ avatar: /assets/img/avatar.png
 # It can be overridden by a customized `page.image` in front matter.
 social_preview_image: # string, local or CORS resources
 
-# Order of the expandable category list in the sidebar (_includes/sidebar.html).
-# Categories not listed here are appended after these.
-sidebar_categories: [Stack-chan, Blue Archive, SLAM]
+# Expandable category list in the sidebar (_includes/sidebar.html), in this order.
+# An entry with children expands into those sub-categories; categories not listed
+# here are appended after these.
+sidebar_categories:
+  - name: Blue Archive
+    children: [Stack-chan, TTS, 나니카]
+  - name: SLAM
 
 # boolean type, the global switch for TOC in posts.
 toc: true

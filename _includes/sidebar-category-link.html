@@ -1,0 +1,11 @@
+{%- comment -%} One category link in the sidebar list (see sidebar.html). {%- endcomment -%}
+{% capture category_url %}/categories/{{ include.name | slugify | url_encode }}/{% endcapture %}
+<li>
+  <a
+    href="{{ category_url | relative_url }}"
+    class="nav-categories-link{% if page.layout == 'category' and page.title == include.name %}{{ " active" }}{% endif %}"
+  >
+    <span>{{ include.name }}</span>
+    <span class="nav-categories-count">{{ site.categories[include.name] | size }}</span>
+  </a>
+</li>

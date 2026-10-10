@@ -36,17 +36,16 @@
             {%- assign cat_open = true -%}
           {%- endif -%}
 
-          {%- comment -%} site.sidebar_categories first, then any other category {%- endcomment -%}
-          {%- assign cat_names = '' | split: '' -%}
-          {%- for name in site.sidebar_categories -%}
-            {%- if site.categories[name] -%}
-              {%- assign cat_names = cat_names | push: name -%}
-            {%- endif -%}
-          {%- endfor -%}
-          {%- for cat in site.categories -%}
-            {%- unless cat_names contains cat[0] -%}
-              {%- assign cat_names = cat_names | push: cat[0] -%}
-            {%- endunless -%}
+          {%- comment -%}
+            site.sidebar_categories lists top-level categories in order; an entry with
+            children expands into its sub-categories. Unlisted categories go last.
+          {%- endcomment -%}
+          {%- assign listed = '' | split: '' -%}
+          {%- for g in site.sidebar_categories -%}
+            {%- assign listed = listed | push: g.name -%}
+            {%- for c in g.children -%}
+              {%- assign listed = listed | push: c -%}
+            {%- endfor -%}
           {%- endfor -%}
 
           <li class="nav-item{% if cat_open %}{{ " active" }}{% endif %}">
@@ -57,17 +56,39 @@
                 <i class="fas fa-angle-down nav-categories-caret"></i>
               </summary>
               <ul class="nav-categories-list">
-                {% for name in cat_names %}
-                  {% capture category_url %}/categories/{{ name | slugify | url_encode }}/{% endcapture %}
-                  <li>
-                    <a
-                      href="{{ category_url | relative_url }}"
-                      class="nav-categories-link{% if page.layout == 'category' and page.title == name %}{{ " active" }}{% endif %}"
-                    >
-                      <span>{{ name }}</span>
-                      <span class="nav-categories-count">{{ site.categories[name] | size }}</span>
-                    </a>
-                  </li>
+                {% for g in site.sidebar_categories %}
+                  {% unless site.categories[g.name] %}{% continue %}{% endunless %}
+                  {% if g.children %}
+                    {%- assign g_open = false -%}
+                    {%- if page.layout == 'category' -%}
+                      {%- if page.title == g.name or g.children contains page.title -%}
+                        {%- assign g_open = true -%}
+                      {%- endif -%}
+                    {%- endif -%}
+                    <li>
+                      <details class="nav-categories-group"{% if g_open %} open{% endif %}>
+                        <summary class="nav-categories-link">
+                          <span>{{ g.name }}</span>
+                          <span class="nav-categories-count">{{ site.categories[g.name] | size }}</span>
+                          <i class="fas fa-angle-down nav-categories-caret"></i>
+                        </summary>
+                        <ul class="nav-categories-sublist">
+                          {% for c in g.children %}
+                            {% if site.categories[c] %}
+                              {% include sidebar-category-link.html name=c %}
+                            {% endif %}
+                          {% endfor %}
+                        </ul>
+                      </details>
+                    </li>
+                  {% else %}
+                    {% include sidebar-category-link.html name=g.name %}
+                  {% endif %}
+                {% endfor %}
+                {% for cat in site.categories %}
+                  {% unless listed contains cat[0] %}
+                    {% include sidebar-category-link.html name=cat[0] %}
+                  {% endunless %}
                 {% endfor %}
               </ul>
             </details>

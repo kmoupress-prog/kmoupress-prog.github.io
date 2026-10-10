@@ -1,7 +1,7 @@
 ---
 title: 케이 목소리 만들기 — 일본어편
 date: 2026-10-03 21:00:00 +0900
-categories: [Blue Archive]
+categories: [Blue Archive, TTS]
 ---
 
 > **한 줄 요약:** 케이의 일본어 대사 약 8분으로 AI 목소리를 학습시켰고, 스택짱이 그 목소리로 0.5초 안에 대답하게 만들었습니다.
