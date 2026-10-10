@@ -226,6 +226,11 @@ body {
   visibility: hidden; /* the site title is already in the header */
 }
 
+/* on the home page the breadcrumb is just "홈" — hide it */
+#breadcrumb:has(> span:only-child) {
+  visibility: hidden;
+}
+
 #search {
   border-radius: 999px;
 }
