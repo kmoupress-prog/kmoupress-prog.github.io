@@ -7,7 +7,7 @@ layout: default
 {% assign hero = site.data.home %}
 
 <section class="home-hero">
-  <h1 class="home-catchphrase">{{ hero.catchphrase }}</h1>
+  {% if hero.catchphrase %}<h1 class="home-catchphrase">{{ hero.catchphrase }}</h1>{% endif %}
   {% if hero.subtitle %}<p class="home-subtitle">{{ hero.subtitle }}</p>{% endif %}
   {% if hero.intro %}<p class="home-intro">{{ hero.intro }}</p>{% endif %}
   {% if hero.image %}
