@@ -1,7 +1,7 @@
 ---
 title: 블로그 시작 — 수식 렌더링 테스트
 date: 2026-10-10 14:00:00 +0900
-categories: [Blog]
+categories: [머신비전]
 tags: [chirpy, latex]
 math: true
 ---
