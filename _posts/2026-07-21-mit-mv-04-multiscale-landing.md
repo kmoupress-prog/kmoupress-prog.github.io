@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 4강] 착륙선이 부드럽게 내려앉는 법과 사진 피라미드"
 date: 2026-07-21 09:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

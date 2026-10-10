@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 13강] 사진 속에서 그 물건 찾기: 템플릿 매칭과 PatQuick"
 date: 2026-09-14 11:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

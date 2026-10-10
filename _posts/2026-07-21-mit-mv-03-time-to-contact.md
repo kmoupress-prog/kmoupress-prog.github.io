@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 3강] 카메라 하나로 부딪히기까지 남은 시간 재기"
 date: 2026-07-21 08:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

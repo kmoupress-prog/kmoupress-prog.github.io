@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 14강] 점들이 투표해서 직선을 찾는다: 허프 변환"
 date: 2026-09-14 12:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

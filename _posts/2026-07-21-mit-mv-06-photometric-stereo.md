@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 6강] 조명 세 개로 표면의 방향 알아내기"
 date: 2026-07-21 11:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

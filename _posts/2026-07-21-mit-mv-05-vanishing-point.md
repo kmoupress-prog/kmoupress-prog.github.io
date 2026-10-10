@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 5강] 평행한 선이 만나는 점, 소실점으로 카메라 알아내기"
 date: 2026-07-21 10:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

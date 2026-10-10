@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 7강] 반사 지도: 기울기와 밝기를 잇는 지도"
 date: 2026-07-21 12:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

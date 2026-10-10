@@ -18,11 +18,3 @@ projects:
     title: 나니카
     desc: 바탕화면 케이와 모모톡
     image: /assets/img/projects/nanika.png
-  - category: 머신비전
-    title: 머신비전
-    desc: MIT 6.801 강의 공부
-    image: /assets/img/projects/machine-vision.png
-  - category: SLAM
-    title: SLAM
-    desc: 로봇의 방향 계산하기
-    image: /assets/img/projects/slam.png

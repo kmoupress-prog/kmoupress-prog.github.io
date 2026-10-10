@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 11강] 경계선을 픽셀보다 정밀하게 찾기"
 date: 2026-09-12 20:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

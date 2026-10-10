@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 9강] 바늘 그림에서 입체 모양 되살리기"
 date: 2026-07-21 14:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

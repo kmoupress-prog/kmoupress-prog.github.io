@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 10강] 특성 띠: 가장 밝은 점에서 모양을 키워 나가기"
 date: 2026-07-21 15:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

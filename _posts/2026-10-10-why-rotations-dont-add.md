@@ -1,7 +1,7 @@
 ---
 title: 회전은 왜 그냥 더할 수 없을까
 date: 2026-10-10 22:00:00 +0900
-categories: [SLAM]
+categories: [Research, SLAM]
 math: true
 ---
 

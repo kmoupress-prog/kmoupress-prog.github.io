@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 12강] 계산 분자로 미분하고 경계선 다듬기"
 date: 2026-09-14 10:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

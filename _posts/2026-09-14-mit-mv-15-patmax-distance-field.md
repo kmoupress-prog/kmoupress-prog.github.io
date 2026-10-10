@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 15강] 스프링으로 끌어당겨 맞추기: PatMax와 거리 지도"
 date: 2026-09-14 13:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

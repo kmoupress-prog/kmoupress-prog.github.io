@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 8강] 보름달은 왜 원판처럼 평평해 보일까"
 date: 2026-07-21 13:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 

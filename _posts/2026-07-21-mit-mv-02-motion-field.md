@@ -1,7 +1,7 @@
 ---
 title: "[MIT 머신비전 2강] 사진 속 움직임으로 내가 어디로 가는지 알기"
 date: 2026-07-21 07:00:00 +0900
-categories: [머신비전]
+categories: [Research, 머신비전]
 math: true
 ---
 
