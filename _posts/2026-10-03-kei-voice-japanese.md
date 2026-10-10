@@ -46,6 +46,17 @@ AI 학습에는 보통 NVIDIA 그래픽카드가 필요한데, 제 PC는 AMD 그
 
 이제 말을 걸면 거의 바로 케이 목소리로 대답합니다.
 
+## 들어 보기
+
+> 아래는 모두 **AI가 합성한 음성**입니다. 게임 원본 음성은 올리지 않습니다.
+{: .prompt-tip }
+
+{% include embed/audio.html src='/assets/audio/kei-jp-1.mp3' title='もう、何してたんですか？遅いですよ！準備は済ませておいたので……はい、座ってください。' %}
+
+{% include embed/audio.html src='/assets/audio/kei-jp-2.mp3' title='先生、今日は晴れです。……散歩くらい、してみたらどうですか。べ、別に先生のために準備したわけではありませんから。' %}
+
+{% include embed/audio.html src='/assets/audio/kei-jp-3.mp3' title='パソコンをつけっぱなしでいなくなるなんて。本当にもう、手が焼けるんですから。' %}
+
 ## 말투도 케이답게
 
 목소리만 케이면 안 되니까 AI에게 케이의 성격과 말투를 설명해 주는 글도 썼습니다.

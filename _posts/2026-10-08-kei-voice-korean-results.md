@@ -27,6 +27,19 @@ categories: [Blue Archive, TTS]
 "빨리 끝내고 자고 싶어~", "선생님과 함께 먹는 음식이라면 무엇이든 맛있을 거에요." 같은 평범한 문장은 거의 그대로 알아들었습니다.
 점수를 깎아 먹은 건 "우갸앗!! 앗 뜨뜨뜨?!" 같은 감탄사들이었습니다.
 
+## 들어 보기
+
+> 아래는 모두 **AI가 합성한 음성**입니다. 게임 원본 음성은 올리지 않습니다.
+{: .prompt-tip }
+
+{% include embed/audio.html src='/assets/audio/kei-ko-1.mp3' title='안녕하세요, 선생님. 오늘도 잘 부탁드립니다.' %}
+
+{% include embed/audio.html src='/assets/audio/kei-ko-2.mp3' title='해야 하는 거죠……? 블루, 아카이브.' %}
+
+{% include embed/audio.html src='/assets/audio/kei-ko-3.mp3' title='깜짝 놀랐잖아요! 그렇게 갑자기 뛰어오면 어떡해요.' %}
+
+{% include embed/audio.html src='/assets/audio/kei-ko-4.mp3' title='국밥 한 그릇 먹고 싶다고요? 그럼 같이 가요.' %}
+
 ## 된소리는 아직
 
 "이건 달이에요 / 딸이에요 / 탈이에요"처럼 한 글자만 다른 문장을 300개 만들어 시험했습니다.
@@ -34,6 +47,8 @@ categories: [Blue Archive, TTS]
 - 문장 속에서는 된소리의 4분의 3 정도가 살아 있습니다.
 - 하지만 단어만 떼어 놓으면 **"달"도 "딸"도 "탈"처럼** 들리는 경우가 많았습니다. 바람 새는 소리(ㅋ ㅌ ㅍ) 쪽으로 쏠려 있습니다.
 - **"ㅆ"은 한 번도 "ㅆ"으로 들리지 않았습니다.**
+
+{% include embed/audio.html src='/assets/audio/kei-ko-5.mp3' title='이건 딸이에요. 이건 달이에요. 이건 탈이에요. (세 단어가 구분되는지 들어 보세요)' %}
 
 혹시 발음 변환 규칙(예: "먹고"를 [먹꼬]로 바꾸는 규칙)이 틀렸나 싶어 62개 단어를 확인했는데, 거의 다 맞았습니다. 규칙 문제는 아니었습니다.
 
