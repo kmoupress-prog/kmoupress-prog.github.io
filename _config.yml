@@ -14,9 +14,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Kyu Tae's Blog # the main title
+title: KEI-LAB # the main title
 
-tagline: Machine Vision Engineering # it will display as the subtitle
+tagline: Kyutae's Engineering & Interaction Lab # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Kyu Tae의 머신비전·로보틱스 공부 기록. 컴퓨터 비전, 이미지·텍스트 인코딩, 로봇 모션 플래닝, TTS를 다룹니다.
