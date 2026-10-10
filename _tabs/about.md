@@ -1,7 +1,7 @@
 ---
 # the default layout is 'page'
 icon: fas fa-info-circle
-order: 4
+order: 2
 ---
 
 AI & Robotics 분야에서 일하고 있는 Kyu Tae입니다.

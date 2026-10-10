@@ -2,7 +2,6 @@
 title: Stack-chan 펌웨어 커스텀기 — RAM 18KB, 웨이크워드, 그리고 꺼지는 로봇
 date: 2026-10-10 14:30:00 +0900
 categories: [로보틱스, Stack-chan]
-tags: [stack-chan, esp32-s3, m5stack, xiaozhi, esp-idf, freertos, axp2101, debugging]
 mermaid: true
 ---
 

@@ -2,7 +2,6 @@
 title: PyTorch 기초 정리 — 텐서, autograd, 그리고 선형회귀
 date: 2026-10-10 14:20:00 +0900
 categories: [딥러닝, PyTorch]
-tags: [pytorch, autograd, linear-regression, gradient-descent]
 math: true
 ---
 

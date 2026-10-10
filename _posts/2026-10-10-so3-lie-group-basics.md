@@ -2,7 +2,6 @@
 title: 회전은 왜 더할 수 없을까 — SO(3)와 Lie 대수 입문
 date: 2026-10-10 14:10:00 +0900
 categories: [머신비전, SLAM]
-tags: [lie-theory, so3, se3, optimization, gauss-newton, slam]
 math: true
 ---
 
