@@ -40,7 +40,8 @@ layout: compress
             {% endif %}
 
             <main aria-label="Main Content" class="{{ main_cols }} px-md-3">
-              {% if layout.layout == 'default' %}
+              {%- comment -%} card pages (home, category) keep their own <img> markup {%- endcomment -%}
+              {% if layout.layout == 'default' and page.layout != 'home' and page.layout != 'category' %}
                 {% include refactor-content.html content=content lang=lang %}
               {% else %}
                 {{ content }}

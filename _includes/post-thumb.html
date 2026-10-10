@@ -1,7 +1,7 @@
 {%- comment -%}
   Thumbnail URL for a post card: front matter `image`, else the first <img> in the post,
-  else a YouTube thumbnail for an embedded video, else the site avatar.
-  Usage: {% include post-thumb.html post=post %} (prints the URL)
+  else a YouTube thumbnail for an embedded video, else nothing (the card shows a text tile).
+  Usage: {% capture thumb %}{% include post-thumb.html post=post %}{% endcapture %}
 {%- endcomment -%}
 {%- assign _p = include.post -%}
 {%- assign _src = _p.image.path | default: _p.image -%}
@@ -18,5 +18,6 @@
     {%- capture _src -%}https://i.ytimg.com/vi/{{ _yt }}/hqdefault.jpg{%- endcapture -%}
   {%- endif -%}
 {%- endunless -%}
-{%- assign _src = _src | default: site.avatar -%}
-{%- if _src contains '://' -%}{{ _src }}{%- else -%}{{ _src | relative_url }}{%- endif -%}
+{%- if _src -%}
+  {%- if _src contains '://' -%}{{ _src }}{%- else -%}{{ _src | relative_url }}{%- endif -%}
+{%- endif -%}

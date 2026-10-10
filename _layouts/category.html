@@ -14,8 +14,13 @@ layout: default
       {% assign label = post.categories | last %}
       <article class="post-card">
         <a href="{{ post.url | relative_url }}">
-          <div class="post-card-thumb">
-            <img src="{% include post-thumb.html post=post %}" alt="{{ post.title | xml_escape }}" loading="lazy">
+          {% capture thumb %}{% include post-thumb.html post=post %}{% endcapture %}{% assign thumb = thumb | strip %}
+          <div class="post-card-thumb{% if thumb == '' %} is-empty{% endif %}">
+            {% if thumb != '' %}
+              <img src="{{ thumb }}" alt="{{ post.title | xml_escape }}" loading="lazy">
+            {% else %}
+              <span>{{ label | default: site.title | upcase }}</span>
+            {% endif %}
           </div>
           <h3 class="post-card-title">{{ post.title }}</h3>
           <div class="post-card-meta">
