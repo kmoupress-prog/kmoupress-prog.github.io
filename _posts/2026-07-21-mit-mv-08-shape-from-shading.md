@@ -91,5 +91,6 @@ _같은 크기의 막대 두 개. 보통 렌즈는 가까운 막대를 크게 �
 - 하프케 표면의 등광선은 기울기 평면에서 직선이라, 밝기 하나로 해 방향의 기울기를 바로 알 수 있고 이를 더해 지형 단면을 그릴 수 있습니다. 다만 출발 높이는 따로 필요합니다.
 - 텔레센트릭 렌즈는 거리와 상관없이 같은 크기로 찍어서 부품 검사와 측정에 쓰입니다.
 
+> 다음 글: [[MIT 머신비전 9강] 바늘 그림에서 입체 모양 되살리기](/posts/mit-mv-09-needle-to-shape/)
 
 _참고: MIT 6.801/6.866 Machine Vision (Fall 2020), Berthold Horn · Ryan Sander · Tadayuki Yoshitake 강의 노트 (MIT OpenCourseWare, CC BY-NC-SA 4.0)_
