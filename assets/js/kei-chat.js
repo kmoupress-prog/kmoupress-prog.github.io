@@ -109,7 +109,7 @@
 
     var who = m.kei ? 'kei' : m.uid;
     if (!last || last.uid !== who || (m.ts && last.ts && m.ts - last.ts > GROUP_MS)) {
-      var row = el('div', 'kchat-row ' + (mine ? 'is-me' : 'is-other'));
+      var row = el('div', 'kchat-row ' + (mine ? 'is-me' : 'is-other') + (m.kei ? ' is-kei' : ''));
       var col = el('div', 'kchat-col');
       if (!mine) {
         row.appendChild(avatar(m));

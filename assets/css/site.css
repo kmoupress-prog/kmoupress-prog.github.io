@@ -280,41 +280,74 @@ body {
   padding: 3rem 0 1rem;
 }
 
-/* ---------- home: public chat room in MomoTalk style (assets/js/kei-chat.js) ---------- */
+/* ---------- home: public chat room (KEITalk, Millennium style) (assets/js/kei-chat.js) ---------- */
 
 .home-chat {
   padding-top: 2.25rem;
 }
 
 .kchat {
-  --kchat-pink: #ff97a9;
-  --kchat-other: #4c5a6e;
-  --kchat-me: #4a8acb;
+  /* Millennium look: navy panels, cyan accents, blueprint grid, cut corners */
+  --kchat-cyan: #29c5f6;
+  --kchat-cyan-deep: #1489bd;
+  --kchat-navy: #111a26;
+  --kchat-other: #1f2b3b;
+  --kchat-me: #1489bd;
+  --kchat-kei: #e8578f;
+  --kchat-mono: ui-monospace, 'Cascadia Mono', Consolas, 'Liberation Mono', monospace;
   max-width: none; /* same width as the project grid below */
   margin: 0 auto;
   overflow: hidden;
-  background: #fff;
-  border: 1px solid #e3e3e3;
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  background: #f3f7fb;
+  border: 1px solid #c9d8e5;
+  border-radius: 3px;
+  box-shadow: 0 10px 30px rgba(17, 26, 38, 0.08);
 }
 
 .kchat-head {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1.1rem;
-  background: var(--kchat-pink);
+  gap: 0.55rem;
+  padding: 0.6rem 1.1rem;
+  background: var(--kchat-navy);
+  border-bottom: 3px solid var(--kchat-cyan);
   color: #fff;
+  font-family: var(--kchat-mono);
   font-weight: 700;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.08em;
+}
+
+.kchat-head > i {
+  color: var(--kchat-cyan);
+}
+
+/* diagonal tech stripes on the right edge of the header */
+.kchat-head::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 70px;
+  background: repeating-linear-gradient(-45deg, rgba(41, 197, 246, 0.28) 0 4px, transparent 4px 10px);
+  pointer-events: none;
 }
 
 .kchat-room {
+  position: relative;
+  z-index: 1;
   margin-left: auto;
-  font-size: 0.82rem;
+  margin-right: 60px;
+  color: var(--kchat-cyan);
+  font-size: 0.78rem;
   font-weight: 500;
-  opacity: 0.95;
+  letter-spacing: 0.04em;
+}
+
+.kchat-room::before {
+  content: '// ';
+  opacity: 0.7;
 }
 
 .kchat-log {
@@ -322,16 +355,24 @@ body {
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 0.25rem 1.1rem 1.1rem;
+  background-color: #f3f7fb;
+  background-image:
+    linear-gradient(rgba(20, 137, 189, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 137, 189, 0.07) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 .kchat-day {
   margin: 1rem auto 0.25rem;
   width: fit-content;
   padding: 0.15rem 0.8rem;
-  border-radius: 999px;
-  background: #eef1f4;
-  color: #7d8a97;
-  font-size: 0.75rem;
+  border: 1px solid #bcd6e6;
+  border-radius: 2px;
+  background: #fff;
+  color: #4b7690;
+  font-family: var(--kchat-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
 }
 
 .kchat-row {
@@ -347,8 +388,13 @@ body {
 .kchat-avatar {
   width: 42px;
   height: 42px;
-  border-radius: 50%;
+  border-radius: 6px;
   flex-shrink: 0;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--kchat-cyan);
+}
+
+.kchat-row.is-kei .kchat-avatar {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--kchat-kei);
 }
 
 .kchat-avatar.is-initial {
@@ -373,9 +419,14 @@ body {
 }
 
 .kchat-name {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--site-ink);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--kchat-navy);
+}
+
+.kchat-row.is-kei .kchat-name {
+  color: var(--kchat-kei);
 }
 
 .kchat-line {
@@ -393,44 +444,36 @@ body {
 .kchat-bubble {
   position: relative;
   min-width: 0;
-  padding: 0.45rem 0.85rem;
-  border-radius: 10px;
+  padding: 0.45rem 0.9rem 0.45rem 0.8rem;
+  border-left: 3px solid var(--kchat-cyan);
+  border-radius: 0;
   background: var(--kchat-other);
-  color: #fff;
+  color: #f2f7fb;
   font-size: 0.95rem;
   line-height: 1.55;
   white-space: pre-wrap;
   word-break: keep-all;
   overflow-wrap: anywhere;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%);
+}
+
+.kchat-row.is-kei .kchat-bubble {
+  border-left-color: var(--kchat-kei);
 }
 
 .kchat-row.is-me .kchat-bubble {
+  padding: 0.45rem 0.8rem 0.45rem 0.9rem;
+  border-left: 0;
+  border-right: 3px solid var(--kchat-cyan);
   background: var(--kchat-me);
-}
-
-/* tail on the first bubble of a group */
-.kchat-name + .kchat-line .kchat-bubble::before,
-.kchat-row.is-me .kchat-line:first-child .kchat-bubble::before {
-  content: '';
-  position: absolute;
-  top: 11px;
-  border: 6px solid transparent;
-}
-
-.kchat-name + .kchat-line .kchat-bubble::before {
-  left: -11px;
-  border-right-color: var(--kchat-other);
-}
-
-.kchat-row.is-me .kchat-line:first-child .kchat-bubble::before {
-  right: -11px;
-  border-left-color: var(--kchat-me);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 9px 100%, 0 calc(100% - 9px));
 }
 
 .kchat-time {
   flex-shrink: 0;
-  font-size: 0.7rem;
-  color: #a3aeb9;
+  font-family: var(--kchat-mono);
+  font-size: 0.66rem;
+  color: #8199ad;
   white-space: nowrap;
 }
 
@@ -450,32 +493,38 @@ body {
   display: flex;
   gap: 0.5rem;
   padding: 0.7rem 0.9rem;
-  background: #f3f6f9;
-  border-top: 1px solid #e6e9ed;
+  background: var(--kchat-navy);
+  border-top: 1px solid #22344a;
 }
 
 .kchat-form input {
   min-width: 0;
   padding: 0.5rem 0.8rem;
-  background: #fff;
-  border: 1px solid #d5dde5;
-  border-radius: 8px;
-  color: var(--site-ink);
+  background: #0a111a;
+  border: 1px solid #2b3d52;
+  border-radius: 2px;
+  color: #e8f2f9;
   font-size: 0.92rem;
   outline: none;
 }
 
+.kchat-form input::placeholder {
+  color: #6b8197;
+}
+
 .kchat-form input:focus {
-  border-color: var(--kchat-me);
+  border-color: var(--kchat-cyan);
+  box-shadow: 0 0 0 2px rgba(41, 197, 246, 0.2);
 }
 
 .kchat-form input:disabled {
-  background: #f7f8fa;
+  background: #141d29;
 }
 
 .kchat-nick {
   width: 8.5rem;
   flex-shrink: 0;
+  font-family: var(--kchat-mono);
 }
 
 .kchat-input {
@@ -486,22 +535,24 @@ body {
   flex-shrink: 0;
   width: 2.6rem;
   border: 0;
-  border-radius: 8px;
-  background: var(--kchat-me);
-  color: #fff;
+  border-radius: 0;
+  background: var(--kchat-cyan);
+  color: var(--kchat-navy);
   cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
 }
 
 .kchat-send:disabled {
-  background: #b9c6d3;
+  background: #33485e;
+  color: #7c90a4;
   cursor: default;
 }
 
 .kchat-note {
   margin: 0;
   padding: 0 1rem;
-  background: #f3f6f9;
-  color: var(--site-muted);
+  background: var(--kchat-navy);
+  color: #8ea3b6;
   font-size: 0.78rem;
 }
 
@@ -510,7 +561,7 @@ body {
 }
 
 .kchat-note.is-error {
-  color: var(--site-accent);
+  color: #ff86b0;
 }
 
 .kchat-del {
@@ -519,7 +570,7 @@ body {
   height: 1.4rem;
   padding: 0;
   border: 1px solid #e3c3cf;
-  border-radius: 50%;
+  border-radius: 2px;
   background: #fff;
   color: var(--site-accent);
   font-size: 0.85rem;
@@ -530,10 +581,10 @@ body {
 .kchat-admin {
   margin-bottom: 0.2rem;
   padding: 0.35rem 0.8rem;
-  border: 1px solid #d5dde5;
-  border-radius: 8px;
-  background: #fff;
-  color: var(--site-ink);
+  border: 1px solid #2b3d52;
+  border-radius: 2px;
+  background: #0a111a;
+  color: #e8f2f9;
   font-size: 0.8rem;
   cursor: pointer;
 }
@@ -589,7 +640,7 @@ body {
   height: 46vh; /* fixed share of the screen; the table of contents above scrolls if long */
   min-height: 300px;
   margin-right: 0.5rem;
-  border-radius: 10px;
+  border-radius: 3px;
   box-shadow: none;
 }
 
@@ -631,7 +682,7 @@ body {
 
 .kchat.is-compact .kchat-bubble {
   padding: 0.3rem 0.6rem;
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 0.8rem;
   line-height: 1.5;
 }

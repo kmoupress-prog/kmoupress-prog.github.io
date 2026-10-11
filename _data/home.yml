@@ -14,7 +14,7 @@ projects:
   - category: TTS
     title: TTS
     desc: 케이 목소리 만들기
-    image: /assets/img/projects/tts-voice-message.png
+    image: /assets/img/projects/tts-voice-player.png
   - category: Desktop Mascot
     title: Desktop Mascot
     desc: 바탕화면 케이와 모모톡
