@@ -17,7 +17,7 @@ kei_name: 케이
 kei_avatar: /assets/img/chat/kei-avatar.jpg
 stickers: /assets/img/chat/
 welcome:
+  - { sticker: hello }
   - 여기는 KEI-LAB 공개 채팅방입니다.
   - 닉네임만 정하면 누구나 말을 남길 수 있습니다.
-  - { sticker: hello }
   - 단, 이상한 말을 남기면 제가 지울 겁니다.
