@@ -665,7 +665,17 @@ body {
 }
 
 .kchat.is-compact .kchat-room {
+  margin-right: 28px;
   font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.kchat.is-compact .kchat-room::before {
+  content: none;
+}
+
+.kchat.is-compact .kchat-head::after {
+  width: 34px;
 }
 
 .kchat.is-compact .kchat-log {
