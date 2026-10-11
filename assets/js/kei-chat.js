@@ -4,6 +4,8 @@
  * Messages live in Firebase Realtime Database under chat/messages; each visitor signs in
  * anonymously, and a send writes chat/messages/<id> and chat/last/<uid> together so the
  * database rules can limit message size and rate.
+ * Moderation: open the home page with ?admin and sign in with Google; the database rules
+ * let only the owner's account delete, and each message then gets a delete button.
  */
 (function () {
   var root = document.querySelector('[data-kchat]');
@@ -24,6 +26,8 @@
   var note = root.querySelector('.kchat-note');
 
   var uid = null;
+  var isAdmin = false; // signed in with Google (the rules decide who may really delete)
+  var removeMsg = null; // set once the database is ready
   var last = null; // { uid, ts, col } of the newest message group
   var lastDay = null;
   var lines = {}; // message key -> element, for removals
@@ -116,6 +120,15 @@
     var line = el('div', 'kchat-line');
     line.appendChild(content(m));
     if (m.ts) line.appendChild(el('span', 'kchat-time', timeLabel(m.ts)));
+    if (isAdmin && key) {
+      var del = el('button', 'kchat-del', '×');
+      del.type = 'button';
+      del.title = '이 메시지 지우기';
+      del.addEventListener('click', function () {
+        if (confirm('이 메시지를 지울까요?\n\n' + m.name + ': ' + m.text)) removeMsg(key);
+      });
+      line.appendChild(del);
+    }
     last.col.appendChild(line);
     last.ts = m.ts || last.ts;
     if (key) lines[key] = line;
@@ -164,58 +177,99 @@
       var D = mods[2];
       var db = D.getDatabase(app);
 
-      return A.signInAnonymously(A.getAuth(app)).then(function (cred) {
-        uid = cred.user.uid;
+      var auth = A.getAuth(app);
+      var wantAdmin = /[?&]admin\b/.test(location.search);
 
-        var q = D.query(D.ref(db, 'chat/messages'), D.orderByChild('ts'), D.limitToLast(C.history || 100));
-        D.onChildAdded(
-          q,
-          function (snap) {
-            add(snap.val(), snap.key);
-          },
-          function () {
-            setEnabled(false, '채팅방에 연결하지 못했어요');
-            setNote('잠시 뒤에 새로고침해 보세요.', true);
-          }
-        );
-        D.onChildRemoved(q, function (snap) {
-          var line = lines[snap.key];
-          if (!line) return;
-          var col = line.parentNode;
-          line.remove();
-          if (col && !col.querySelector('.kchat-line')) col.parentNode.remove();
-          delete lines[snap.key];
+      removeMsg = function (key) {
+        D.remove(D.ref(db, 'chat/messages/' + key)).catch(function () {
+          setNote('지우지 못했어요. 관리자 계정으로 로그인했는지 확인해 주세요.', true);
         });
+      };
 
-        setEnabled(true, '메시지를 입력하세요');
-
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          var text = input.value.trim();
-          var name = nick.value.trim().slice(0, 16) || '익명';
-          if (!text || send.disabled) return;
-
-          var key = D.push(D.ref(db, 'chat/messages')).key;
-          var up = {};
-          up['messages/' + key] = { name: name, text: text.slice(0, 300), ts: D.serverTimestamp(), uid: uid };
-          up['last/' + uid] = D.serverTimestamp();
-
-          input.value = '';
-          send.disabled = true;
-          setTimeout(function () {
-            send.disabled = false;
-          }, COOLDOWN_MS);
-
-          D.update(D.ref(db, 'chat'), up)
-            .then(function () {
-              setNote('');
-            })
-            .catch(function () {
-              input.value = text;
-              setNote('보내지 못했어요. 메시지는 3초에 한 번씩 보낼 수 있어요.', true);
+      return new Promise(function (resolve) {
+        var off = A.onAuthStateChanged(auth, function (u) {
+          off();
+          resolve(u);
+        });
+      })
+        .then(function (u) {
+          if (u && !u.isAnonymous) return u;
+          if (wantAdmin) {
+            return new Promise(function (resolve) {
+              var b = el('button', 'kchat-admin', 'Google 계정으로 관리자 로그인');
+              b.type = 'button';
+              b.addEventListener('click', function () {
+                A.signInWithPopup(auth, new A.GoogleAuthProvider())
+                  .then(function (cred) {
+                    b.remove();
+                    resolve(cred.user);
+                  })
+                  .catch(function () {
+                    setNote('로그인하지 못했어요. 팝업 차단을 확인해 주세요.', true);
+                  });
+              });
+              note.textContent = '';
+              note.appendChild(b);
             });
+          }
+          return u || A.signInAnonymously(auth).then(function (cred) {
+            return cred.user;
+          });
+        })
+        .then(function (user) {
+          uid = user.uid;
+          isAdmin = !user.isAnonymous;
+          if (isAdmin) setNote('관리자 모드: 메시지 옆 × 버튼으로 지울 수 있어요.');
+
+          var q = D.query(D.ref(db, 'chat/messages'), D.orderByChild('ts'), D.limitToLast(C.history || 100));
+          D.onChildAdded(
+            q,
+            function (snap) {
+              add(snap.val(), snap.key);
+            },
+            function () {
+              setEnabled(false, '채팅방에 연결하지 못했어요');
+              setNote('잠시 뒤에 새로고침해 보세요.', true);
+            }
+          );
+          D.onChildRemoved(q, function (snap) {
+            var line = lines[snap.key];
+            if (!line) return;
+            var col = line.parentNode;
+            line.remove();
+            if (col && !col.querySelector('.kchat-line')) col.parentNode.remove();
+            delete lines[snap.key];
+          });
+
+          setEnabled(true, '메시지를 입력하세요');
+
+          form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var text = input.value.trim();
+            var name = nick.value.trim().slice(0, 16) || '익명';
+            if (!text || send.disabled) return;
+
+            var key = D.push(D.ref(db, 'chat/messages')).key;
+            var up = {};
+            up['messages/' + key] = { name: name, text: text.slice(0, 300), ts: D.serverTimestamp(), uid: uid };
+            up['last/' + uid] = D.serverTimestamp();
+
+            input.value = '';
+            send.disabled = true;
+            setTimeout(function () {
+              send.disabled = false;
+            }, COOLDOWN_MS);
+
+            D.update(D.ref(db, 'chat'), up)
+              .then(function () {
+                setNote('');
+              })
+              .catch(function () {
+                input.value = text;
+                setNote('보내지 못했어요. 메시지는 3초에 한 번씩 보낼 수 있어요.', true);
+              });
+          });
         });
-      });
     })
     .catch(function () {
       setEnabled(false, '채팅방에 연결하지 못했어요');

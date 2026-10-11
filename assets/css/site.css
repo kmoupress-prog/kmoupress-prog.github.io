@@ -513,6 +513,31 @@ body {
   color: var(--site-accent);
 }
 
+.kchat-del {
+  flex-shrink: 0;
+  width: 1.4rem;
+  height: 1.4rem;
+  padding: 0;
+  border: 1px solid #e3c3cf;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--site-accent);
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.kchat-admin {
+  margin-bottom: 0.2rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid #d5dde5;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--site-ink);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
 @media (max-width: 575.98px) {
   .home-chat {
     padding-top: 1rem;
