@@ -1,7 +1,7 @@
 ---
 title: 영상으로 보는 케이 스택짱 — 제작 기행 #1
 date: 2026-10-11 00:30:00 +0900
-categories: [Blue Archive, Stack-chan]
+categories: [Projects, Stack-chan]
 ---
 
 > **한 줄 요약:** 케이 스택짱을 만드는 과정을 짧은 영상으로 정리했습니다.

@@ -1,7 +1,7 @@
 ---
 title: 스택짱 얼굴을 케이로 바꿨다
 date: 2026-10-03 20:00:00 +0900
-categories: [Blue Archive, Stack-chan]
+categories: [Projects, Stack-chan]
 ---
 
 > **한 줄 요약:** 책상 위 작은 로봇 스택짱의 얼굴을 블루 아카이브 케이(로봇 몸일 때의 모니터 얼굴)로 바꾸고, 표정도 케이 성격에 맞게 다듬었습니다.

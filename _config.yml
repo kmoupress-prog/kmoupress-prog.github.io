@@ -108,7 +108,7 @@ social_preview_image: # string, local or CORS resources
 # An entry with children expands into those sub-categories; categories not listed
 # here are appended after these.
 sidebar_categories:
-  - name: Blue Archive
+  - name: Projects
     children: [Stack-chan, TTS, 나니카]
   - name: Research
     children: [머신비전, SLAM]
