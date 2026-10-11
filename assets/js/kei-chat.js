@@ -227,7 +227,7 @@
         .then(function (user) {
           uid = user.uid;
           isAdmin = !user.isAnonymous;
-          if (isAdmin) setNote('관리자 모드: 메시지 옆 × 버튼으로 지울 수 있어요.');
+          if (isAdmin) setNote('관리자 모드 (' + (user.email || user.uid) + '): 메시지 옆 × 버튼으로 지울 수 있어요.');
 
           var q = D.query(D.ref(db, 'chat/messages'), D.orderByChild('ts'), D.limitToLast(C.history || 100));
           D.onChildAdded(
