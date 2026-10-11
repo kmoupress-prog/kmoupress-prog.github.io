@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='uM5AoUgCA00' %}
+_MIT OpenCourseWare 6.801 2강 원본 영상 (영어)_
+
 > **한 줄 요약:** 앞으로 나아가면 사진 속 모든 점이 한 점(확장 초점)에서 바깥으로 퍼져 나갑니다. 그 점이 내가 향하는 방향입니다. 그리고 "밝기는 움직여도 그대로"라는 가정 하나로, 픽셀의 밝기 변화만 보고 사진이 얼마나 움직였는지 계산할 수 있습니다.
 {: .prompt-info }
 

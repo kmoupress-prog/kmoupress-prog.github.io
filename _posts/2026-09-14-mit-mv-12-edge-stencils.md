@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='jLvgNmGuxGk' %}
+_MIT OpenCourseWare 6.801 12강 원본 영상 (영어)_
+
 > **한 줄 요약:** 이웃 픽셀에 가중치를 매겨 더하는 작은 틀(계산 분자)로 미분을 흉내 낼 수 있고, 간단한 다항식을 대 보면 제대로 만들었는지 확인할 수 있습니다. 여기에 방향을 가리지 않는 라플라시안, 비최대 억제, 치우침 보정, 덧셈만 쓰는 각도 계산(CORDIC)이 모이면 1/40 픽셀까지 재는 경계 검출기가 됩니다.
 {: .prompt-info }
 

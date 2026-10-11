@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='R1yLwFOfwwc' %}
+_MIT OpenCourseWare 6.801 15강 원본 영상 (영어)_
+
 > **한 줄 요약:** 대충 찾은 위치에서 출발해, 사진 속 경계 점들을 학습한 모양 쪽으로 **스프링처럼 조금씩 끌어당기면** 격자 간격보다 훨씬 정밀하게 맞출 수 있습니다. 이때 "경계까지 얼마나 먼가"를 미리 적어 둔 **거리 지도**가 길잡이가 됩니다. 덤으로, 필터를 아주 빠르게 거는 요령도 하나 배웁니다.
 {: .prompt-info }
 

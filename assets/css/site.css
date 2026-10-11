@@ -339,7 +339,6 @@ body {
   height: 400px;
   overflow-y: auto;
   overscroll-behavior: contain;
-  scroll-behavior: smooth;
   padding: 0.25rem 1.1rem 1.25rem;
 }
 

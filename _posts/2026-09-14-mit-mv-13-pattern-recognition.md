@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='lVfm6C51t_Y' %}
+_MIT OpenCourseWare 6.801 13강 원본 영상 (영어)_
+
 > **한 줄 요약:** 본보기 그림(템플릿)을 사진 위에 이리저리 대 보며 가장 닮은 자리를 찾습니다. 밝기가 달라져도 속지 않으려면 "정규화 상관"을 쓰고, 더 빠르고 튼튼하게 하려면 그림 전체 대신 경계 위의 **탐침 점** 몇 개만 비교합니다.
 {: .prompt-info }
 

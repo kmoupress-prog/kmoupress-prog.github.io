@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='LP7z6vVmnms' %}
+_MIT OpenCourseWare 6.801 8강 원본 영상 (영어)_
+
 > **한 줄 요약:** 보름달이 공이 아니라 납작한 원판처럼 보이는 건, 달 표면이 석고 같은 램버트 표면이 아니라 "하프케 표면"이기 때문입니다. 이 성질 덕분에 달 사진의 밝기만으로 지형의 단면을 꽤 쉽게 되찾을 수 있습니다.
 {: .prompt-info }
 

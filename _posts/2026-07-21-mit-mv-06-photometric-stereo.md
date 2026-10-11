@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='OOrT17RsVxE' %}
+_MIT OpenCourseWare 6.801 6강 원본 영상 (영어)_
+
 > **한 줄 요약:** 카메라는 그대로 두고 조명만 세 번 바꿔 찍으면, 픽셀마다 "표면이 어느 쪽을 보고 있는지"를 간단한 연립방정식으로 구할 수 있습니다. 이것이 포토메트릭 스테레오입니다. 다만 조명을 한쪽에 몰아 두면 작은 잡음이 크게 부풀려집니다.
 {: .prompt-info }
 

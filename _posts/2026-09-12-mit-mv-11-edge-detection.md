@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='kjCQ2DUn55Y' %}
+_MIT OpenCourseWare 6.801 11강 원본 영상 (영어)_
+
 > **한 줄 요약:** 경계선은 밝기가 가장 가파르게 바뀌는 곳입니다. 이웃 픽셀끼리 빼서 밝기의 기울기를 구하고, 기울기가 가장 큰 곳 근처의 값 세 개에 포물선을 맞추면 픽셀 한 칸보다 훨씬 작은 단위로 경계의 위치를 알 수 있습니다.
 {: .prompt-info }
 

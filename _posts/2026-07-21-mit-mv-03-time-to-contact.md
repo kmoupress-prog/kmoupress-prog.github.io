@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='t9w_WuyVJ-A' %}
+_MIT OpenCourseWare 6.801 3강 원본 영상 (영어)_
+
 > **한 줄 요약:** 거리도 속도도 모르는데, 카메라 한 대로 "몇 초 뒤에 부딪히는지"는 계산할 수 있습니다. 물체를 찾거나 짝을 맞출 필요도 없이, 모든 픽셀의 밝기 변화를 더하기만 하면 됩니다. 그 전에 "측정 오차가 답에서 얼마나 커지나"(노이즈 이득)를 먼저 짚고 갑니다.
 {: .prompt-info }
 

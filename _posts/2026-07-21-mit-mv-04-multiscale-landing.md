@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='3NarS3QpaU0' %}
+_MIT OpenCourseWare 6.801 4강 원본 영상 (영어)_
+
 > **한 줄 요약:** 충돌 시간을 "1초에 0.5초씩" 줄여 가도록 조종하면, 거리나 속도를 몰라도 착륙선이 일정하게 감속하며 딱 땅에 닿을 때 멈춥니다. 가까워질수록 흔들리는 계산은 사진을 작게 줄여 쌓은 피라미드로 해결하는데, 줄일 때는 먼저 뭉개야 거짓 무늬가 생기지 않습니다.
 {: .prompt-info }
 

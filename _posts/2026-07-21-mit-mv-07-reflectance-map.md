@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='qqtEQsBjh28' %}
+_MIT OpenCourseWare 6.801 7강 원본 영상 (영어)_
+
 > **한 줄 요약:** 표면이 어느 쪽으로 얼마나 기울었는지에 따라 밝기가 얼마일지를 한 장의 지도(반사 지도)로 그려 두면, 밝기에서 기울기를 거꾸로 찾는 일이 "지도에서 선 찾기"가 됩니다. 후반부에서는 카메라 렌즈가 이 밝기를 어떻게 사진으로 옮기는지 봅니다.
 {: .prompt-info }
 

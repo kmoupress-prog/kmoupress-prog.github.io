@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='6SvDRpQeZrA' %}
+_MIT OpenCourseWare 6.801 14강 원본 영상 (영어)_
+
 > **한 줄 요약:** 사진 속 점 하나하나가 "나를 지나는 직선은 이것들이야"라고 투표하면, 표가 가장 많이 모인 칸이 진짜 직선입니다. 선이 끊겨 있거나 잡음 점이 섞여 있어도 잘 찾습니다. 이 글에서는 그 전에 "자세의 가짓수"와 비스듬히 본 평면(호모그래피)도 짧게 짚습니다.
 {: .prompt-info }
 

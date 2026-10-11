@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='SSlPV1iYjHw' %}
+_MIT OpenCourseWare 6.801 5강 원본 영상 (영어)_
+
 > **한 줄 요약:** 사진 속에서 평행한 선들은 한 점(소실점)으로 모입니다. 이 점을 잘 찾으면 사진만 보고도 카메라의 초점거리와 방향, 심지어 사진이 잘렸는지까지 알 수 있습니다.
 {: .prompt-info }
 

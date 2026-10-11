@@ -5,6 +5,9 @@ categories: [Research, 머신비전]
 math: true
 ---
 
+{% include embed/youtube.html id='XSUjp-cDyeY' %}
+_MIT OpenCourseWare 6.801 10강 원본 영상 (영어)_
+
 > **한 줄 요약:** 사진 한 장의 밝기만으로 입체 모양을 되살리려면, 표면 위를 걸으면서 "지금 위치와 지금 기울기"를 함께 들고 다니는 가느다란 띠를 펼쳐 나가면 됩니다. 사진과 기울기 공간이 서로의 다음 걸음을 알려 주는 다섯 개의 식이 핵심이고, 출발점은 가장 밝은 점 바로 옆에서 얻을 수 있습니다.
 {: .prompt-info }
 
