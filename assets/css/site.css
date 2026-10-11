@@ -533,6 +533,22 @@ body {
   }
 }
 
+.home-section-title,
+.category-title {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--site-ink);
+  margin: 0 0 2rem;
+}
+
+.category-title .category-count {
+  color: var(--site-muted);
+  font-size: 0.9rem;
+  margin-left: 0.4rem;
+}
+
 /* ---------- post cards ---------- */
 
 .post-grid {
