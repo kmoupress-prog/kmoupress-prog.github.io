@@ -635,6 +635,11 @@ body {
   top: 7px;
 }
 
+.kchat.is-compact .kchat-sticker {
+  width: 84px;
+  height: 84px;
+}
+
 .kchat.is-compact .kchat-time {
   font-size: 0.62rem;
 }

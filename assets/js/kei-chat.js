@@ -18,7 +18,6 @@
   var NICK_KEY = 'keilab.chat.nick';
   var GROUP_MS = 3 * 60 * 1000; // consecutive messages within 3 min share one name/avatar
   var COOLDOWN_MS = 3000;
-  var compact = root.hasAttribute('data-compact');
 
   var log = root.querySelector('.kchat-log');
   var form = root.querySelector('.kchat-form');
@@ -142,10 +141,9 @@
     }
   }
 
-  // Kei's pinned welcome (text only in the compact panel)
+  // Kei's pinned welcome
   function welcome() {
     (C.welcome || []).forEach(function (w) {
-      if (compact && typeof w !== 'string') return;
       add(typeof w === 'string' ? { kei: true, text: w } : { kei: true, sticker: w.sticker });
     });
     last = null;
