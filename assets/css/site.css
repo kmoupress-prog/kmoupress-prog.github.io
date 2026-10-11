@@ -2,13 +2,15 @@
  * Site look on top of Chirpy 7.6.0, modelled on icd.cs.tut.ac.jp:
  * boxed centered page, halo logo + uppercase top navigation in one row,
  * hero + three-column photo cards, light three-column footer with a dark bar.
+ * Frame colours (navy grid backdrop, cyan edges) follow the KEITalk Millennium style.
  * Loaded from _includes/metadata-hook.html (after Chirpy's own stylesheet).
  */
 
 :root {
   --site-font: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
     'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
-  --site-outer-bg: #d9d9d9;
+  --site-outer-bg: #0f1822;  /* Millennium: navy with a faint cyan blueprint grid */
+  --site-cyan: #29c5f6;
   --site-ink: #333;
   --site-muted: #8a8a8a;
   --site-rule: #c8c8c8;
@@ -28,7 +30,13 @@ h1, h2, h3, h4, h5, h6 {
 /* ---------- page frame ---------- */
 
 body {
-  background: var(--site-outer-bg);
+  background-color: var(--site-outer-bg);
+  background-image:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(41, 197, 246, 0.16), transparent 70%),
+    linear-gradient(rgba(41, 197, 246, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41, 197, 246, 0.07) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  background-attachment: fixed;
 }
 
 .site-box {
@@ -37,6 +45,8 @@ body {
   min-height: 100vh;
   margin: 0 auto;
   background: var(--main-bg, #fff);
+  border-top: 3px solid var(--site-cyan);
+  box-shadow: 0 0 0 1px rgba(41, 197, 246, 0.22), 0 24px 70px rgba(0, 0, 0, 0.45);
 }
 
 #main-wrapper {
@@ -959,8 +969,9 @@ footer.site-footer p {
 .site-footer-bar {
   margin: 0 3rem;
   padding: 1rem 2rem;
-  background: #3f3f3f;
-  color: #c9c9c9;
+  background: #111a26;
+  border-top: 2px solid var(--site-cyan);
+  color: #9fb3c5;
   font-size: 0.78rem;
 }
 
@@ -987,9 +998,9 @@ footer.site-footer p {
 
 .site-visits-item {
   padding: 0.15rem 0.7rem;
-  border: 1px solid #5a5a5a;
-  border-radius: 999px;
-  color: #a9a9a9;
+  border: 1px solid #2b3d52;
+  border-radius: 2px;
+  color: #8ea3b6;
   font-size: 0.72rem;
   letter-spacing: 0.08em;
 }
