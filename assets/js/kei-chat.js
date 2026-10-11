@@ -136,7 +136,10 @@
     last.col.appendChild(line);
     last.ts = m.ts || last.ts;
 
-    if (stick || mine) scrollDown();
+    if (stick || mine) {
+      scrollDown();
+      requestAnimationFrame(scrollDown); // again after layout (wrapped lines, late fonts)
+    }
   }
 
   // Kei's pinned welcome (text only in the compact panel)
@@ -168,6 +171,18 @@
   }
 
   welcome();
+
+  // stay at the bottom while the reader hasn't scrolled up, even when late font subsets
+  // (Pretendard loads glyphs on demand) or a resized panel change the layout
+  var pinned = true;
+  log.addEventListener('scroll', function () {
+    pinned = nearBottom();
+  });
+  function keepPinned() {
+    if (pinned) scrollDown();
+  }
+  if (document.fonts) document.fonts.addEventListener('loadingdone', keepPinned);
+  if (window.ResizeObserver) new ResizeObserver(keepPinned).observe(log);
 
   // nickname, remembered in this browser
   try {

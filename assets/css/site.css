@@ -579,8 +579,9 @@ body {
 .kchat.is-compact {
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
-  min-height: 320px;
+  flex: 0 0 auto;
+  height: 46vh; /* fixed share of the screen; the table of contents above scrolls if long */
+  min-height: 300px;
   margin-right: 0.5rem;
   border-radius: 10px;
   box-shadow: none;
