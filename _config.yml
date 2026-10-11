@@ -102,7 +102,7 @@ avatar: /assets/img/avatar.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
-social_preview_image: /assets/img/og-kei-lab-grid.png # string, local or CORS resources
+social_preview_image: /assets/img/og-kei-lab-title.png # string, local or CORS resources
 
 # Expandable category list in the sidebar (_includes/sidebar.html), in this order.
 # An entry with children expands into those sub-categories; categories not listed
