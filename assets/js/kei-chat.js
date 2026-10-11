@@ -141,10 +141,10 @@
     }
   }
 
-  // Kei's pinned welcome
+  // pinned welcome: plain centred notices (no speaker)
   function welcome() {
     (C.welcome || []).forEach(function (w) {
-      add(typeof w === 'string' ? { kei: true, text: w } : { kei: true, sticker: w.sticker });
+      if (typeof w === 'string') log.appendChild(el('div', 'kchat-day', w));
     });
     last = null;
   }

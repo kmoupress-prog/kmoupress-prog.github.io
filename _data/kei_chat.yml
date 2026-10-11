@@ -12,11 +12,10 @@ firebase:             # public web config (safe to publish; access is limited by
   projectId: kei-lab
   appId: '1:938151081968:web:3cc562bd7af14705808f35'
 
-# pinned at the top of the room, from Kei (text or { sticker: <id> })
+# pinned at the top of the room as plain notices (no speaker)
 kei_name: 케이
 kei_avatar: /assets/img/chat/kei-avatar.jpg
 stickers: /assets/img/chat/
 welcome:
-  - { sticker: hello }
   - 여기는 KEI-LAB 공개 채팅방입니다.
   - 자유롭게 질문을 적어주시거나 글을 소통하실 수 있어요.
