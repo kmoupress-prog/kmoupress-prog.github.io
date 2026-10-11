@@ -75,10 +75,20 @@
     var yImg = f * obj.Y / obj.Z;
     var ix = front ? PX + f : PX - f;
     var iy = front ? PY - yImg : PY + yImg;
-    // ray through the pinhole
-    ctx.strokeStyle = ORANGE; ctx.lineWidth = 1.6;
-    ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(PX, PY); ctx.lineTo(front ? ix : ix, iy); ctx.stroke();
-    if (front) { ctx.beginPath(); ctx.moveTo(PX, PY); ctx.lineTo(ix, iy); ctx.stroke(); }
+    // one ray through the pinhole for every point on the stick, 1 unit apart
+    var n = Math.floor(Math.abs(obj.Y)), s = obj.Y < 0 ? -1 : 1;
+    ctx.strokeStyle = ORANGE; ctx.lineWidth = 0.6; ctx.globalAlpha = 0.35;
+    ctx.beginPath();
+    for (var k = 0; k <= n; k++) {
+      var y = s * k, yi = f * y / obj.Z;
+      ctx.moveTo(ox, PY - y); ctx.lineTo(PX, PY); ctx.lineTo(ix, front ? PY - yi : PY + yi);
+    }
+    ctx.stroke(); ctx.globalAlpha = 1;
+    ctx.fillStyle = ORANGE;
+    for (k = 0; k <= n; k++) ctx.fillRect(ox - 1, PY - s * k - 1, 2, 2);
+    // the tip's ray stays solid
+    ctx.lineWidth = 1.6;
+    ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(PX, PY); ctx.lineTo(ix, iy); ctx.stroke();
 
     // image plane
     ctx.strokeStyle = BLUE; ctx.lineWidth = 3;
