@@ -290,7 +290,7 @@ body {
   --kchat-pink: #ff97a9;
   --kchat-other: #4c5a6e;
   --kchat-me: #4a8acb;
-  max-width: 720px;
+  max-width: none; /* same width as the project grid below */
   margin: 0 auto;
   overflow: hidden;
   background: #fff;
