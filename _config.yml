@@ -109,7 +109,7 @@ social_preview_image: # string, local or CORS resources
 # here are appended after these.
 sidebar_categories:
   - name: Projects
-    children: [Stack-chan, TTS, 나니카]
+    children: [Stack-chan, TTS, Desktop Mascot]
   - name: Research
     children: [머신비전, SLAM]
 
