@@ -1,10 +1,11 @@
 /*
- * Home: a public chat room in MomoTalk style.
+ * A public chat room in MomoTalk style (_includes/kchat.html): on the home page, and compact
+ * (data-compact) in the post panel. All of them share one room, so messages show up everywhere.
  * Settings and Kei's pinned welcome come from _data/kei_chat.yml (JSON in #kchat-data).
  * Messages live in Firebase Realtime Database under chat/messages; each visitor signs in
  * anonymously, and a send writes chat/messages/<id> and chat/last/<uid> together so the
  * database rules can limit message size and rate.
- * Moderation: open the home page with ?admin and sign in with Google; the database rules
+ * Moderation: open any page with ?admin and sign in with Google; the database rules
  * let only the owner's account delete, and each message then gets a delete button.
  */
 (function () {
@@ -17,6 +18,7 @@
   var NICK_KEY = 'keilab.chat.nick';
   var GROUP_MS = 3 * 60 * 1000; // consecutive messages within 3 min share one name/avatar
   var COOLDOWN_MS = 3000;
+  var compact = root.hasAttribute('data-compact');
 
   var log = root.querySelector('.kchat-log');
   var form = root.querySelector('.kchat-form');
@@ -27,10 +29,12 @@
 
   var uid = null;
   var isAdmin = false; // signed in with Google (the rules decide who may really delete)
+  var adminNote = '';
   var removeMsg = null; // set once the database is ready
   var last = null; // { uid, ts, col } of the newest message group
   var lastDay = null;
-  var lines = {}; // message key -> element, for removals
+  var msgs = {}; // message key -> message, as loaded from the room
+  var newestTs = 0;
 
   function el(tag, cls, text) {
     var e = document.createElement(tag);
@@ -131,16 +135,39 @@
     }
     last.col.appendChild(line);
     last.ts = m.ts || last.ts;
-    if (key) lines[key] = line;
 
     if (stick || mine) scrollDown();
   }
 
-  // Kei's pinned welcome
-  (C.welcome || []).forEach(function (w) {
-    add(typeof w === 'string' ? { kei: true, text: w } : { kei: true, sticker: w.sticker });
-  });
-  last = null;
+  // Kei's pinned welcome (text only in the compact panel)
+  function welcome() {
+    (C.welcome || []).forEach(function (w) {
+      if (compact && typeof w !== 'string') return;
+      add(typeof w === 'string' ? { kei: true, text: w } : { kei: true, sticker: w.sticker });
+    });
+    last = null;
+  }
+
+  // redraw everything in time order (after a removal, or a message that arrives out of order)
+  function rerender() {
+    var top = log.scrollTop;
+    var atBottom = nearBottom();
+    log.textContent = '';
+    last = null;
+    lastDay = null;
+    welcome();
+    Object.keys(msgs)
+      .sort(function (a, b) {
+        return (msgs[a].ts || 0) - (msgs[b].ts || 0);
+      })
+      .forEach(function (k) {
+        add(msgs[k], k);
+      });
+    if (atBottom) scrollDown();
+    else log.scrollTop = top;
+  }
+
+  welcome();
 
   // nickname, remembered in this browser
   try {
@@ -227,13 +254,19 @@
         .then(function (user) {
           uid = user.uid;
           isAdmin = !user.isAnonymous;
-          if (isAdmin) setNote('관리자 모드 (' + (user.email || user.uid) + '): 메시지 옆 × 버튼으로 지울 수 있어요.');
+          if (isAdmin) adminNote = '관리자 모드 (' + (user.email || user.uid) + '): 메시지 옆 × 버튼으로 지울 수 있어요.';
+          setNote(adminNote);
 
           var q = D.query(D.ref(db, 'chat/messages'), D.orderByChild('ts'), D.limitToLast(C.history || 100));
           D.onChildAdded(
             q,
             function (snap) {
-              add(snap.val(), snap.key);
+              var m = snap.val();
+              msgs[snap.key] = m;
+              // an older message coming back (e.g. a refused delete) is redrawn in order
+              if (m.ts < newestTs) rerender();
+              else add(m, snap.key);
+              newestTs = Math.max(newestTs, m.ts || 0);
             },
             function () {
               setEnabled(false, '채팅방에 연결하지 못했어요');
@@ -241,12 +274,8 @@
             }
           );
           D.onChildRemoved(q, function (snap) {
-            var line = lines[snap.key];
-            if (!line) return;
-            var col = line.parentNode;
-            line.remove();
-            if (col && !col.querySelector('.kchat-line')) col.parentNode.remove();
-            delete lines[snap.key];
+            delete msgs[snap.key];
+            rerender();
           });
 
           setEnabled(true, '메시지를 입력하세요');
@@ -270,7 +299,7 @@
 
             D.update(D.ref(db, 'chat'), up)
               .then(function () {
-                setNote('');
+                setNote(adminNote);
               })
               .catch(function () {
                 input.value = text;

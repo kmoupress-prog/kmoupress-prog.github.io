@@ -1,0 +1,23 @@
+{%- comment -%}
+  Public chat room in MomoTalk style (one per page). Used on the home page and, compact,
+  in the post panel under the table of contents. Every instance reads and writes the same
+  Firebase room, so they stay in sync. Settings: _data/kei_chat.yml; code: assets/js/kei-chat.js.
+  Usage: {% include kchat.html %} or {% include kchat.html compact=true %}
+{%- endcomment -%}
+{%- assign chat = site.data.kei_chat -%}
+<div class="kchat{% if include.compact %} is-compact{% endif %}" data-kchat{% if include.compact %} data-compact{% endif %}>
+  <div class="kchat-head">
+    <i class="fas fa-comment" aria-hidden="true"></i>
+    <span>MomoTalk</span>
+    <span class="kchat-room">{{ chat.room }}</span>
+  </div>
+  <div class="kchat-log" aria-live="polite"></div>
+  <form class="kchat-form" autocomplete="off">
+    <input class="kchat-nick" maxlength="16" placeholder="닉네임" aria-label="닉네임">
+    <input class="kchat-input" maxlength="300" placeholder="메시지를 입력하세요" aria-label="메시지" disabled>
+    <button class="kchat-send" type="submit" aria-label="보내기" disabled><i class="fas fa-paper-plane"></i></button>
+  </form>
+  <p class="kchat-note" aria-live="polite"></p>
+</div>
+<script type="application/json" id="kchat-data">{{ chat | jsonify }}</script>
+<script src="{{ '/assets/js/kei-chat.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}" defer></script>

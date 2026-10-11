@@ -49,12 +49,18 @@ layout: compress
             </main>
 
             {% if layout.panel_includes %}
-              <!-- panel: only the table of contents on posts -->
+              <!-- panel: table of contents and the chat room on posts -->
               <aside aria-label="Panel" id="panel-wrapper" class="col-xl-3 ps-3 text-muted">
-                {% for _include in layout.panel_includes %}
-                  {% assign _include_path = _include | append: '.html' %}
-                  {% include {{ _include_path }} lang=lang %}
-                {% endfor %}
+                <!-- table of contents, then the chat room; they stick together while scrolling -->
+                <div class="panel-sticky">
+                  {% for _include in layout.panel_includes %}
+                    {% assign _include_path = _include | append: '.html' %}
+                    {% include {{ _include_path }} lang=lang %}
+                  {% endfor %}
+                  {% if site.data.kei_chat and page.layout == 'post' %}
+                    {% include kchat.html compact=true %}
+                  {% endif %}
+                </div>
               </aside>
             {% endif %}
           </div>

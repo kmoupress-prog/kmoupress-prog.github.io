@@ -552,6 +552,126 @@ body {
   }
 }
 
+/* post panel: table of contents + compact chat stick together (only shown at >= 1200px) */
+.panel-sticky {
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  padding: 2rem 0 1.25rem;
+}
+
+.panel-sticky #toc-wrapper.position-sticky {
+  position: static !important;
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: none;
+  margin-top: 0;
+  padding-bottom: 1rem !important;
+  overflow-y: auto;
+}
+
+.panel-sticky #toc-wrapper.invisible {
+  display: none; /* no headings: give the room to the chat */
+}
+
+.kchat.is-compact {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 320px;
+  margin-right: 0.5rem;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.kchat.is-compact .kchat-head {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.kchat.is-compact .kchat-room {
+  font-size: 0.72rem;
+}
+
+.kchat.is-compact .kchat-log {
+  flex: 1 1 auto;
+  height: auto;
+  min-height: 0;
+  padding: 0 0.7rem 0.8rem;
+}
+
+.kchat.is-compact .kchat-row {
+  gap: 0.5rem;
+  margin-top: 0.7rem;
+}
+
+.kchat.is-compact .kchat-avatar {
+  width: 28px;
+  height: 28px;
+  font-size: 0.75rem;
+}
+
+.kchat.is-compact .kchat-col {
+  max-width: 85%;
+  gap: 0.25rem;
+}
+
+.kchat.is-compact .kchat-name {
+  font-size: 0.75rem;
+}
+
+.kchat.is-compact .kchat-bubble {
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.kchat.is-compact .kchat-name + .kchat-line .kchat-bubble::before,
+.kchat.is-compact .kchat-row.is-me .kchat-line:first-child .kchat-bubble::before {
+  top: 7px;
+}
+
+.kchat.is-compact .kchat-time {
+  font-size: 0.62rem;
+}
+
+.kchat.is-compact .kchat-day {
+  font-size: 0.68rem;
+}
+
+.kchat.is-compact .kchat-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.35rem;
+  padding: 0.5rem 0.6rem;
+}
+
+.kchat.is-compact .kchat-nick {
+  grid-column: 1 / -1;
+  width: auto;
+}
+
+.kchat.is-compact .kchat-form input {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8rem;
+}
+
+.kchat.is-compact .kchat-send {
+  width: 2.1rem;
+}
+
+.kchat.is-compact .kchat-note {
+  padding: 0 0.6rem;
+  font-size: 0.7rem;
+}
+
+.kchat.is-compact .kchat-admin {
+  font-size: 0.72rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .kchat-line {
     animation: none;
