@@ -370,9 +370,7 @@ body {
   border-radius: 2px;
   background: #fff;
   color: #4b7690;
-  font-family: var(--kchat-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.02em;
+  font-size: 0.75rem;
 }
 
 .kchat-row {
@@ -524,7 +522,6 @@ body {
 .kchat-nick {
   width: 8.5rem;
   flex-shrink: 0;
-  font-family: var(--kchat-mono);
 }
 
 .kchat-input {
