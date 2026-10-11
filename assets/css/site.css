@@ -22,6 +22,14 @@
   --site-box-max: 1120px;
 }
 
+:root[data-bs-theme=light] {
+  --main-bg: #ebebeb;
+  --card-bg: #f3f3f3;
+  --topbar-bg: rgb(235 235 235 / 80%);
+  --main-border-color: #d9d9d9;
+  --search-border-color: #d4d4d4;
+}
+
 body,
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--site-font);
@@ -78,7 +86,7 @@ body {
   justify-content: space-between;
   gap: 1.5rem;
   padding-bottom: 1.25rem;
-  border-bottom: 1px solid #e6e6e6;
+  border-bottom: 1px solid #d3d3d3;
 }
 
 .site-logo {
@@ -308,8 +316,8 @@ body {
   max-width: none; /* same width as the project grid below */
   margin: 0 auto;
   overflow: hidden;
-  background: #f3f7fb;
-  border: 1px solid #c9d8e5;
+  background: #f2f2f2;
+  border: 1px solid #cfcfcf;
   border-radius: 3px;
   box-shadow: 0 10px 30px rgba(17, 26, 38, 0.08);
 }
@@ -365,7 +373,7 @@ body {
   overflow-y: auto;
   overscroll-behavior: contain;
   padding: 0.25rem 1.1rem 1.1rem;
-  background-color: #f3f7fb;
+  background-color: #f2f2f2;
   background-image:
     linear-gradient(rgba(20, 137, 189, 0.07) 1px, transparent 1px),
     linear-gradient(90deg, rgba(20, 137, 189, 0.07) 1px, transparent 1px);
