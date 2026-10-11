@@ -4,8 +4,9 @@ icon: fas fa-info-circle
 order: 2
 ---
 
-AI & Robotics 분야에서 일하고 있는 Kyu Tae입니다.
-머신비전과 로보틱스를 공부하면서 배운 내용을 정리하는 블로그입니다.
+AI & Vision Robotics 분야에서 일하고 있습니다.
+
+재밌게 학문을 풀어나가고 싶습니다. 궁금하신 내용 언제나 환영합니다.
 
 ## 경력
 
