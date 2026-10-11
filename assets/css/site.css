@@ -572,6 +572,12 @@ body {
   overflow-y: auto;
 }
 
+/* Chirpy fades the TOC out with a fixed strip at the bottom of the screen; the TOC no longer
+   reaches the bottom (the chat sits under it), and the strip covered the footer and comments */
+.panel-sticky #toc-wrapper::after {
+  display: none;
+}
+
 .panel-sticky #toc-wrapper.invisible {
   display: none; /* no headings: give the room to the chat */
 }
