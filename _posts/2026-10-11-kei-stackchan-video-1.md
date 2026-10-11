@@ -29,3 +29,5 @@ _[유튜브에서 보기](https://www.youtube.com/shorts/0SWgjppOOIY)_
 - 부르는 말과 전원 문제: ["케이짱"이라고 부르고 싶었다](/posts/stackchan-wakeword-power/)
 - 꺼지는 문제 추적: [꺼지는 로봇 추적기](/posts/stackchan-power-hunt/)
 - 목소리: [케이 목소리 만들기 — 일본어편](/posts/kei-voice-japanese/)
+
+> 다음 글: [한국어로 말하는 케이, 그리고 꺼짐의 범인은 전선이었다](/posts/stackchan-korean-kei-cable/)
