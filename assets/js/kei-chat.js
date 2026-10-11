@@ -204,8 +204,16 @@
                     b.remove();
                     resolve(cred.user);
                   })
-                  .catch(function () {
-                    setNote('로그인하지 못했어요. 팝업 차단을 확인해 주세요.', true);
+                  .catch(function (err) {
+                    var why = {
+                      'auth/operation-not-allowed': 'Firebase에서 Google 로그인이 꺼져 있어요.',
+                      'auth/unauthorized-domain': '이 블로그 주소가 Firebase 승인된 도메인에 없어요.',
+                      'auth/popup-blocked': '브라우저가 로그인 팝업을 막았어요.',
+                      'auth/popup-closed-by-user': '로그인 창이 닫혔어요.',
+                      'auth/cancelled-popup-request': '로그인 창이 닫혔어요.'
+                    }[err && err.code];
+                    setNote(' ' + (why || '로그인하지 못했어요. (' + ((err && err.code) || '알 수 없는 오류') + ')'), true);
+                    note.insertBefore(b, note.firstChild); // keep the button for another try
                   });
               });
               note.textContent = '';
