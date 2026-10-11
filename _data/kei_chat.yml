@@ -1,96 +1,23 @@
-# Home chat (MomoTalk style) — read by _layouts/home.html, played by assets/js/kei-chat.js.
-# A message is plain text, or one of:
-#   { sticker: <id> }                      -> /assets/img/chat/sticker-<id>.webp
-#   { audio: <mp3>, text: <transcript> }   -> voice message (AI voice only)
-#   { link: <url>, title: <...>, desc: <...> }
-# A node without `choices` goes back to the menu (topics not seen yet + bye).
+# Home: public chat room in MomoTalk style — read by _layouts/home.html, run by assets/js/kei-chat.js.
+# Messages are stored in Firebase Realtime Database (chat/messages); visitors sign in anonymously.
+# Leave `firebase` empty and the room shows as "준비 중".
 
-name: 케이
-status: 초현상특무부 · KEI-LAB 관리 담당 (본인은 부정)
-avatar: /assets/img/chat/kei-avatar.jpg
+room: KEI-LAB 라운지
+history: 100          # how many recent messages to load
+
+firebase:
+  apiKey:
+  authDomain:
+  databaseURL:
+  projectId:
+  appId:
+
+# pinned at the top of the room, from Kei (text or { sticker: <id> })
+kei_name: 케이
+kei_avatar: /assets/img/chat/kei-avatar.jpg
 stickers: /assets/img/chat/
-start: hello
-
-# said before the menu comes back after a topic
-back:
-  - 어쨌든.
-  - 다른 용건은요?
-back_done:
-  - 볼 건 다 보셨네요.
-  - 이제 뭐 합니까.
-
-menu:
-  - { text: 스택찬 보러 왔어, go: stackchan }
-  - { text: 케이 목소리 들려줘, go: voice }
-  - { text: 바탕화면 케이 얘기 들었어, go: nanika }
-  - { text: 공부한 거 구경하러 왔어, go: research }
-  - { text: 케이 쨩 보러 왔지, go: chan }
-bye: { text: 이제 가 볼게, go: bye }
-
-nodes:
-  hello:
-    back: false
-    kei:
-      - 선생님.
-      - 여기까지 찾아오셨네요.
-      - { sticker: hello }
-      - 블로그 이름에 제 이름이 들어가 있던데요.
-      - 허락한 적 없습니다.
-      - ……뭐, 이미 정해진 거라면 어쩔 수 없죠.
-      - 그래서요. 무슨 용건입니까.
-
-  stackchan:
-    kei:
-      - 책상 위 그 작은 로봇 말이군요.
-      - 얼굴을 제 얼굴로 바꿔 놨더라고요.
-      - 이름을 부르면 대답도 한다던데.
-      - 전원 문제로 밤새 씨름하는 것도 봤습니다.
-      - { sticker: hmm }
-      - ……고생한 건 인정하죠.
-      - { link: /categories/stack-chan/, title: Stack-chan, desc: 책상 위 로봇을 케이로 }
-
-  voice:
-    kei:
-      - 제 목소리를 AI로 만들었다고요.
-      - 그런 걸 왜 만드는 겁니까.
-      - 들어 보시든지요.
-      - { audio: /assets/audio/kei-ko-1.mp3, text: '안녕하세요, 선생님. 오늘도 잘 부탁드립니다.' }
-      - ……
-      - 제가 저렇게 상냥하게 말할 리가 없잖아요.
-      - { sticker: hmph }
-      - { link: /categories/tts/, title: TTS, desc: 케이 목소리 만들기 }
-
-  nanika:
-    kei:
-      - 작업 표시줄 위를 걸어 다니는 그거요.
-      - 아리스랑 메이드 아리스까지 데려다 놨더라고요.
-      - 일하다 말고 저희만 보고 있는 거 아닙니까?
-      - { sticker: dare }
-      - 모모톡도 거기 있습니다. 지금 이거랑은 다른 거지만요.
-      - { link: /categories/나니카/, title: 나니카, desc: 바탕화면 케이와 모모톡 }
-
-  research:
-    kei:
-      - 머신비전이랑 SLAM 말이군요.
-      - MIT 강의를 15강까지 들었다던데.
-      - 아직 남은 강의가 많습니다.
-      - ……그래도 꾸준한 건 인정합니다.
-      - 직접 만져 볼 수 있는 예제도 있으니까, 구경만 하지 말고 눌러 보시죠.
-      - { link: /categories/머신비전/, title: 머신비전, desc: MIT 강의 따라가기 }
-      - { link: /categories/slam/, title: SLAM, desc: 로봇이 자기 위치를 아는 법 }
-
-  chan:
-    kei:
-      - 케이 쨩 아닙니다.
-      - { sticker: what }
-      - 왜 아리스는 그냥 아리스고 저는 케이 '쨩'인 건데요.
-      - 한 번만 더 그러면 이 블로그 이름 바꿔 버릴 겁니다.
-
-  bye:
-    kei:
-      - 벌써요?
-      - ……아니, 딱히 붙잡는 건 아닙니다.
-      - { sticker: thanks }
-      - 또 오십쇼.
-    choices:
-      - { text: 처음부터 다시, go: restart }
+welcome:
+  - 여기는 KEI-LAB 공개 채팅방입니다.
+  - 닉네임만 정하면 누구나 말을 남길 수 있습니다.
+  - { sticker: hello }
+  - 단, 이상한 말을 남기면 제가 지울 겁니다.

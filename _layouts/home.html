@@ -2,34 +2,29 @@
 layout: default
 ---
 
-<!-- Override of Chirpy 7.6.0 home: MomoTalk chat (_data/kei_chat.yml), then hero and
+<!-- Override of Chirpy 7.6.0 home: public MomoTalk-style chat room (_data/kei_chat.yml), then hero and
      one card per project, both from _data/home.yml. -->
 
 {% assign chat = site.data.kei_chat %}
 {% if chat %}
-<section class="home-chat" aria-label="케이와 모모톡">
+<section class="home-chat" aria-label="{{ chat.room }}">
   <div class="kchat" data-kchat>
     <div class="kchat-head">
       <i class="fas fa-comment" aria-hidden="true"></i>
       <span>MomoTalk</span>
-    </div>
-    <div class="kchat-profile">
-      <img src="{{ chat.avatar | relative_url }}" alt="{{ chat.name }}" width="44" height="44">
-      <div>
-        <strong>{{ chat.name }}</strong>
-        <span>{{ chat.status }}</span>
-      </div>
+      <span class="kchat-room">{{ chat.room }}</span>
     </div>
     <div class="kchat-log" aria-live="polite"></div>
-    <div class="kchat-reply">
-      <div class="kchat-reply-title">답장</div>
-      <p class="kchat-waiting">케이가 입력 중…</p>
-      <div class="kchat-choices"></div>
-    </div>
+    <form class="kchat-form" autocomplete="off">
+      <input class="kchat-nick" maxlength="16" placeholder="닉네임" aria-label="닉네임">
+      <input class="kchat-input" maxlength="300" placeholder="메시지를 입력하세요" aria-label="메시지" disabled>
+      <button class="kchat-send" type="submit" aria-label="보내기" disabled><i class="fas fa-paper-plane"></i></button>
+    </form>
+    <p class="kchat-note" aria-live="polite"></p>
   </div>
   <script type="application/json" id="kchat-data">{{ chat | jsonify }}</script>
 </section>
-<script src="{{ '/assets/js/kei-chat.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/kei-chat.js' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}" defer></script>
 {% endif %}
 
 {% assign hero = site.data.home %}
