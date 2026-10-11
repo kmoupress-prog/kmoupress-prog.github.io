@@ -2,7 +2,35 @@
 layout: default
 ---
 
-<!-- Override of Chirpy 7.6.0 home: hero and one card per project, both from _data/home.yml. -->
+<!-- Override of Chirpy 7.6.0 home: MomoTalk chat (_data/kei_chat.yml), then hero and
+     one card per project, both from _data/home.yml. -->
+
+{% assign chat = site.data.kei_chat %}
+{% if chat %}
+<section class="home-chat" aria-label="케이와 모모톡">
+  <div class="kchat" data-kchat>
+    <div class="kchat-head">
+      <i class="fas fa-comment" aria-hidden="true"></i>
+      <span>MomoTalk</span>
+    </div>
+    <div class="kchat-profile">
+      <img src="{{ chat.avatar | relative_url }}" alt="{{ chat.name }}" width="44" height="44">
+      <div>
+        <strong>{{ chat.name }}</strong>
+        <span>{{ chat.status }}</span>
+      </div>
+    </div>
+    <div class="kchat-log" aria-live="polite"></div>
+    <div class="kchat-reply">
+      <div class="kchat-reply-title">답장</div>
+      <p class="kchat-waiting">케이가 입력 중…</p>
+      <div class="kchat-choices"></div>
+    </div>
+  </div>
+  <script type="application/json" id="kchat-data">{{ chat | jsonify }}</script>
+</section>
+<script src="{{ '/assets/js/kei-chat.js' | relative_url }}" defer></script>
+{% endif %}
 
 {% assign hero = site.data.home %}
 
