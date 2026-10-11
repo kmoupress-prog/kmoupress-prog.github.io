@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 12강] 계산 분자로 미분하고 경계선 다듬기"
+title: "[MIT 머신비전 12강] 계산 분자로 미분하고 경계선 다듬기 | 라플라시안·비최대 억제(NMS)·CORDIC"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 12강 정리. 미분 커널(스텐실) 설계, 라플라시안(Laplacian), 비최대 억제(Non-Maximum Suppression), 서브픽셀 에지 보정, CORDIC 알고리즘을 쉽게 설명합니다."
 date: 2026-09-14 10:00:00 +0900
 categories: [Research, 머신비전]
 math: true

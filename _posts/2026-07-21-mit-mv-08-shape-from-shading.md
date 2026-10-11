@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 8강] 보름달은 왜 원판처럼 평평해 보일까"
+title: "[MIT 머신비전 8강] 보름달은 왜 원판처럼 평평해 보일까 | 음영으로 모양 찾기(Shape from Shading)"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 8강 정리. 보름달이 평평해 보이는 이유, 램버트와 하프케(Hapke) 반사, 밝기만으로 지형을 복원하는 Shape from Shading과 텔레센트릭 렌즈를 쉽게 설명합니다."
 date: 2026-07-21 13:00:00 +0900
 categories: [Research, 머신비전]
 math: true

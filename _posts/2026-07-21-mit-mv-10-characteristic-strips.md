@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 10강] 특성 띠: 가장 밝은 점에서 모양을 키워 나가기"
+title: "[MIT 머신비전 10강] 특성 띠: 가장 밝은 점에서 모양을 키워 나가기 | Shape from Shading 특성 띠(Characteristic Strip)"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 10강 정리. Shape from Shading을 특성 띠(Characteristic Strip) 방법으로 풀기, 다섯 개의 미분방정식과 출발 곡선 정하기를 쉽게 설명합니다."
 date: 2026-07-21 15:00:00 +0900
 categories: [Research, 머신비전]
 math: true

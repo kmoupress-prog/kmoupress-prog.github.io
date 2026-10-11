@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 2강] 사진 속 움직임으로 내가 어디로 가는지 알기"
+title: "[MIT 머신비전 2강] 사진 속 움직임으로 내가 어디로 가는지 알기 | 광류(Optical Flow)와 확장 초점(FOE)"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 2강 정리. 원근 투영을 미분한 모션 필드, 확장 초점(FOE), 밝기 항상성 방정식과 광류(Optical Flow), 광마우스 원리를 쉽게 설명합니다."
 date: 2026-07-21 07:00:00 +0900
 categories: [Research, 머신비전]
 math: true

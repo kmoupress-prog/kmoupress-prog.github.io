@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 4강] 착륙선이 부드럽게 내려앉는 법과 사진 피라미드"
+title: "[MIT 머신비전 4강] 착륙선이 부드럽게 내려앉는 법과 사진 피라미드 | 이미지 피라미드와 에일리어싱"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 4강 정리. 충돌 시간으로 착륙선을 제어하는 법, 다중 해상도 이미지 피라미드(Image Pyramid), 에일리어싱(Aliasing)과 광류를 쉽게 설명합니다."
 date: 2026-07-21 09:00:00 +0900
 categories: [Research, 머신비전]
 math: true

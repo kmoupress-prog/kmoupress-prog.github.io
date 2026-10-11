@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 6강] 조명 세 개로 표면의 방향 알아내기"
+title: "[MIT 머신비전 6강] 조명 세 개로 표면의 방향 알아내기 | 포토메트릭 스테레오(Photometric Stereo)"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 6강 정리. 램버트 반사와 표면 법선, 조명 세 개로 표면 방향을 구하는 포토메트릭 스테레오(Photometric Stereo)의 원리와 잡음 문제를 쉽게 설명합니다."
 date: 2026-07-21 11:00:00 +0900
 categories: [Research, 머신비전]
 math: true

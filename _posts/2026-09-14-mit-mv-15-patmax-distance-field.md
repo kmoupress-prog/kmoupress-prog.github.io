@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 15강] 스프링으로 끌어당겨 맞추기: PatMax와 거리 지도"
+title: "[MIT 머신비전 15강] 스프링으로 끌어당겨 맞추기: PatMax와 거리 지도 | 거리 변환(Distance Transform)"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 15강 정리. Cognex PatMax의 정밀 정렬 원리, 거리 변환(Distance Transform)과 거리 지도, 직선 맞춤(Line Fitting), 빠른 필터링을 쉽게 설명합니다."
 date: 2026-09-14 13:00:00 +0900
 categories: [Research, 머신비전]
 math: true

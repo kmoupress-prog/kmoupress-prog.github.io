@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 14강] 점들이 투표해서 직선을 찾는다: 허프 변환"
+title: "[MIT 머신비전 14강] 점들이 투표해서 직선을 찾는다: 허프 변환 | 허프 변환(Hough Transform)과 호모그래피"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 14강 정리. 물체 자세(Pose)의 자유도, 호모그래피(Homography), 허프 변환(Hough Transform)으로 직선과 원 검출, 다중 해상도 탐색을 쉽게 설명합니다."
 date: 2026-09-14 12:00:00 +0900
 categories: [Research, 머신비전]
 math: true

@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 11강] 경계선을 픽셀보다 정밀하게 찾기"
+title: "[MIT 머신비전 11강] 경계선을 픽셀보다 정밀하게 찾기 | 서브픽셀 에지 검출(Subpixel Edge Detection)"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 11강 정리. 산업용 머신비전의 에지 검출(Edge Detection), 밝기 기울기(Gradient) 계산 커널, 포물선 맞춤으로 경계를 서브픽셀 정밀도로 찾는 법을 쉽게 설명합니다."
 date: 2026-09-12 20:00:00 +0900
 categories: [Research, 머신비전]
 math: true

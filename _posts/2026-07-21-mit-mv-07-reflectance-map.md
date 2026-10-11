@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 7강] 반사 지도: 기울기와 밝기를 잇는 지도"
+title: "[MIT 머신비전 7강] 반사 지도: 기울기와 밝기를 잇는 지도 | 반사 지도(Reflectance Map)와 BRDF"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 7강 정리. 기울기와 밝기를 잇는 반사 지도(Reflectance Map), 렌즈의 영상 밝기(Irradiance), BRDF와 헬름홀츠 상호성을 쉽게 설명합니다."
 date: 2026-07-21 12:00:00 +0900
 categories: [Research, 머신비전]
 math: true

@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 3강] 카메라 하나로 부딪히기까지 남은 시간 재기"
+title: "[MIT 머신비전 3강] 카메라 하나로 부딪히기까지 남은 시간 재기 | 충돌 시간(Time to Contact)과 노이즈 이득"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 3강 정리. 카메라 하나로 충돌 시간(Time to Contact, TTC)을 구하는 방법과 노이즈 이득, GPS 정밀도 저하(DOP)를 쉽게 설명합니다."
 date: 2026-07-21 08:00:00 +0900
 categories: [Research, 머신비전]
 math: true

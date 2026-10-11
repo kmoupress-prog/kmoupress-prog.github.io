@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 13강] 사진 속에서 그 물건 찾기: 템플릿 매칭과 PatQuick"
+title: "[MIT 머신비전 13강] 사진 속에서 그 물건 찾기: 템플릿 매칭과 PatQuick | 패턴 인식과 정규화 상관(NCC)"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 13강 정리. 이진화와 블롭 분석, 템플릿 매칭(Template Matching), 정규화 상관(Normalized Cross-Correlation), Cognex PatQuick 패턴 인식을 쉽게 설명합니다."
 date: 2026-09-14 11:00:00 +0900
 categories: [Research, 머신비전]
 math: true

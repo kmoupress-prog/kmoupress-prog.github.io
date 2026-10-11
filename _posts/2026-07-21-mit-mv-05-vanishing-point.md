@@ -1,5 +1,6 @@
 ---
-title: "[MIT 머신비전 5강] 평행한 선이 만나는 점, 소실점으로 카메라 알아내기"
+title: "[MIT 머신비전 5강] 평행한 선이 만나는 점, 소실점으로 카메라 알아내기 | 소실점(Vanishing Point)과 카메라 캘리브레이션"
+description: "MIT 6.801 머신비전(Machine Vision, Berthold Horn) 5강 정리. 소실점(Vanishing Point) 구하기, 최소제곱과 RANSAC, 소실점 세 개로 카메라 내부 파라미터를 구하는 카메라 캘리브레이션을 쉽게 설명합니다."
 date: 2026-07-21 10:00:00 +0900
 categories: [Research, 머신비전]
 math: true
