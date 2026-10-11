@@ -914,6 +914,40 @@ footer.site-footer p {
   color: #e6e6e6;
 }
 
+.site-footer-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+
+.site-visits {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.site-visits[hidden] {
+  display: none;
+}
+
+.site-visits-item {
+  padding: 0.15rem 0.7rem;
+  border: 1px solid #5a5a5a;
+  border-radius: 999px;
+  color: #a9a9a9;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.site-visits-item b {
+  margin-left: 0.3rem;
+  color: var(--site-accent-soft);
+  font-weight: 600;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
 @media (max-width: 767.98px) {
   .site-footer-box {
     grid-template-columns: 1fr;
