@@ -5,12 +5,12 @@
 room: KEI-LAB 라운지
 history: 100          # how many recent messages to load
 
-firebase:
-  apiKey:
-  authDomain:
-  databaseURL:
-  projectId:
-  appId:
+firebase:             # public web config (safe to publish; access is limited by the database rules)
+  apiKey: AIzaSyAKTYFC9CD2uak1TjeXjlHJYF17zlBHs84
+  authDomain: kei-lab.firebaseapp.com
+  databaseURL: https://kei-lab-default-rtdb.asia-southeast1.firebasedatabase.app
+  projectId: kei-lab
+  appId: '1:938151081968:web:3cc562bd7af14705808f35'
 
 # pinned at the top of the room, from Kei (text or { sticker: <id> })
 kei_name: 케이

@@ -168,9 +168,16 @@
         uid = cred.user.uid;
 
         var q = D.query(D.ref(db, 'chat/messages'), D.orderByChild('ts'), D.limitToLast(C.history || 100));
-        D.onChildAdded(q, function (snap) {
-          add(snap.val(), snap.key);
-        });
+        D.onChildAdded(
+          q,
+          function (snap) {
+            add(snap.val(), snap.key);
+          },
+          function () {
+            setEnabled(false, '채팅방에 연결하지 못했어요');
+            setNote('잠시 뒤에 새로고침해 보세요.', true);
+          }
+        );
         D.onChildRemoved(q, function (snap) {
           var line = lines[snap.key];
           if (!line) return;
@@ -205,7 +212,7 @@
             })
             .catch(function () {
               input.value = text;
-              setNote('조금 천천히 보내 주세요. 3초에 한 번씩 보낼 수 있어요.', true);
+              setNote('보내지 못했어요. 메시지는 3초에 한 번씩 보낼 수 있어요.', true);
             });
         });
       });
