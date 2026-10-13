@@ -2,7 +2,7 @@
 # Messages are stored in Firebase Realtime Database (chat/messages); visitors sign in anonymously.
 # Leave `firebase` empty and the room shows as "준비 중".
 
-room: KEI-LAB 라운지
+room: 주말공학 라운지
 history: 100          # how many recent messages to load
 
 firebase:             # public web config (safe to publish; access is limited by the database rules)
@@ -17,5 +17,5 @@ kei_name: 케이
 kei_avatar: /assets/img/chat/kei-avatar.jpg
 stickers: /assets/img/chat/
 welcome:
-  - 여기는 KEI-LAB 공개 채팅방입니다.
+  - 여기는 주말공학 공개 채팅방입니다.
   - 자유롭게 질문을 적어주시거나 글을 소통하실 수 있어요.
