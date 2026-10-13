@@ -438,7 +438,6 @@ body {
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  word-break: keep-all;
   color: var(--kchat-navy);
 }
 
