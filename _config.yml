@@ -14,9 +14,9 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 주말공학 # the main title
+title: 수상한 게임 동아리 # the main title
 
-tagline: Weekend Engineering · 주말마다 만들고 공부하는 곳 # it will display as the subtitle
+tagline: Suspicious Game Club # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   Kyu Tae의 머신비전·로보틱스 공부 기록. 컴퓨터 비전, 이미지·텍스트 인코딩, 로봇 모션 플래닝, TTS를 다룹니다.
@@ -102,7 +102,7 @@ avatar: /assets/img/avatar.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
-social_preview_image: /assets/img/og-weekend-engineering.png # string, local or CORS resources
+social_preview_image: /assets/img/og-suspicious-game-club.png # string, local or CORS resources
 
 # Expandable category list in the sidebar (_includes/sidebar.html), in this order.
 # An entry with children expands into those sub-categories; categories not listed
