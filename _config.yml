@@ -109,7 +109,7 @@ social_preview_image: /assets/img/og-suspicious-euclidean-group.png # string, lo
 # here are appended after these.
 sidebar_categories:
   - name: Projects
-    children: [Stack-chan, TTS, Desktop Mascot]
+    children: [Stack-chan, TTS, Desktop Mascot, SRT 브리칭]
   - name: Research
     children: [머신비전, SLAM]
 

@@ -20,3 +20,8 @@ projects:
     desc: 바탕화면 케이와 모모톡
     video: /assets/img/projects/nanika-sit.mp4
     image: /assets/img/projects/nanika-sit-poster.jpg
+  - category: SRT 브리칭
+    title: SRT 브리칭
+    desc: RABBIT 소대로 문 따는 게임
+    video: /assets/img/projects/srt-breach-card.mp4
+    image: /assets/img/projects/srt-breach-card.jpg
