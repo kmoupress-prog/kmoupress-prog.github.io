@@ -25,3 +25,8 @@ projects:
     desc: RABBIT 소대로 문 따는 게임
     video: /assets/img/projects/srt-breach-card-v2.mp4
     image: /assets/img/projects/srt-breach-card-v2.jpg
+  - category: 부루마카이브
+    title: 부루마카이브
+    desc: 게임개발부의 키보토스 부루마블
+    video: /assets/img/projects/burumarchive-card.mp4
+    image: /assets/img/projects/burumarchive-card.jpg
