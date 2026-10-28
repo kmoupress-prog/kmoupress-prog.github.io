@@ -111,7 +111,7 @@ sidebar_categories:
   - name: Projects
     children: [Stack-chan, TTS, Desktop Mascot, SRT 브리칭, 부루마카이브]
   - name: Research
-    children: [머신비전, SLAM]
+    children: [머신비전, SLAM, 로보틱스]
 
 # boolean type, the global switch for TOC in posts.
 toc: true
