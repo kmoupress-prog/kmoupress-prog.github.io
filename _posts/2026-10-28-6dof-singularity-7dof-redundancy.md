@@ -25,7 +25,7 @@ math: true
 - $J(q)$ = $6 \times 7$ 변환표(행렬, 야코비안). "관절이 이만큼 돌면 손끝이 이만큼 움직인다"는 비율을 담고 있습니다.
 
 $$
-\dot x = J(q)\,\dot q
+\dot x = J(q)\,\dot q = \dot q_1 \cdot (\text{1열}) + \dot q_2 \cdot (\text{2열}) + \cdots + \dot q_7 \cdot (\text{7열})
 $$
 
 로봇을 움직일 때는 반대 방향, 즉 "손끝을 이렇게 움직이고 싶다 → 관절은 얼마나?"를 풉니다.
