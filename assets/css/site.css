@@ -1005,27 +1005,6 @@ footer.site-footer p {
   gap: 0.5rem 1.5rem;
 }
 
-footer.site-footer p.site-footer-motto {
-  flex-basis: 100%;
-  margin: 0 0 0.4rem;
-  padding-bottom: 0.6rem;
-  border-bottom: 1px solid #22344a;
-  color: #c9d6e2;
-  letter-spacing: 0.02em;
-  word-break: keep-all;
-}
-
-.site-footer-motto i {
-  margin: 0 0.15rem;
-  color: var(--site-cyan);
-  font-style: normal;
-}
-
-.site-footer-motto span {
-  margin-left: 0.3rem;
-  color: #7f94a8;
-}
-
 .site-visits {
   display: flex;
   gap: 0.5rem;
