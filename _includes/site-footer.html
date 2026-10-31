@@ -1,6 +1,39 @@
-<!-- Site footer: a dark bottom bar with the copyright and the visitor counter (assets/js/visit-count.js). -->
+<!-- Site footer: link columns (menu, categories, related sites), then a dark bottom bar with the copyright and the visitor counter (assets/js/visit-count.js). -->
 
 <footer class="site-footer" aria-label="Site Info">
+  <div class="site-footer-box">
+    <section>
+      <h2>카테고리 메뉴</h2>
+      <ul>
+        <li><a href="{{ '/' | relative_url }}">홈</a></li>
+        <li><a href="{{ '/categories/' | relative_url }}">카테고리</a></li>
+      </ul>
+    </section>
+    {% for g in site.sidebar_categories %}
+      {% unless site.categories[g.name] %}{% continue %}{% endunless %}
+      <section>
+        <h2>{{ g.name }}</h2>
+        <ul>
+          {% for c in g.children %}
+            {% if site.categories[c] %}
+              {% capture c_url %}/categories/{{ c | slugify | url_encode }}/{% endcapture %}
+              <li><a href="{{ c_url | relative_url }}">{{ c }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </section>
+    {% endfor %}
+    {% if site.social.links %}
+      <section>
+        <h2>관련 사이트</h2>
+        <ul>
+          {% for link in site.social.links %}
+            <li><a href="{{ link }}" target="_blank" rel="noopener">{{ link | remove: 'https://' | remove: 'http://' }}</a></li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+  </div>
   <div class="site-footer-bar">
     <span>
       © {{ 'now' | date: '%Y' }} {{ site.social.name }}. Powered by

@@ -23,13 +23,21 @@ layout: default
       {% endfor %}
     </ul>
 
-    {% assign newest = site.posts | first %}
-    {% if newest %}
-      <a class="gh-new" href="{{ newest.url | relative_url }}">
-        <b>New!</b>
-        <span class="gh-new-date">{{ newest.date | date: '%Y.%m.%d' }}</span>
-        <span class="gh-new-title">{{ newest.title }}</span>
-      </a>
+    {% assign newest = site.posts | slice: 0, 2 %}
+    {% if newest.size > 0 %}
+      <div class="gh-news{% if newest.size > 1 %} is-rolling{% endif %}">
+        <ul>
+          {% for post in newest %}
+            <li>
+              <a class="gh-new" href="{{ post.url | relative_url }}">
+                <b>New!</b>
+                <span class="gh-new-date">{{ post.date | date: '%Y.%m.%d' }}</span>
+                <span class="gh-new-title">{{ post.title }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
     {% endif %}
 
     <div class="gh-wordmark" aria-hidden="true">
@@ -54,6 +62,7 @@ layout: default
         </li>
       {% endfor %}
     </ul>
+    <a class="gh-more" href="{{ '/categories/' | relative_url }}">더 보기 ›</a>
   </div>
 
   {%- assign feat = nil -%}

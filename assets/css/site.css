@@ -254,10 +254,8 @@ body {
 
 .gh-hero-inner {
   position: relative;
-  max-width: var(--site-content-max);
-  min-height: clamp(560px, 78vh, 820px);
-  margin: 0 auto;
-  padding: 1.6rem 1.5rem 2rem;
+  min-height: max(640px, calc(100vh - var(--site-bar-h)));
+  padding: 1.5rem 2.4rem 2rem;
 }
 
 .gh-links {
@@ -309,12 +307,49 @@ body {
   text-underline-offset: 4px;
 }
 
+.gh-news {
+  max-width: 27rem;
+  height: 1.6rem;
+  margin-top: 1.4rem;
+  overflow: hidden;
+}
+
+.gh-news ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gh-news li {
+  height: 1.6rem;
+}
+
+/* two newest posts take turns, like a news ticker */
+.gh-news.is-rolling ul {
+  animation: gh-roll 8s ease-in-out infinite;
+}
+
+.gh-news.is-rolling:hover ul {
+  animation-play-state: paused;
+}
+
+@keyframes gh-roll {
+  0%, 42% { transform: translateY(0); }
+  50%, 92% { transform: translateY(-1.6rem); }
+  100% { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gh-news.is-rolling ul {
+    animation: none;
+  }
+}
+
 .gh-new {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.6rem;
-  max-width: 27rem;
-  margin-top: 1.4rem;
+  height: 100%;
   padding: 0 0.4rem;
   color: #fff !important;
   font-size: 0.92rem;
@@ -346,8 +381,8 @@ body {
 
 .gh-wordmark {
   position: absolute;
-  right: 1.5rem;
-  bottom: 3.5rem;
+  left: 52%;
+  bottom: 22%;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -379,9 +414,7 @@ body {
 }
 
 .gh-band-inner {
-  max-width: var(--site-content-max);
-  margin: 0 auto;
-  padding: 1.35rem 1.5rem;
+  padding: 1.35rem 2.4rem;
   color: #fff;
   font-size: 1.05rem;
   letter-spacing: 0.04em;
@@ -389,9 +422,24 @@ body {
 
 .gh-latest {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 19rem;
-  gap: 3rem;
-  padding: 4rem 0 1rem;
+  grid-template-columns: minmax(0, 1fr) 20rem;
+  gap: clamp(3rem, 6vw, 7rem);
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 4.5rem clamp(1.5rem, 5.6vw, 7rem) 1rem;
+}
+
+.gh-more {
+  display: inline-block;
+  margin-top: 1.2rem;
+  color: var(--site-ink) !important;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-bottom: 0 !important;
+}
+
+.gh-more:hover {
+  color: var(--site-hero) !important;
 }
 
 .gh-latest-title {
@@ -509,6 +557,11 @@ body {
 
   .gh-band-inner {
     padding: 1rem;
+  }
+
+  .gh-latest {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .gh-latest {
@@ -1180,11 +1233,11 @@ footer.site-footer p {
 
 .site-footer-box {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 2rem 3rem;
-  margin: 0 3rem;
-  padding: 2.5rem 2rem;
+  padding: 2.75rem clamp(1.5rem, 5.6vw, 7rem);
   background: #f4f4f4;
+  border-top: 1px solid #e3e3e3;
   color: #555;
 }
 
@@ -1208,7 +1261,7 @@ footer.site-footer p {
 
 .site-footer-box a,
 .site-footer-bar a {
-  color: var(--site-label);
+  color: #666;
   text-decoration: none;
   border-bottom: 0 !important;
 }
@@ -1226,7 +1279,7 @@ footer.site-footer p {
 .site-footer-bar {
   max-width: none;
   margin: 0;
-  padding: 1.4rem max(1.5rem, calc((100vw - var(--site-content-max)) / 2 + 1.5rem));
+  padding: 1.4rem clamp(1.5rem, 5.6vw, 7rem);
   background: var(--site-dark);
   color: #c9bfbb;
   font-size: 0.82rem;
@@ -1272,9 +1325,8 @@ footer.site-footer p {
 
 @media (max-width: 767.98px) {
   .site-footer-box {
-    grid-template-columns: 1fr;
-    margin: 0;
-    padding: 2rem 1.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 2rem 1rem;
   }
 
   .site-footer-bar {
