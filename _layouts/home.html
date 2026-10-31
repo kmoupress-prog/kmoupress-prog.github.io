@@ -9,7 +9,7 @@ layout: default
 {% assign n = h.latest_count | default: 12 %}
 {% assign recent = site.posts | slice: 0, n %}
 
-<section class="gh-hero" aria-label="{{ h.hero_title_en | default: site.title }}">
+<section class="gh-hero" aria-label="{{ h.hero_title | default: site.title }}">
   <div class="gh-hero-inner">
     {% assign newest = site.posts | slice: 0, 2 %}
     {% if newest.size > 0 %}
@@ -29,7 +29,7 @@ layout: default
     {% endif %}
 
     <div class="gh-wordmark" aria-hidden="true">
-      <span class="gh-wordmark-en">{{ h.hero_title_en }}</span>
+      <span class="gh-wordmark-en">{{ h.hero_title }}</span>
     </div>
   </div>
 </section>
