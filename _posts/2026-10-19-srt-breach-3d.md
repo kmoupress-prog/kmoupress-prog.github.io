@@ -1,7 +1,7 @@
 ---
 title: '위에서 찍은 그림에서 진짜 3D로 #5'
 date: 2026-10-19 22:50:00 +0900
-categories: [Projects, SRT 브리칭]
+categories: [Games, SRT 브리칭]
 description: SRT 브리칭의 그림을 미리 찍어 둔 2D 그림에서 three.js 실시간 3D 장면으로 바꾼 과정. 판정은 2D 그대로 두고, 걷는 다리·총 방향·던지기 동작·섬광탄을 맞췄다.
 ---
 

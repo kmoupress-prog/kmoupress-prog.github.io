@@ -1,7 +1,7 @@
 ---
 title: '문 앞에서 멈추는 법 — CQB 교리를 코드로 #4'
 date: 2026-10-18 12:10:00 +0900
-categories: [Projects, SRT 브리칭]
+categories: [Games, SRT 브리칭]
 description: SRT 브리칭 분대 AI의 문 돌입을 실제 CQB(근접 전투) 교리에 맞춰 고친 과정. 크로스오버를 버리고 파이·리미티드 페네트레이션·엿보기로 바꾸고, 교리 문서를 만들어 규칙마다 코드와 테스트를 붙였다.
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: '게임 속 3D 모델로 RABBIT 소대 그리기 #2'
 date: 2026-10-14 18:00:00 +0900
-categories: [Projects, SRT 브리칭]
+categories: [Games, SRT 브리칭]
 description: SRT 브리칭 게임에 블루 아카이브 SD 모델을 위에서 내려다본 그림, 적·민간인·소품 그림, 게임 이펙트로 만든 총구 화염을 입힌 과정.
 ---
 
