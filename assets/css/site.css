@@ -1131,13 +1131,6 @@ body {
   opacity: 0.92;
 }
 
-/* achromatic rule: card and featured thumbnails on the home and category pages are shown in grey */
-.post-card-thumb img,
-.post-card-thumb video,
-.gh-feature img {
-  filter: grayscale(1);
-}
-
 .post-card-title {
   margin: 0.9rem 0 0.4rem;
   text-align: center;
