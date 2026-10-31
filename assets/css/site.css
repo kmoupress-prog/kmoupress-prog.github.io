@@ -254,7 +254,7 @@ body {
 
 .gh-hero-inner {
   position: relative;
-  min-height: max(640px, calc(100vh - var(--site-bar-h)));
+  min-height: clamp(320px, 45vh, 440px);
   padding: 1.5rem 2.4rem 2rem;
 }
 
