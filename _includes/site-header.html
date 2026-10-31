@@ -1,11 +1,20 @@
-<!-- Site header: top navigation on the right (desktop). Categories come from site.sidebar_categories. -->
+<!-- Site header: a full-width dark menu bar (home mark + menus with dropdowns). Categories come from site.sidebar_categories. -->
 
 <header class="site-header" aria-label="Site Header">
   <div class="site-header-inner">
+    <a class="site-mark" href="{{ '/' | relative_url }}" aria-label="홈">
+      {%- if site.avatar -%}
+        {%- capture avatar_url -%}{% include media-url.html src=site.avatar %}{%- endcapture -%}
+        <img src="{{ avatar_url }}" width="30" height="30" alt="">
+      {%- else -%}
+        <i class="fas fa-home"></i>
+      {%- endif -%}
+    </a>
+
     <nav class="site-nav" aria-label="Main Navigation">
       <ul>
         <li class="{% if page.layout == 'home' %}active{% endif %}">
-          <a href="{{ '/' | relative_url }}">HOME</a>
+          <a href="{{ '/' | relative_url }}">홈</a>
         </li>
 
         {% for g in site.sidebar_categories %}
@@ -23,8 +32,8 @@
           {% capture g_url %}/categories/{{ g.name | slugify | url_encode }}/{% endcapture %}
           <li class="{% if nav_active %}active{% endif %}{% if g.children %} has-sub{% endif %}">
             <a href="{{ g_url | relative_url }}">
-              {{- g.name | upcase -}}
-              {%- if g.children %}<i class="fas fa-angle-down"></i>{% endif -%}
+              {{- g.name -}}
+              {%- if g.children %}<i class="fas fa-caret-down"></i>{% endif -%}
             </a>
 
             {% if g.children %}

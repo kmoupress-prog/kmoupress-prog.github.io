@@ -2,64 +2,74 @@
 layout: default
 ---
 
-<!-- Override of Chirpy 7.6.0 home: hero and one card per project, both from _data/home.yml. -->
+<!-- Override of Chirpy 7.6.0 home: full-width hero (category buttons + wordmark), a dark band, then the
+     latest posts with a featured post on the right. Text comes from _data/home.yml. -->
 
-{% assign hero = site.data.home %}
+{% assign h = site.data.home %}
+{% assign n = h.latest_count | default: 12 %}
+{% assign recent = site.posts | slice: 0, n %}
 
-{% if hero.catchphrase or hero.subtitle or hero.intro or hero.video or hero.image %}
-<section class="home-hero">
-  {% if hero.catchphrase %}<h1 class="home-catchphrase">{{ hero.catchphrase }}</h1>{% endif %}
-  {% if hero.subtitle %}<p class="home-subtitle">{{ hero.subtitle }}</p>{% endif %}
-  {% if hero.intro %}<p class="home-intro">{{ hero.intro }}</p>{% endif %}
-  {% if hero.video %}
-    <video
-      class="home-hero-img"
-      src="{{ hero.video | relative_url }}"
-      {% if hero.image %}poster="{{ hero.image | relative_url }}"{% endif %}
-      autoplay
-      muted
-      loop
-      playsinline
-      aria-label="{{ hero.image_alt | default: site.title }}"
-    ></video>
-  {% elsif hero.image %}
-    <img class="home-hero-img" src="{{ hero.image | relative_url }}" alt="{{ hero.image_alt | default: site.title }}">
-  {% endif %}
+<section class="gh-hero" aria-label="{{ h.hero_title | default: site.title }}">
+  <div class="gh-hero-inner">
+    <ul class="gh-links">
+      {% for l in h.links %}
+        {% assign l_posts = site.categories[l.category] %}
+        {% unless l_posts %}{% continue %}{% endunless %}
+        {% capture l_url %}/categories/{{ l.category | slugify | url_encode }}/{% endcapture %}
+        <li class="gh-link">
+          <a class="gh-link-btn" href="{{ l_url | relative_url }}">{{ l.category }}</a>
+          <a class="gh-link-desc" href="{{ l_url | relative_url }}">{{ l.desc }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+    {% assign newest = site.posts | first %}
+    {% if newest %}
+      <a class="gh-new" href="{{ newest.url | relative_url }}">
+        <b>New!</b>
+        <span class="gh-new-date">{{ newest.date | date: '%Y.%m.%d' }}</span>
+        <span class="gh-new-title">{{ newest.title }}</span>
+      </a>
+    {% endif %}
+
+    <div class="gh-wordmark" aria-hidden="true">
+      <span class="gh-wordmark-ko">{{ h.hero_title | default: site.title }}</span>
+      <span class="gh-wordmark-en">{{ h.hero_title_en }}</span>
+    </div>
+  </div>
 </section>
+
+{% if h.band %}
+<div class="gh-band"><div class="gh-band-inner">{{ h.band }}</div></div>
 {% endif %}
 
-<section class="home-posts">
-  <h2 class="home-section-title">{{ hero.section_title | default: 'Projects' }}</h2>
-
-  <div class="post-grid">
-    {% for p in hero.projects %}
-      {% assign p_posts = site.categories[p.category] %}
-      {% unless p_posts %}{% continue %}{% endunless %}
-      {% capture p_url %}/categories/{{ p.category | slugify | url_encode }}/{% endcapture %}
-      <article class="post-card">
-        <a href="{{ p_url | relative_url }}">
-          <div class="post-card-thumb">
-            {% if p.video %}
-              <video
-                src="{{ p.video | relative_url }}"
-                {% if p.image %}poster="{{ p.image | relative_url }}"{% endif %}
-                autoplay
-                muted
-                loop
-                playsinline
-                aria-label="{{ p.title | xml_escape }}"
-              ></video>
-            {% else %}
-              <img src="{{ p.image | relative_url }}" alt="{{ p.title | xml_escape }}" loading="lazy">
-            {% endif %}
-          </div>
-          <h3 class="post-card-title">{{ p.title }}</h3>
-          <div class="post-card-meta">
-            <span class="post-card-label">{{ p.desc }}</span>
-            <span class="post-card-date">{{ p_posts | size }}편</span>
-          </div>
-        </a>
-      </article>
-    {% endfor %}
+<section class="gh-latest">
+  <div class="gh-latest-main">
+    <h2 class="gh-latest-title">{{ h.latest_title | default: '최신 정보' }}</h2>
+    <ul class="gh-latest-list">
+      {% for post in recent %}
+        <li>
+          <span class="gh-latest-date">{{ post.date | date: '%Y.%m.%d' }}</span>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
   </div>
+
+  {%- assign feat = nil -%}
+  {%- assign feat_thumb = '' -%}
+  {%- for post in recent -%}
+    {%- capture t -%}{% include post-thumb.html post=post %}{%- endcapture -%}
+    {%- assign t = t | strip -%}
+    {%- if t != '' -%}{%- assign feat = post -%}{%- assign feat_thumb = t -%}{%- break -%}{%- endif -%}
+  {%- endfor -%}
+  {% if feat %}
+    <aside class="gh-feature" aria-label="추천 글">
+      <a href="{{ feat.url | relative_url }}">
+        <img src="{{ feat_thumb }}" alt="{{ feat.title | xml_escape }}" loading="lazy">
+        <span class="gh-feature-cat">{{ feat.categories | last }}</span>
+        <span class="gh-feature-title">{{ feat.title }}</span>
+      </a>
+    </aside>
+  {% endif %}
 </section>

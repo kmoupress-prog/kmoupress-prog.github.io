@@ -1,32 +1,31 @@
 # Home page (_layouts/home.html). Edit freely.
-# Optional hero text: catchphrase, subtitle, intro (all omitted for now)
-# Hero (optional): `video` (looping, silent) with `image` as its poster, or just `image`.
-# Left empty for now.
-section_title: Projects
 
-# One card per project; `category` is the category the card links to.
-# A card shows `video` (looping, silent, `image` as poster) or just `image`.
-projects:
+# Hero: a full-width solid colour block. Big wordmark in the lower right.
+hero_title: 수상한 게임 동아리
+hero_title_en: SUSPICIOUS EUCLIDEAN GROUP
+
+# Dark band under the hero
+band: SUSPICIOUS EUCLIDEAN GROUP
+
+# Latest posts list under the band
+latest_title: 최신 정보
+latest_count: 12
+
+# Hero buttons: one per category, in this order, with a one-line description to the right.
+links:
   - category: Stack-chan
-    title: Stack-chan
     desc: 책상 위 로봇을 케이로
-    image: /assets/img/projects/stack-chan.jpg
   - category: TTS
-    title: TTS
     desc: 케이 목소리 만들기
-    image: /assets/img/projects/tts-voice-player.png
   - category: Desktop Mascot
-    title: Desktop Mascot
     desc: 바탕화면 케이와 모모톡
-    video: /assets/img/projects/nanika-sit.mp4
-    image: /assets/img/projects/nanika-sit-poster.jpg
   - category: SRT 브리칭
-    title: SRT 브리칭
     desc: RABBIT 소대로 문 따는 게임
-    video: /assets/img/projects/srt-breach-card-v2.mp4
-    image: /assets/img/projects/srt-breach-card-v2.jpg
   - category: 부루마카이브
-    title: 부루마카이브
     desc: 게임개발부의 키보토스 부루마블
-    video: /assets/img/projects/burumarchive-card.mp4
-    image: /assets/img/projects/burumarchive-card.jpg
+  - category: 머신비전
+    desc: MIT 6.801 머신비전 강의 정리
+  - category: SLAM
+    desc: 회전과 자세 추정의 수학
+  - category: 로보틱스
+    desc: 다관절 로봇팔 제어
