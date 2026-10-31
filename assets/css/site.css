@@ -97,22 +97,6 @@ body {
   padding: 0 1.5rem;
 }
 
-.site-mark {
-  display: flex;
-  align-items: center;
-  padding-right: 1rem;
-  color: #fff !important;
-  border-bottom: 0 !important;
-  flex-shrink: 0;
-}
-
-.site-mark img {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
 .site-nav > ul {
   display: flex;
   align-items: stretch;
