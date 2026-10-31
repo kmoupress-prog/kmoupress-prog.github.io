@@ -3,9 +3,6 @@ title: '부루마카이브 제작과정 #2'
 date: 2026-10-31 16:00:00 +0900
 categories: [Games, 부루마카이브]
 description: 블루아카이브 게임개발부 다섯 명이 키보토스 보드 40칸을 도는 부루마블. 규칙서부터 쓴 10월 24일부터 온라인 QA를 돌린 10월 31일까지 8일의 제작 기록.
-image:
-  path: /assets/img/posts/buru-making-01.jpg
-  alt: 판 가운데에 학원 여덟 곳의 건물과 지형이 모인 마름모꼴 보드 3D 렌더
 ---
 
 <style>
