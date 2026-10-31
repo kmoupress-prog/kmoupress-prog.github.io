@@ -1,14 +1,7 @@
-<!-- Site header: title on the left, top navigation on the right (desktop). Categories come from site.sidebar_categories. -->
+<!-- Site header: top navigation on the right (desktop). Categories come from site.sidebar_categories. -->
 
 <header class="site-header" aria-label="Site Header">
   <div class="site-header-inner">
-    <a class="site-logo" href="{{ '/' | relative_url }}">
-      <span class="site-logo-text">
-        <span class="site-logo-title">{{ site.title | upcase }}</span>
-        <span class="site-logo-tagline">{{ site.tagline }}</span>
-      </span>
-    </a>
-
     <nav class="site-nav" aria-label="Main Navigation">
       <ul>
         <li class="{% if page.layout == 'home' %}active{% endif %}">
