@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 370" font-family="'Noto Sans KR','Malgun Gothic',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#f2c94c"/>
+    </marker>
+  </defs>
+  <rect width="900" height="370" fill="#0f141d"/>
+
+  <!-- 1. 리미티드 페네트레이션 -->
+  <g transform="translate(0,0)">
+    <rect x="10" y="20" width="280" height="180" fill="#2a3344"/>
+    <rect x="10" y="204" width="280" height="96" fill="#1d2431"/>
+    <polygon points="126,218 285,25 150,110" fill="#5fb4ff" fill-opacity="0.28"/>
+    <polygon points="174,218 15,25 150,110" fill="#e8ecf4" fill-opacity="0.22"/>
+    <line x1="10" y1="200" x2="120" y2="200" stroke="#8892a6" stroke-width="8"/>
+    <line x1="180" y1="200" x2="290" y2="200" stroke="#8892a6" stroke-width="8"/>
+    <circle cx="126" cy="218" r="11" fill="#5fb4ff"/>
+    <text x="126" y="222.5" text-anchor="middle" font-size="12" font-weight="700" fill="#0f141d">사</text>
+    <circle cx="174" cy="218" r="11" fill="#e8ecf4"/>
+    <text x="174" y="222.5" text-anchor="middle" font-size="12" font-weight="700" fill="#0f141d">미</text>
+    <text x="150" y="330" text-anchor="middle" font-size="17" font-weight="700" fill="#e8ecf4">리미티드 페네트레이션</text>
+    <text x="150" y="354" text-anchor="middle" font-size="13" fill="#9aa4b8">둘이 문 양쪽 · 문틀까지만 나가 시선을 엇갈림</text>
+  </g>
+
+  <!-- 2. 슬라이싱 더 파이 -->
+  <g transform="translate(300,0)">
+    <rect x="10" y="20" width="280" height="180" fill="#2a3344"/>
+    <rect x="10" y="204" width="280" height="96" fill="#1d2431"/>
+    <polygon points="108,248 120,200 164,25 290,25 290,127 180,200" fill="#5fb4ff" fill-opacity="0.28"/>
+    <path d="M90 206 A60 60 0 0 0 210 206" fill="none" stroke="#f2c94c" stroke-width="2" stroke-dasharray="5 5" marker-end="url(#arrow)"/>
+    <line x1="10" y1="200" x2="120" y2="200" stroke="#8892a6" stroke-width="8"/>
+    <line x1="180" y1="200" x2="290" y2="200" stroke="#8892a6" stroke-width="8"/>
+    <circle cx="90" cy="214" r="6" fill="none" stroke="#5fb4ff" stroke-width="1.5" stroke-dasharray="3 3"/>
+    <circle cx="108" cy="248" r="11" fill="#5fb4ff"/>
+    <text x="108" y="252.5" text-anchor="middle" font-size="12" font-weight="700" fill="#0f141d">사</text>
+    <text x="150" y="330" text-anchor="middle" font-size="17" font-weight="700" fill="#e8ecf4">슬라이싱 더 파이</text>
+    <text x="150" y="354" text-anchor="middle" font-size="13" fill="#9aa4b8">혼자 · 반원을 돌며 문 안을 한 조각씩</text>
+  </g>
+
+  <!-- 3. 엿보기 -->
+  <g transform="translate(600,0)">
+    <rect x="10" y="20" width="280" height="180" fill="#2a3344"/>
+    <rect x="10" y="204" width="280" height="34" fill="#1d2431"/>
+    <rect x="10" y="238" width="280" height="62" fill="#3a4152"/>
+    <line x1="10" y1="241" x2="290" y2="241" stroke="#8892a6" stroke-width="6"/>
+    <polygon points="112,213 120,200 237,25 290,25 290,180 180,200" fill="#5fb4ff" fill-opacity="0.28"/>
+    <line x1="10" y1="200" x2="120" y2="200" stroke="#8892a6" stroke-width="8"/>
+    <line x1="180" y1="200" x2="290" y2="200" stroke="#8892a6" stroke-width="8"/>
+    <circle cx="96" cy="222" r="11" fill="#5fb4ff" fill-opacity="0.35"/>
+    <circle cx="110" cy="217" r="11" fill="#5fb4ff"/>
+    <text x="110" y="221.5" text-anchor="middle" font-size="12" font-weight="700" fill="#0f141d">사</text>
+    <text x="150" y="276" text-anchor="middle" font-size="12" fill="#9aa4b8">벽 · 반원에 설 자리 없음</text>
+    <text x="150" y="330" text-anchor="middle" font-size="17" font-weight="700" fill="#e8ecf4">엿보기</text>
+    <text x="150" y="354" text-anchor="middle" font-size="13" fill="#9aa4b8">혼자 · 스택 자리에서 몸만 기울여 확인</text>
+  </g>
+</svg>
