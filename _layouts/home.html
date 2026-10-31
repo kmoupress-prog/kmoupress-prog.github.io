@@ -2,27 +2,15 @@
 layout: default
 ---
 
-<!-- Override of Chirpy 7.6.0 home: full-width hero (category buttons + wordmark), a dark band, then the
+<!-- Override of Chirpy 7.6.0 home: full-width hero (news ticker + wordmark), a dark band, then the
      latest posts with a featured post on the right. Text comes from _data/home.yml. -->
 
 {% assign h = site.data.home %}
 {% assign n = h.latest_count | default: 12 %}
 {% assign recent = site.posts | slice: 0, n %}
 
-<section class="gh-hero" aria-label="{{ h.hero_title | default: site.title }}">
+<section class="gh-hero" aria-label="{{ h.hero_title_en | default: site.title }}">
   <div class="gh-hero-inner">
-    <ul class="gh-links">
-      {% for l in h.links %}
-        {% assign l_posts = site.categories[l.category] %}
-        {% unless l_posts %}{% continue %}{% endunless %}
-        {% capture l_url %}/categories/{{ l.category | slugify | url_encode }}/{% endcapture %}
-        <li class="gh-link">
-          <a class="gh-link-btn" href="{{ l_url | relative_url }}">{{ l.category }}</a>
-          <a class="gh-link-desc" href="{{ l_url | relative_url }}">{{ l.desc }}</a>
-        </li>
-      {% endfor %}
-    </ul>
-
     {% assign newest = site.posts | slice: 0, 2 %}
     {% if newest.size > 0 %}
       <div class="gh-news{% if newest.size > 1 %} is-rolling{% endif %}">
@@ -41,7 +29,6 @@ layout: default
     {% endif %}
 
     <div class="gh-wordmark" aria-hidden="true">
-      <span class="gh-wordmark-ko">{{ h.hero_title | default: site.title }}</span>
       <span class="gh-wordmark-en">{{ h.hero_title_en }}</span>
     </div>
   </div>

@@ -1,7 +1,6 @@
 # Home page (_layouts/home.html). Edit freely.
 
-# Hero: a full-width solid colour block. Big wordmark in the lower right.
-hero_title: 수상한 게임 동아리
+# Hero: a full-width solid colour block with the news ticker and a wordmark.
 hero_title_en: SUSPICIOUS EUCLIDEAN GROUP
 
 # Dark band under the hero
@@ -10,22 +9,3 @@ band: SUSPICIOUS EUCLIDEAN GROUP
 # Latest posts list under the band
 latest_title: 최신 정보
 latest_count: 12
-
-# Hero buttons: one per category, in this order, with a one-line description to the right.
-links:
-  - category: Stack-chan
-    desc: 책상 위 로봇을 케이로
-  - category: TTS
-    desc: 케이 목소리 만들기
-  - category: Desktop Mascot
-    desc: 바탕화면 케이와 모모톡
-  - category: SRT 브리칭
-    desc: RABBIT 소대로 문 따는 게임
-  - category: 부루마카이브
-    desc: 게임개발부의 키보토스 부루마블
-  - category: 머신비전
-    desc: MIT 6.801 머신비전 강의 정리
-  - category: SLAM
-    desc: 회전과 자세 추정의 수학
-  - category: 로보틱스
-    desc: 다관절 로봇팔 제어

@@ -310,7 +310,6 @@ body {
 .gh-news {
   max-width: 27rem;
   height: 1.6rem;
-  margin-top: 1.4rem;
   overflow: hidden;
 }
 
@@ -401,8 +400,8 @@ body {
 }
 
 .gh-wordmark-en {
-  font-size: clamp(1.1rem, 2.1vw, 2rem);
-  font-weight: 500;
+  font-size: clamp(1.6rem, 3.6vw, 3.4rem);
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-align: justify;
   text-align-last: justify;
