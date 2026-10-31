@@ -380,6 +380,7 @@ body {
 }
 
 .gh-wordmark {
+  width: fit-content;
   margin: 0.75rem 0 0 50%;
   display: flex;
   flex-direction: column;
@@ -402,8 +403,6 @@ body {
   font-size: clamp(1.6rem, 3.6vw, 3.4rem);
   font-weight: 600;
   letter-spacing: 0.12em;
-  text-align: justify;
-  text-align-last: justify;
   white-space: nowrap;
 }
 
@@ -549,7 +548,7 @@ body {
   }
 
   .gh-wordmark-en {
-    font-size: clamp(0.85rem, 3.6vw, 1.3rem);
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
   }
 
   .gh-band-inner {
