@@ -124,7 +124,7 @@ description: 혼자 AI와 두던 부루마카이브에 멀티를 붙였습니다
 </section>
 
 <footer class="foot">
-  <span>블루아카이브의 캐릭터와 세계관 저작권은 NEXON Games / Yostar에 있습니다. 개인 팬 프로젝트로 공개 배포는 하지 않으며, 이 글의 화면 캡처에는 게임 그림이 들어 있습니다.</span>
+  <span>블루아카이브의 캐릭터와 세계관 저작권은 NEXON Games / Yostar에 있습니다. 개인 팬 프로젝트이며, 이 글의 화면 캡처에는 게임 그림이 들어 있습니다.</span>
 </footer>
 
 </div>

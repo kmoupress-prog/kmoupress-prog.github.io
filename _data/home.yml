@@ -6,3 +6,7 @@ hero_title: 규태의 노트
 # Latest posts list under the band
 latest_title: 최신 정보
 latest_count: 12
+
+# Button under the featured post: burumarchive online game. The tunnel address changes when the tunnel restarts; update it here.
+game_label: 게임하러 가기
+game_url: https://freight-acquisitions-playing-julie.trycloudflare.com/

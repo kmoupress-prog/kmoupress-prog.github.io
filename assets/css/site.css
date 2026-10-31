@@ -567,6 +567,22 @@ body {
   text-underline-offset: 3px;
 }
 
+/* Golden-card button under the featured post */
+.gh-feature a.gh-play {
+  margin-top: 0.9rem;
+  padding: 0.65rem 1rem;
+  color: var(--c-card-ink) !important;
+  font-weight: 700;
+  text-align: center;
+  background: var(--c-gold);
+  border: 1px solid var(--c-gold) !important;
+}
+
+.gh-feature a.gh-play:hover,
+.gh-feature a.gh-play:focus-visible {
+  background: var(--c-card);
+}
+
 @media (max-width: 991.98px) {
   .gh-hero-inner {
     min-height: 0;

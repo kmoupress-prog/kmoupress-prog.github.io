@@ -66,6 +66,9 @@ layout: default
         <span class="gh-feature-cat">{{ feat.categories | last }}</span>
         <span class="gh-feature-title">{{ feat.title }}</span>
       </a>
+      {% if h.game_url %}
+        <a class="gh-play" href="{{ h.game_url }}" target="_blank" rel="noopener">{{ h.game_label }}</a>
+      {% endif %}
     </aside>
   {% endif %}
 </section>
