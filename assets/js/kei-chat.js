@@ -77,7 +77,7 @@
       return img;
     }
     var a = el('div', 'kchat-avatar is-initial', Array.from(m.name || '?')[0]);
-    a.style.background = 'hsl(' + hue(m.uid || m.name || '') + ', 45%, 62%)';
+    a.style.background = 'hsl(' + hue(m.uid || m.name || '') + ', 12%, 55%)'; // low saturation, matches the site palette
     return a;
   }
 
