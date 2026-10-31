@@ -3,9 +3,6 @@
 # Hero: a full-width solid colour block with the news ticker and a wordmark.
 hero_title: 규태의 노트
 
-# Dark band under the hero
-band: 규태의 노트
-
 # Latest posts list under the band
 latest_title: 최신 정보
 latest_count: 12
