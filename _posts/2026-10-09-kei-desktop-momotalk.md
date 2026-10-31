@@ -1,5 +1,5 @@
 ---
-title: 바탕화면을 걸어 다니는 케이, 그리고 모모톡
+title: '바탕화면을 걸어 다니는 케이, 그리고 모모톡 #1'
 date: 2026-10-09 21:00:00 +0900
 categories: [Projects, Desktop Mascot]
 ---

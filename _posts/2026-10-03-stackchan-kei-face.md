@@ -1,5 +1,5 @@
 ---
-title: 스택짱 얼굴을 케이로 바꿨다
+title: '스택짱 얼굴을 케이로 바꿨다 #1'
 date: 2026-10-03 20:00:00 +0900
 categories: [Projects, Stack-chan]
 ---

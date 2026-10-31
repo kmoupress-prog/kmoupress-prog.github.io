@@ -1,5 +1,5 @@
 ---
-title: 영상으로 보는 케이 스택짱 — 제작 기행 #1
+title: '영상으로 보는 케이 스택짱 — 제작 기행 #4'
 date: 2026-10-11 00:30:00 +0900
 categories: [Projects, Stack-chan]
 ---

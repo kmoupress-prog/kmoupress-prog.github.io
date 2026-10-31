@@ -1,5 +1,5 @@
 ---
-title: 케이 목소리 만들기 — 일본어편
+title: '케이 목소리 만들기 — 일본어편 #1'
 date: 2026-10-03 21:00:00 +0900
 categories: [Projects, TTS]
 ---

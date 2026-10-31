@@ -1,5 +1,5 @@
 ---
-title: 모든 문장을 "웅—"으로 읽던 AI를 고친 날
+title: '모든 문장을 "웅—"으로 읽던 AI를 고친 날 #3'
 date: 2026-10-07 21:00:00 +0900
 categories: [Projects, TTS]
 ---

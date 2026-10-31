@@ -1,5 +1,5 @@
 ---
-title: 꺼지는 로봇 추적기 — 범인은 배터리 쪽?
+title: '꺼지는 로봇 추적기 — 범인은 배터리 쪽? #3'
 date: 2026-10-10 21:00:00 +0900
 categories: [Projects, Stack-chan]
 ---

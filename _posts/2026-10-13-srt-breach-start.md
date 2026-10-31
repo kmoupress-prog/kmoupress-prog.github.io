@@ -1,5 +1,5 @@
 ---
-title: RABBIT 소대로 문을 따는 게임을 만들다
+title: 'RABBIT 소대로 문을 따는 게임을 만들다 #1'
 date: 2026-10-13 21:00:00 +0900
 categories: [Projects, SRT 브리칭]
 description: 블루 아카이브 SRT 특수학원 RABBIT 소대(미야코·사키·미유·모에)로 만드는 위에서 내려다보는 실내 진입 작전 게임. 기획과 첫 플레이 가능한 버전.
