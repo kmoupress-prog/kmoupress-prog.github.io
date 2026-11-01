@@ -33,9 +33,9 @@ J(q) =
 x & \cdot & \cdot & & \cdot \\
 y & \cdot & \cdot & & \cdot \\
 z & \cdot & \cdot & & \cdot \\
-\text{회전}_x & \cdot & \cdot & & \cdot \\
-\text{회전}_y & \cdot & \cdot & & \cdot \\
-\text{회전}_z & \cdot & \cdot & & \cdot
+\text{Roll} & \cdot & \cdot & & \cdot \\
+\text{Pitch} & \cdot & \cdot & & \cdot \\
+\text{Yaw} & \cdot & \cdot & & \cdot
 \end{array}
 $$
 
