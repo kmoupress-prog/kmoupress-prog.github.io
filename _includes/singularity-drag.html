@@ -67,7 +67,7 @@ function upd(){
  set(g('sd-ax'),{x1:u[0]-Math.cos(mn)*len,y1:u[1]+Math.sin(mn)*len,x2:u[0]+Math.cos(mn)*len,y2:u[1]-Math.sin(mn)*len});
  var off=s[2]!==0&&Math.hypot(t[0]-u[0],t[1]-u[1])>4;
  set(g('sd-gap'),off?{x1:u[0],y1:u[1],x2:t[0],y2:t[1],visibility:'visible'}:{visibility:'hidden'});
- var st=g('sd-stop');st.textContent=off?'여기서 더 못 감':'';set(st,{x:(u[0]+t[0])/2,y:(u[1]+t[1])/2-12});
+ var st=g('sd-stop');st.textContent=off?'여기서 더 못 감':'';var vx=t[0]-BX,vy=t[1]-BY,vn=Math.hypot(vx,vy)||1,sgn=s[2]>0?1:-1;set(st,{x:Math.min(Math.max(t[0]+sgn*vx/vn*30,60),620),y:Math.min(Math.max(t[1]+sgn*vy/vn*26+4,16),380)});
  var ad=Math.abs(det),near=ad<0.02,zero=ad<0.002;
  g('sd-q2').textContent=(q2*180/Math.PI).toFixed(1)+'°';
  var de=g('sd-det');de.textContent=det.toFixed(3);de.style.color=zero?'#ff6b6b':(near?'#f3c94f':'var(--c-text)');
