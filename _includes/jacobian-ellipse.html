@@ -4,10 +4,11 @@
 <circle cx="110" cy="160" r="55" fill="#f59ac8" fill-opacity="0.12" stroke="#f59ac8" stroke-width="2"/>
 <line x1="45" y1="160" x2="175" y2="160" stroke="#4a5070" stroke-width="1"/>
 <line x1="110" y1="95" x2="110" y2="225" stroke="#4a5070" stroke-width="1"/>
+<g id="je-lv"></g>
 <text x="180" y="164" fill="#a9acc4" font-size="13">Δq₁</text>
 <text x="102" y="86" fill="#a9acc4" font-size="13">Δq₂</text>
-<text x="110" y="252" text-anchor="middle" fill="#a9acc4" font-size="13">관절 변화</text>
-<text x="110" y="270" text-anchor="middle" fill="#a9acc4" font-size="13">(모든 방향 같은 양)</text>
+<text x="110" y="252" text-anchor="middle" fill="#a9acc4" font-size="13">관절 변화(모든 방향 같은 양)</text>
+<text x="110" y="270" text-anchor="middle" fill="#a9acc4" font-size="13">점선 = 각 반지름을 만드는 조합</text>
 <line x1="200" y1="160" x2="262" y2="160" stroke="#a9acc4" stroke-width="1.5" marker-end="url(#je-arrow)"/>
 <text x="231" y="148" text-anchor="middle" fill="#eceaf4" font-size="16" font-weight="700">J</text>
 <rect x="290" y="300" width="56" height="12" rx="2" fill="#4a5070"/>
@@ -16,9 +17,9 @@
 <circle id="je-j1" r="6" fill="#1c1d2b" stroke="#5db4f2" stroke-width="2.5"/>
 <circle id="je-j2" r="6" fill="#1c1d2b" stroke="#5db4f2" stroke-width="2.5"/>
 <ellipse id="je-el" fill="#f59ac8" fill-opacity="0.15" stroke="#f59ac8" stroke-width="2"/>
-<line id="je-ax" stroke="#f3c94f" stroke-width="3" stroke-linecap="round"/>
 <circle id="je-tip" r="4" fill="#eceaf4"/>
-<text x="500" y="324" text-anchor="middle" fill="#a9acc4" font-size="13">손끝 변화(타원) · 노란 선 = 가장 안 움직이는 방향</text>
+<g id="je-rv"></g>
+<text x="500" y="324" text-anchor="middle" fill="#a9acc4" font-size="13">손끝 변화(타원) · 흰 선 = σmax, 노란 선 = σmin</text>
 </svg>
 <div style="display:flex;align-items:center;gap:12px;margin:10px 0 6px;flex-wrap:wrap">
 <label for="je-q2" style="font-size:0.95rem;color:var(--c-dim);margin:0">팔꿈치 q₂</label>
@@ -33,8 +34,8 @@
 <button type="button" class="je-pre" data-v="0" style="background:transparent;color:var(--c-text);border:1px solid var(--c-line);border-radius:8px;padding:2px 12px;font-size:0.9rem">0° (일직선)</button>
 </div>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px">
-<div style="background:var(--c-ground);border-radius:8px;padding:0.75rem 1rem"><div style="font-size:0.85rem;color:var(--c-dim)">σ<sub>max</sub> 긴 반지름</div><div id="je-smx" style="font-size:1.4rem;font-weight:700;color:var(--c-text)">-</div></div>
-<div style="background:var(--c-ground);border-radius:8px;padding:0.75rem 1rem"><div style="font-size:0.85rem;color:var(--c-dim)">σ<sub>min</sub> 짧은 반지름</div><div id="je-smn" style="font-size:1.4rem;font-weight:700;color:#f3c94f">-</div></div>
+<div style="background:var(--c-ground);border-radius:8px;padding:0.75rem 1rem"><div style="font-size:0.85rem;color:var(--c-dim)">σ<sub>max</sub> 긴 반지름</div><div id="je-smx" style="font-size:1.4rem;font-weight:700;color:var(--c-text)">-</div><div id="je-smxc" style="font-size:0.85rem;color:var(--c-dim)"></div></div>
+<div style="background:var(--c-ground);border-radius:8px;padding:0.75rem 1rem"><div style="font-size:0.85rem;color:var(--c-dim)">σ<sub>min</sub> 짧은 반지름</div><div id="je-smn" style="font-size:1.4rem;font-weight:700;color:#f3c94f">-</div><div id="je-smnc" style="font-size:0.85rem;color:var(--c-dim)"></div></div>
 <div style="background:var(--c-ground);border-radius:8px;padding:0.75rem 1rem"><div style="font-size:0.85rem;color:var(--c-dim)">det J 넓이 배율</div><div id="je-det" style="font-size:1.4rem;font-weight:700;color:var(--c-text)">-</div></div>
 <div style="background:var(--c-ground);border-radius:8px;padding:0.75rem 1rem"><div style="font-size:0.85rem;color:var(--c-dim)">1/σ<sub>min</sub> 폭주 배율</div><div id="je-inv" style="font-size:1.4rem;font-weight:700;color:#f59ac8">-</div></div>
 </div>
@@ -57,9 +58,21 @@ var A=a11*a11+a12*a12,B=a11*a21+a12*a22,C=a21*a21+a22*a22,tr=(A+C)/2,df=Math.sqr
 var smax=Math.sqrt(tr+df),smin=Math.sqrt(Math.max(tr-df,0)),th=0.5*Math.atan2(2*B,A-C),det=Math.abs(a11*a22-a12*a21);
 var rx=Math.max(smax*R*S,1),ry=Math.max(smin*R*S,0.8);
 set(g('je-el'),{cx:u[0],cy:u[1],rx:rx,ry:ry,transform:'rotate('+(-th*180/Math.PI)+' '+u[0]+' '+u[1]+')'});
-var mn=th+Math.PI/2,len=Math.max(ry,12);
-set(g('je-ax'),{x1:u[0]-Math.cos(mn)*len,y1:u[1]+Math.sin(mn)*len,x2:u[0]+Math.cos(mn)*len,y2:u[1]-Math.sin(mn)*len});
-g('je-q2o').textContent=d+'°';g('je-smx').textContent=smax.toFixed(3);g('je-smn').textContent=smin.toFixed(3);
+var NS='http://www.w3.org/2000/svg',lv=g('je-lv'),rv=g('je-rv');lv.innerHTML='';rv.innerHTML='';
+function mk(par,tag,at){var e=document.createElementNS(NS,tag);set(e,at);par.appendChild(e);return e;}
+var Pp=a11*a11+a21*a21,Qq=a11*a12+a21*a22,Ss=a12*a12+a22*a22,ph=0.5*Math.atan2(2*Qq,Pp-Ss);
+var defs=[[Math.cos(ph),Math.sin(ph),'#eceaf4','σmax'],[-Math.sin(ph),Math.cos(ph),'#f3c94f','σmin']];
+for(var i=0;i<2;i++){var vx=defs[i][0],vy=defs[i][1],col=defs[i][2],nm=defs[i][3];
+mk(lv,'line',{x1:110-55*vx,y1:160+55*vy,x2:110+55*vx,y2:160-55*vy,stroke:col,'stroke-width':1.5,'stroke-dasharray':'5 4'});
+mk(lv,'circle',{cx:110+55*vx,cy:160-55*vy,r:4,fill:col});
+var jx=(a11*vx+a12*vy)*R*S,jy=(a21*vx+a22*vy)*R*S,ex2=u[0]+jx,ey2=u[1]-jy;
+mk(rv,'line',{x1:u[0],y1:u[1],x2:ex2,y2:ey2,stroke:col,'stroke-width':3.5,'stroke-linecap':'round'});
+mk(rv,'circle',{cx:ex2,cy:ey2,r:3.5,fill:col});
+var n=Math.hypot(jx,jy)||1,ox=jx/n*14,oy=-jy/n*14,anc=ox>4?'start':(ox<-4?'end':'middle');
+var tx=Math.min(Math.max(ex2+ox,anc==='end'?330:300),anc==='start'?620:676),ty=Math.min(Math.max(ey2+oy+5,14),290);
+if(n<2){tx=u[0]+(i?-14:14);ty=u[1]+(i?18:-10);anc=i?'end':'start';}
+var t=mk(rv,'text',{x:tx,y:ty,'text-anchor':anc,fill:col,'font-size':14,'font-weight':700});t.textContent=nm;}
+g('je-q2o').textContent=d+'°';g('je-smx').textContent=smax.toFixed(3);g('je-smn').textContent=smin.toFixed(3);g('je-smxc').textContent='1°당 '+(smax*Math.PI/1.8).toFixed(2)+' cm';g('je-smnc').textContent='1°당 '+(smin*Math.PI/1.8).toFixed(2)+' cm';
 g('je-det').textContent=det.toFixed(3);g('je-inv').textContent=smin<1e-3?'∞':(1/smin).toFixed(1)+'배';
 g('je-msg').textContent=d===0?'팔이 일직선입니다. 타원이 선으로 눌려서 노란 방향(팔 방향)으로는 손끝이 못 움직입니다. 특이점입니다.':
 (smin<0.08?'타원이 납작해지는 중입니다. 노란 방향으로 조금 가려면 관절이 '+(1/smin).toFixed(0)+'배 빨리 돌아야 합니다.':'타원이 둥글수록 어느 방향이든 고르게 움직입니다.');
