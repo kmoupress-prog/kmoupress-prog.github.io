@@ -22,7 +22,27 @@ math: true
 - $q = (q_1, \dots, q_n)$ = 관절 각도 ($n$ = 관절 수)
 - $\dot q$ = 관절 속도. 숫자 $n$개 묶음(벡터)이고, "각 관절이 지금 얼마나 빨리 도는지"입니다.
 - $\dot x = (v, \omega)$ = 손끝의 선속도 3개 + 각속도 3개 = **6개**
-- $J(q)$ = $6 \times n$ 변환표(행렬, 야코비안). "관절이 이만큼 돌면 손끝이 이만큼 움직인다"는 비율을 담고 있습니다.
+- $J(q)$ = $6 \times n$ 변환표(행렬, 야코비안). "관절이 이만큼 돌면 손끝이 이만큼 움직인다"는 비율을 담고 있습니다. 6축 로봇이면 $6\times6$, 7축이면 $6\times7$입니다.
+
+행 6개는 손끝의 움직임($x, y, z$ 방향 이동 + 회전 3개), 열 $n$개는 각 관절($q_1, \dots, q_n$)입니다.
+
+$$
+J(q) =
+\begin{array}{rcccc}
+ & q_1 & q_2 & \cdots & q_n \\ \hline
+x & \cdot & \cdot & & \cdot \\
+y & \cdot & \cdot & & \cdot \\
+z & \cdot & \cdot & & \cdot \\
+\text{회전}_x & \cdot & \cdot & & \cdot \\
+\text{회전}_y & \cdot & \cdot & & \cdot \\
+\text{회전}_z & \cdot & \cdot & & \cdot
+\end{array}
+$$
+
+예를 들어 칸 $(y,\ q_2)$에는 "2번 관절을 조금 돌렸을 때 손끝이 $y$ 방향으로 얼마나 가는지"가 들어 있습니다.
+
+> 아래 3행은 엄밀히 말하면 roll·pitch·yaw의 변화율이 아니라 $x, y, z$축 둘레의 각속도 $\omega_x, \omega_y, \omega_z$입니다. 작은 회전에서는 거의 같아서 "손끝 회전 3개"로 이해해도 됩니다.
+{: .prompt-tip }
 
 $$
 \dot x = J(q)\,\dot q = \dot q_1 \cdot (\text{1열}) + \dot q_2 \cdot (\text{2열}) + \cdots + \dot q_n \cdot (n\text{열})
