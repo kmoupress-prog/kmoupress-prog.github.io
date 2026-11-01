@@ -42,6 +42,12 @@ $$
 
 예를 들어 $\partial y / \partial q_2$ 칸에는 "2번 관절을 조금 돌렸을 때 손끝이 $y$ 방향으로 얼마나 가는지"가 들어 있습니다. 각 칸의 숫자는 현재 관절 각도 $q$를 넣어 계산합니다.
 
+그래서 2번 관절만 $\Delta q_2$만큼 돌리면 손끝의 $y$ 변화량은
+
+$$
+\Delta y \approx \frac{\partial y}{\partial q_2}\,\Delta q_2
+$$
+
 > 아래 3행은 엄밀히 말하면 roll·pitch·yaw의 변화율이 아니라 $x, y, z$축 둘레의 각속도 $\omega_x, \omega_y, \omega_z$입니다. 작은 회전에서는 거의 같아서 "손끝 회전 3개"로 이해해도 됩니다.
 {: .prompt-tip }
 
