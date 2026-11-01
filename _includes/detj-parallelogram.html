@@ -1,0 +1,62 @@
+<div class="pg-widget" style="max-width:760px;margin:1.5rem auto 2rem;padding:1rem 1rem 1.25rem;background:var(--c-panel);border:1px solid var(--c-line);border-radius:12px">
+<svg width="100%" viewBox="0 0 680 320" role="img" aria-label="두 링크로 만든 평행사변형의 넓이가 det J와 같고 팔을 펴면 0이 되는 모습" style="display:block">
+<line x1="60" y1="270" x2="640" y2="270" stroke="#4a5070" stroke-width="1"/>
+<polygon id="pg-poly" fill="#3ddc97" fill-opacity="0.18" stroke="#3ddc97" stroke-width="1.5" stroke-dasharray="6 4"/>
+<line id="pg-l1" stroke="#5db4f2" stroke-width="10" stroke-linecap="round"/>
+<line id="pg-l2" stroke="#b79cff" stroke-width="10" stroke-linecap="round"/>
+<line id="pg-h" stroke="#f3c94f" stroke-width="2" stroke-dasharray="3 3"/>
+<circle id="pg-j1" r="6.5" fill="#1c1d2b" stroke="#5db4f2" stroke-width="2.5"/>
+<circle id="pg-j2" r="6.5" fill="#1c1d2b" stroke="#5db4f2" stroke-width="2.5"/>
+<circle id="pg-tp" r="5" fill="#eceaf4"/>
+<text id="pg-ht" fill="#f3c94f" font-size="14"></text>
+<text id="pg-at" text-anchor="middle" fill="#3ddc97" font-size="15" font-weight="700"></text>
+<text x="70" y="302" fill="#5db4f2" font-size="13">1번 링크 l₁ = 0.5 (밑변)</text>
+<text x="270" y="302" fill="#b79cff" font-size="13">2번 링크 l₂ = 0.5</text>
+<text x="440" y="302" fill="#f3c94f" font-size="13">높이 = l₂ sin q₂</text>
+</svg>
+<div style="display:flex;align-items:center;gap:12px;margin:10px 0 6px;flex-wrap:wrap">
+<label for="pg-q2" style="font-size:0.95rem;color:var(--c-dim);margin:0">팔꿈치 q₂</label>
+<input type="range" id="pg-q2" min="0" max="180" step="1" value="60" style="flex:1;min-width:160px;accent-color:#3ddc97">
+<span id="pg-q2o" style="font-weight:700;min-width:44px;text-align:right;color:var(--c-text)">60°</span>
+</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px">
+<button type="button" class="pg-pre" data-v="90" style="background:transparent;color:var(--c-text);border:1px solid var(--c-line);border-radius:8px;padding:2px 12px;font-size:0.9rem">90°</button>
+<button type="button" class="pg-pre" data-v="30" style="background:transparent;color:var(--c-text);border:1px solid var(--c-line);border-radius:8px;padding:2px 12px;font-size:0.9rem">30°</button>
+<button type="button" class="pg-pre" data-v="10" style="background:transparent;color:var(--c-text);border:1px solid var(--c-line);border-radius:8px;padding:2px 12px;font-size:0.9rem">10°</button>
+<button type="button" class="pg-pre" data-v="0" style="background:transparent;color:var(--c-text);border:1px solid var(--c-line);border-radius:8px;padding:2px 12px;font-size:0.9rem">0° (일직선)</button>
+<button type="button" class="pg-pre" data-v="180" style="background:transparent;color:var(--c-text);border:1px solid var(--c-line);border-radius:8px;padding:2px 12px;font-size:0.9rem">180° (접힘)</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">
+<div style="background:var(--c-ground);border-radius:8px;padding:0.75rem 1rem"><div style="font-size:0.85rem;color:var(--c-dim)">밑변 × 높이</div><div id="pg-calc" style="font-size:1.15rem;font-weight:700;color:var(--c-text)">-</div></div>
+<div style="background:var(--c-ground);border-radius:8px;padding:0.75rem 1rem"><div style="font-size:0.85rem;color:var(--c-dim)">넓이 = det J</div><div id="pg-det" style="font-size:1.4rem;font-weight:700;color:#3ddc97">-</div></div>
+</div>
+</div>
+<script>
+(function(){
+var L=0.5,S=300,BX=120,BY=270,Q1=15*Math.PI/180;
+function g(i){return document.getElementById(i);}
+function set(e,a){for(var k in a){e.setAttribute(k,a[k]);}}
+function P(x,y){return [BX+x*S,BY-y*S];}
+function upd(){
+var d=+g('pg-q2').value,q2=d*Math.PI/180,q12=Q1+q2;
+var e=[L*Math.cos(Q1),L*Math.sin(Q1)],v=[L*Math.cos(q12),L*Math.sin(q12)],t=[e[0]+v[0],e[1]+v[1]];
+var b=P(0,0),p=P(e[0],e[1]),u=P(t[0],t[1]),w=P(v[0],v[1]);
+set(g('pg-l1'),{x1:b[0],y1:b[1],x2:p[0],y2:p[1]});set(g('pg-l2'),{x1:p[0],y1:p[1],x2:u[0],y2:u[1]});
+set(g('pg-j1'),{cx:b[0],cy:b[1]});set(g('pg-j2'),{cx:p[0],cy:p[1]});set(g('pg-tp'),{cx:u[0],cy:u[1]});
+set(g('pg-poly'),{points:[b,p,u,w].map(function(q){return q.join(',');}).join(' ')});
+var dir=[Math.cos(Q1),Math.sin(Q1)],proj=v[0]*dir[0]+v[1]*dir[1],foot=P(e[0]+proj*dir[0],e[1]+proj*dir[1]);
+var hgt=L*Math.sin(q2),vis=Math.abs(hgt)>0.01;
+set(g('pg-h'),{x1:u[0],y1:u[1],x2:foot[0],y2:foot[1],visibility:vis?'visible':'hidden'});
+var ht=g('pg-ht');ht.textContent=vis?'높이 '+hgt.toFixed(2):'';set(ht,{x:(u[0]+foot[0])/2+10,y:(u[1]+foot[1])/2+4});
+var c=[(b[0]+u[0])/2,(b[1]+u[1])/2],at=g('pg-at');
+at.textContent=Math.abs(hgt)>0.03?'넓이 '+(L*hgt).toFixed(3):'넓이 0 (납작)';set(at,{x:c[0],y:c[1]-(Math.abs(hgt)>0.03?0:22)});
+g('pg-q2o').textContent=d+'°';
+g('pg-calc').textContent='0.5 × '+hgt.toFixed(3)+' = '+(L*hgt).toFixed(3);
+var de=g('pg-det');de.textContent=(L*hgt).toFixed(3);de.style.color=Math.abs(L*hgt)<0.01?'#ff6b6b':'#3ddc97';
+}
+g('pg-q2').addEventListener('input',upd);
+var bs=document.querySelectorAll('.pg-pre');
+for(var i=0;i<bs.length;i++){bs[i].addEventListener('click',function(){g('pg-q2').value=this.getAttribute('data-v');upd();});}
+upd();
+})();
+</script>
