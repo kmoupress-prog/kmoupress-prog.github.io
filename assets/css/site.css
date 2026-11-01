@@ -123,6 +123,28 @@ body {
   }
 }
 
+/* 850–991px: Chirpy pins the sidebar open here, but the content no longer
+   leaves room for it, so it would sit on top of the page. Keep it a drawer. */
+@media (min-width: 850px) and (max-width: 991.98px) {
+  #sidebar {
+    transition: transform 0.4s;
+    transform: translateX(-100%);
+    z-index: 1050;
+  }
+
+  [sidebar-display] #sidebar {
+    transform: translateX(0);
+  }
+
+  [sidebar-display] #main-wrapper {
+    transform: translateX(260px);
+  }
+
+  #sidebar-trigger {
+    display: block;
+  }
+}
+
 /* ---------- header: full-width dark menu bar ---------- */
 
 .site-header {
