@@ -48,7 +48,7 @@ $$
 \Delta y \approx \frac{\partial y}{\partial q_2}\,\Delta q_2
 $$
 
-> 아래 3행의 $\Delta\theta_x, \Delta\theta_y, \Delta\theta_z$는 손끝이 월드 $x, y, z$축 둘레로 돈 작은 각도입니다. 시간으로 나누면 각속도 $\omega_x, \omega_y, \omega_z$가 됩니다. roll·pitch·yaw 값의 변화와는 다릅니다. roll·pitch·yaw는 정해진 순서로 돌린 각도라서, 자세가 0 근처일 때만 둘이 거의 같고 pitch가 $90^\circ$ 근처면 짐벌 락으로 크게 달라집니다.
+> 아래 3행의 $\Delta\theta_x, \Delta\theta_y, \Delta\theta_z$는 손끝이 월드 $x, y, z$축 둘레로 돈 작은 각도입니다. 시간으로 나누면 각속도 $\omega_x, \omega_y, \omega_z$가 됩니다.
 {: .prompt-tip }
 
 $$
