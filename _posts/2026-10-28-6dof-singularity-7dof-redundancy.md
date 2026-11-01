@@ -24,18 +24,18 @@ math: true
 - $\dot x = (v, \omega)$ = 손끝의 선속도 3개 + 각속도 3개 = **6개**
 - $J(q)$ = $6 \times n$ 변환표(행렬, 야코비안). "관절이 이만큼 돌면 손끝이 이만큼 움직인다"는 비율을 담고 있습니다. 6축 로봇이면 $6\times6$, 7축이면 $6\times7$입니다.
 
-행 6개는 손끝의 움직임($x, y, z$ 방향 이동 + 회전 3개), 열 $n$개는 각 관절($q_1, \dots, q_n$)입니다.
+행 6개는 손끝의 움직임($x, y, z$ 방향 이동 + $x, y, z$축 둘레 회전), 열 $n$개는 각 관절($q_1, \dots, q_n$)입니다.
 
 $$
-\underbrace{\begin{bmatrix} \Delta x\\ \Delta y\\ \Delta z\\ \Delta \text{Roll}\\ \Delta \text{Pitch}\\ \Delta \text{Yaw} \end{bmatrix}}_{\text{손끝 이동 } (6\times1)}
+\underbrace{\begin{bmatrix} \Delta x\\ \Delta y\\ \Delta z\\ \Delta \theta_x\\ \Delta \theta_y\\ \Delta \theta_z \end{bmatrix}}_{\text{손끝 이동 } (6\times1)}
 =
 \underbrace{\begin{bmatrix}
 \dfrac{\partial x}{\partial q_1} & \dfrac{\partial x}{\partial q_2} & \cdots & \dfrac{\partial x}{\partial q_n}\\
 \dfrac{\partial y}{\partial q_1} & \dfrac{\partial y}{\partial q_2} & \cdots & \dfrac{\partial y}{\partial q_n}\\
 \dfrac{\partial z}{\partial q_1} & \dfrac{\partial z}{\partial q_2} & \cdots & \dfrac{\partial z}{\partial q_n}\\
-\dfrac{\partial \text{Roll}}{\partial q_1} & \dfrac{\partial \text{Roll}}{\partial q_2} & \cdots & \dfrac{\partial \text{Roll}}{\partial q_n}\\
-\dfrac{\partial \text{Pitch}}{\partial q_1} & \dfrac{\partial \text{Pitch}}{\partial q_2} & \cdots & \dfrac{\partial \text{Pitch}}{\partial q_n}\\
-\dfrac{\partial \text{Yaw}}{\partial q_1} & \dfrac{\partial \text{Yaw}}{\partial q_2} & \cdots & \dfrac{\partial \text{Yaw}}{\partial q_n}
+\dfrac{\partial \theta_x}{\partial q_1} & \dfrac{\partial \theta_x}{\partial q_2} & \cdots & \dfrac{\partial \theta_x}{\partial q_n}\\
+\dfrac{\partial \theta_y}{\partial q_1} & \dfrac{\partial \theta_y}{\partial q_2} & \cdots & \dfrac{\partial \theta_y}{\partial q_n}\\
+\dfrac{\partial \theta_z}{\partial q_1} & \dfrac{\partial \theta_z}{\partial q_2} & \cdots & \dfrac{\partial \theta_z}{\partial q_n}
 \end{bmatrix}}_{J(q)\ (6\times n)}
 \underbrace{\begin{bmatrix} \Delta q_1\\ \Delta q_2\\ \vdots\\ \Delta q_n \end{bmatrix}}_{\text{관절 변화 } (n\times1)}
 $$
@@ -48,7 +48,7 @@ $$
 \Delta y \approx \frac{\partial y}{\partial q_2}\,\Delta q_2
 $$
 
-> 아래 3행은 엄밀히 말하면 roll·pitch·yaw의 변화율이 아니라 $x, y, z$축 둘레의 각속도 $\omega_x, \omega_y, \omega_z$입니다. 작은 회전에서는 거의 같아서 "손끝 회전 3개"로 이해해도 됩니다.
+> 아래 3행의 $\Delta\theta_x, \Delta\theta_y, \Delta\theta_z$는 손끝이 월드 $x, y, z$축 둘레로 돈 작은 각도입니다. 시간으로 나누면 각속도 $\omega_x, \omega_y, \omega_z$가 됩니다. roll·pitch·yaw 값의 변화와는 다릅니다. roll·pitch·yaw는 정해진 순서로 돌린 각도라서, 자세가 0 근처일 때만 둘이 거의 같고 pitch가 $90^\circ$ 근처면 짐벌 락으로 크게 달라집니다.
 {: .prompt-tip }
 
 $$
