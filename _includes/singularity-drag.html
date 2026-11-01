@@ -1,0 +1,97 @@
+<div class="sd-widget" style="max-width:760px;margin:1.5rem auto 2rem;padding:1rem 1rem 1.25rem;background:var(--c-panel);border:1px solid var(--c-line);border-radius:12px">
+<svg id="sd-sv" width="100%" viewBox="0 0 680 460" role="img" aria-label="손끝을 끌어서 2관절 팔을 움직이며 det J가 0이 되는 자세를 찾는 시뮬레이션" style="display:block;touch-action:none;cursor:crosshair;user-select:none">
+<circle id="sd-out" fill="none" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="6 5"/>
+<circle id="sd-in" fill="#ff6b6b" fill-opacity="0.08" stroke="#ff6b6b" stroke-width="1.5" stroke-dasharray="6 5"/>
+<text id="sd-outl" fill="#ff6b6b" font-size="13" text-anchor="middle">det J = 0 (팔이 완전히 펴짐)</text>
+<text id="sd-inl" fill="#ff6b6b" font-size="13" text-anchor="start">det J = 0 (완전히 접힘)</text>
+<line id="sd-inlead" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="3 3"/>
+<rect id="sd-base" width="44" height="12" rx="2" fill="#4a5070"/>
+<line id="sd-gap" stroke="#f59ac8" stroke-width="1.5" stroke-dasharray="4 4"/>
+<line id="sd-l1" stroke="#5db4f2" stroke-width="10" stroke-linecap="round"/>
+<line id="sd-l2" stroke="#5db4f2" stroke-width="10" stroke-linecap="round"/>
+<circle id="sd-j1" r="6.5" fill="#1c1d2b" stroke="#5db4f2" stroke-width="2.5"/>
+<circle id="sd-j2" r="6.5" fill="#1c1d2b" stroke="#5db4f2" stroke-width="2.5"/>
+<ellipse id="sd-el" fill="#f59ac8" fill-opacity="0.15" stroke="#f59ac8" stroke-width="2"/>
+<line id="sd-ax" stroke="#f3c94f" stroke-width="3" stroke-linecap="round"/>
+<circle id="sd-tip" r="5" fill="#eceaf4"/>
+<g id="sd-tg"><circle id="sd-tc" r="11" fill="#f59ac8" fill-opacity="0.25" stroke="#f59ac8" stroke-width="2"/><circle id="sd-td" r="3" fill="#f59ac8"/></g>
+<text id="sd-stop" fill="#f59ac8" font-size="13" text-anchor="middle"></text>
+<text x="20" y="392" fill="#a9acc4" font-size="12">det J 기록 (아래 빨간 점선 = 0)</text>
+<rect x="20" y="398" width="640" height="56" rx="6" fill="#1c1d2b"/>
+<line x1="20" y1="450" x2="660" y2="450" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="4 4"/>
+<polyline id="sd-spark" fill="none" stroke="#5db4f2" stroke-width="2" stroke-linejoin="round"/>
+</svg>
+<p style="font-size:0.9rem;color:var(--c-dim);margin:6px 0 10px">분홍 원(목표)을 끌어 보세요. 손끝이 목표를 따라가고, 빨간 점선에 닿으면 det J = 0입니다.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px">
+<button type="button" id="sd-b-out" style="background:transparent;color:var(--c-text);border:1px solid var(--c-line);border-radius:8px;padding:3px 12px;font-size:0.9rem">시연: 바깥으로 쭉 뻗기</button>
+<button type="button" id="sd-b-in" style="background:transparent;color:var(--c-text);border:1px solid var(--c-line);border-radius:8px;padding:3px 12px;font-size:0.9rem">시연: 베이스 쪽으로 접기</button>
+<button type="button" id="sd-b-elb" style="background:transparent;color:var(--c-text);border:1px solid var(--c-line);border-radius:8px;padding:3px 12px;font-size:0.9rem">팔꿈치 위/아래 바꾸기</button>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px">
+<div style="background:var(--c-ground);border-radius:8px;padding:0.75rem 1rem"><div style="font-size:0.85rem;color:var(--c-dim)">팔꿈치 q₂</div><div id="sd-q2" style="font-size:1.4rem;font-weight:700;color:var(--c-text)">-</div></div>
+<div style="background:var(--c-ground);border-radius:8px;padding:0.75rem 1rem"><div style="font-size:0.85rem;color:var(--c-dim)">det J = l₁l₂ sin q₂</div><div id="sd-det" style="font-size:1.4rem;font-weight:700;color:var(--c-text)">-</div></div>
+<div style="background:var(--c-ground);border-radius:8px;padding:0.75rem 1rem"><div style="font-size:0.85rem;color:var(--c-dim)">1/σ<sub>min</sub> 폭주 배율</div><div id="sd-inv" style="font-size:1.4rem;font-weight:700;color:#f59ac8">-</div></div>
+</div>
+<p id="sd-msg" style="font-size:0.95rem;margin:12px 0 0;color:var(--c-dim)"></p>
+</div>
+<script>
+(function(){
+var L1=0.5,L2=0.35,S=190,BX=340,BY=200,R=0.3,RMAX=L1+L2,RMIN=Math.abs(L1-L2);
+var elbow=1,T=[0.45,0.35],hist=[],anim=null;
+function g(id){return document.getElementById(id);}
+function set(el,a){for(var k in a){el.setAttribute(k,a[k]);}}
+function P(x,y){return [BX+x*S,BY-y*S];}
+var sv=g('sd-sv');
+set(g('sd-out'),{cx:BX,cy:BY,r:RMAX*S});set(g('sd-in'),{cx:BX,cy:BY,r:RMIN*S});
+set(g('sd-outl'),{x:BX,y:BY-RMAX*S-8});
+set(g('sd-inl'),{x:BX+70,y:BY+70});set(g('sd-inlead'),{x1:BX+RMIN*S*0.7,y1:BY+RMIN*S*0.7,x2:BX+66,y2:BY+65});
+set(g('sd-base'),{x:BX-22,y:BY+8});
+function ik(tx,ty){
+ var r=Math.hypot(tx,ty),rc=Math.min(Math.max(r,RMIN),RMAX),ang=Math.atan2(ty,tx);
+ var c2=(rc*rc-L1*L1-L2*L2)/(2*L1*L2);c2=Math.min(1,Math.max(-1,c2));
+ var q2=elbow*Math.acos(c2),q1=ang-Math.atan2(L2*Math.sin(q2),L1+L2*Math.cos(q2));
+ return [q1,q2,r>RMAX+1e-6?1:(r<RMIN-1e-6?-1:0)];
+}
+function upd(){
+ var s=ik(T[0],T[1]),q1=s[0],q2=s[1],q12=q1+q2;
+ var ex=L1*Math.cos(q1),ey=L1*Math.sin(q1),tx=ex+L2*Math.cos(q12),ty=ey+L2*Math.sin(q12);
+ var b=P(0,0),p=P(ex,ey),u=P(tx,ty),t=P(T[0],T[1]);
+ set(g('sd-l1'),{x1:b[0],y1:b[1],x2:p[0],y2:p[1]});set(g('sd-l2'),{x1:p[0],y1:p[1],x2:u[0],y2:u[1]});
+ set(g('sd-j1'),{cx:b[0],cy:b[1]});set(g('sd-j2'),{cx:p[0],cy:p[1]});set(g('sd-tip'),{cx:u[0],cy:u[1]});
+ set(g('sd-tc'),{cx:t[0],cy:t[1]});set(g('sd-td'),{cx:t[0],cy:t[1]});
+ var a11=-L1*Math.sin(q1)-L2*Math.sin(q12),a12=-L2*Math.sin(q12),a21=L1*Math.cos(q1)+L2*Math.cos(q12),a22=L2*Math.cos(q12);
+ var A=a11*a11+a12*a12,B=a11*a21+a12*a22,C=a21*a21+a22*a22,tr=(A+C)/2,df=Math.sqrt(Math.pow((A-C)/2,2)+B*B);
+ var smax=Math.sqrt(tr+df),smin=Math.sqrt(Math.max(tr-df,0)),th=0.5*Math.atan2(2*B,A-C),det=a11*a22-a12*a21;
+ set(g('sd-el'),{cx:u[0],cy:u[1],rx:Math.max(smax*R*S,1),ry:Math.max(smin*R*S,0.8),transform:'rotate('+(-th*180/Math.PI)+' '+u[0]+' '+u[1]+')'});
+ var mn=th+Math.PI/2,len=Math.max(smin*R*S,14);
+ set(g('sd-ax'),{x1:u[0]-Math.cos(mn)*len,y1:u[1]+Math.sin(mn)*len,x2:u[0]+Math.cos(mn)*len,y2:u[1]-Math.sin(mn)*len});
+ var off=s[2]!==0&&Math.hypot(t[0]-u[0],t[1]-u[1])>4;
+ set(g('sd-gap'),off?{x1:u[0],y1:u[1],x2:t[0],y2:t[1],visibility:'visible'}:{visibility:'hidden'});
+ var st=g('sd-stop');st.textContent=off?'여기서 더 못 감':'';set(st,{x:(u[0]+t[0])/2,y:(u[1]+t[1])/2-12});
+ var ad=Math.abs(det),near=ad<0.02,zero=ad<0.002;
+ g('sd-q2').textContent=(q2*180/Math.PI).toFixed(1)+'°';
+ var de=g('sd-det');de.textContent=det.toFixed(3);de.style.color=zero?'#ff6b6b':(near?'#f3c94f':'var(--c-text)');
+ g('sd-inv').textContent=smin<1e-3?'∞':(1/smin).toFixed(1)+'배';
+ var m=g('sd-msg');
+ if(zero&&Math.cos(q2)>0){m.style.color='#ff6b6b';m.textContent='특이점: 팔이 일직선으로 다 펴졌습니다(q₂ = 0°). 노란 방향(팔 방향, 바깥쪽)으로는 관절을 어떻게 돌려도 손끝이 못 나갑니다.';}
+ else if(zero){m.style.color='#ff6b6b';m.textContent='특이점: 팔이 완전히 접혔습니다(q₂ = ±180°). 이번에도 팔 방향(노란 선)으로는 손끝이 못 움직입니다.';}
+ else if(near){m.style.color='#f3c94f';m.textContent='특이점 근처: 타원이 납작합니다. 노란 방향으로 조금 가려면 관절이 '+(1/smin).toFixed(0)+'배 빨리 돌아야 합니다.';}
+ else{m.style.color='var(--c-dim)';m.textContent='정상: 타원이 둥글어서 어느 방향으로든 손끝을 움직일 수 있습니다.';}
+ hist.push(ad);if(hist.length>160)hist.shift();
+ var pts=[],mx=L1*L2;for(var i=0;i<hist.length;i++){pts.push((20+i*4)+','+(450-hist[i]/mx*46).toFixed(1));}
+ set(g('sd-spark'),{points:pts.join(' ')});
+}
+function toW(ev){var pt=sv.createSVGPoint();pt.x=ev.clientX;pt.y=ev.clientY;var q=pt.matrixTransform(sv.getScreenCTM().inverse());return [(q.x-BX)/S,(BY-q.y)/S];}
+var drag=false;
+sv.addEventListener('pointerdown',function(e){var w=toW(e);if(w[1]<-0.9)return;drag=true;stop();T=w;upd();try{sv.setPointerCapture(e.pointerId);}catch(x){}e.preventDefault();});
+sv.addEventListener('pointermove',function(e){if(!drag)return;var w=toW(e);T=[w[0],Math.max(w[1],-0.9)];upd();});
+function end(){drag=false;}
+sv.addEventListener('pointerup',end);sv.addEventListener('pointercancel',end);
+function stop(){if(anim){cancelAnimationFrame(anim);anim=null;}}
+function play(from,to){stop();var t0=null,dur=2600;function step(ts){if(t0===null)t0=ts;var k=Math.min((ts-t0)/dur,1),e=k<0.5?2*k*k:1-Math.pow(-2*k+2,2)/2;T=[from[0]+(to[0]-from[0])*e,from[1]+(to[1]-from[1])*e];upd();if(k<1)anim=requestAnimationFrame(step);else anim=null;}anim=requestAnimationFrame(step);}
+g('sd-b-out').addEventListener('click',function(){var d=[Math.cos(0.6),Math.sin(0.6)];play([d[0]*0.45,d[1]*0.45],[d[0]*1.0,d[1]*1.0]);});
+g('sd-b-in').addEventListener('click',function(){var d=[Math.cos(0.6),Math.sin(0.6)];play([d[0]*0.6,d[1]*0.6],[d[0]*0.05,d[1]*0.05]);});
+g('sd-b-elb').addEventListener('click',function(){elbow=-elbow;upd();});
+upd();
+})();
+</script>
