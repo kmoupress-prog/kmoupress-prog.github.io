@@ -27,19 +27,20 @@ math: true
 행 6개는 손끝의 움직임($x, y, z$ 방향 이동 + 회전 3개), 열 $n$개는 각 관절($q_1, \dots, q_n$)입니다.
 
 $$
-J(q) =
-\begin{array}{rcccc}
- & q_1 & q_2 & \cdots & q_n \\ \hline
-x & \cdot & \cdot & & \cdot \\
-y & \cdot & \cdot & & \cdot \\
-z & \cdot & \cdot & & \cdot \\
-\text{Roll} & \cdot & \cdot & & \cdot \\
-\text{Pitch} & \cdot & \cdot & & \cdot \\
-\text{Yaw} & \cdot & \cdot & & \cdot
-\end{array}
+\underbrace{\begin{bmatrix} \Delta x\\ \Delta y\\ \Delta z\\ \Delta \text{Roll}\\ \Delta \text{Pitch}\\ \Delta \text{Yaw} \end{bmatrix}}_{\text{손끝 이동 } (6\times1)}
+=
+\underbrace{\begin{bmatrix}
+\dfrac{\partial x}{\partial q_1} & \dfrac{\partial x}{\partial q_2} & \cdots & \dfrac{\partial x}{\partial q_n}\\
+\dfrac{\partial y}{\partial q_1} & \dfrac{\partial y}{\partial q_2} & \cdots & \dfrac{\partial y}{\partial q_n}\\
+\dfrac{\partial z}{\partial q_1} & \dfrac{\partial z}{\partial q_2} & \cdots & \dfrac{\partial z}{\partial q_n}\\
+\dfrac{\partial \text{Roll}}{\partial q_1} & \dfrac{\partial \text{Roll}}{\partial q_2} & \cdots & \dfrac{\partial \text{Roll}}{\partial q_n}\\
+\dfrac{\partial \text{Pitch}}{\partial q_1} & \dfrac{\partial \text{Pitch}}{\partial q_2} & \cdots & \dfrac{\partial \text{Pitch}}{\partial q_n}\\
+\dfrac{\partial \text{Yaw}}{\partial q_1} & \dfrac{\partial \text{Yaw}}{\partial q_2} & \cdots & \dfrac{\partial \text{Yaw}}{\partial q_n}
+\end{bmatrix}}_{J(q)\ (6\times n)}
+\underbrace{\begin{bmatrix} \Delta q_1\\ \Delta q_2\\ \vdots\\ \Delta q_n \end{bmatrix}}_{\text{관절 변화 } (n\times1)}
 $$
 
-예를 들어 칸 $(y,\ q_2)$에는 "2번 관절을 조금 돌렸을 때 손끝이 $y$ 방향으로 얼마나 가는지"가 들어 있습니다.
+예를 들어 $\partial y / \partial q_2$ 칸에는 "2번 관절을 조금 돌렸을 때 손끝이 $y$ 방향으로 얼마나 가는지"가 들어 있습니다. 각 칸의 숫자는 현재 관절 각도 $q$를 넣어 계산합니다.
 
 > 아래 3행은 엄밀히 말하면 roll·pitch·yaw의 변화율이 아니라 $x, y, z$축 둘레의 각속도 $\omega_x, \omega_y, \omega_z$입니다. 작은 회전에서는 거의 같아서 "손끝 회전 3개"로 이해해도 됩니다.
 {: .prompt-tip }
