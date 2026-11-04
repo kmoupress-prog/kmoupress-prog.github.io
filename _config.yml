@@ -203,6 +203,15 @@ defaults:
       # DO NOT modify the following parameter unless you are confident enough
       # to update the code of all other post links in this project.
       permalink: /posts/:title/
+  # MIT OCW 6.801 lecture notes are CC BY-NC-SA 4.0, so the write-ups must share alike
+  # (shown via _plugins/post-license-hook.rb)
+  - scope:
+      path: "_posts/*-mit-mv-*"
+      type: posts
+    values:
+      license:
+        name: CC BY-NC-SA 4.0
+        link: https://creativecommons.org/licenses/by-nc-sa/4.0/
   - scope:
       path: _drafts
     values:
