@@ -106,7 +106,7 @@ $$
 \text{DOF}(n) = n + \frac{n(n-1)}{2} \quad\Longrightarrow\quad \text{DOF}(3) = 6
 $$
 
-![2차원 물체의 x·y 이동과 회전 1개, 3차원 상자의 x·y·z 이동과 x·y·z축 둘레 회전](/assets/img/posts/mv/lec17-dof.png)
+![2차원 물체의 x·y 이동과 종이를 뚫고 나오는 축 둘레 회전 1개, 3차원 상자의 x·y·z축 방향 이동 3개와 x·y·z축 둘레 회전 3개](/assets/img/posts/mv/lec17-dof-v2.png)
 _2D에서는 $$\text{DOF}(2) = 2 + 1 = 3$$, 3D에서는 $$\text{DOF}(3) = 3 + 3 = 6$$입니다. 이 숫자들을 모두 정하면 자세가 하나로 정해집니다._
 
 회전을 3×3 행렬로 쓰면 숫자는 9개지만 조건이 붙습니다.
