@@ -1527,3 +1527,239 @@ article .content h3 {
   border-top: 1px solid var(--c-line);
   color: var(--c-dim);
 }
+
+/* ---------- home: night-sky look (applies only to the home page) ---------- */
+
+/* the home page swaps the board palette for a deep-blue night sky */
+:root:has(.gh-sky) {
+  --c-ground: #050c22;
+  --c-deep: #030718;
+  --c-panel: #0b1838;
+  --c-line: #1c3263;
+  --c-text: #eef4ff;
+  --c-dim: #a9bbe0;
+  --c-pink: #7fdcff;
+  --c-gold: #7fdcff;
+  --c-card: #eef4ff;
+  --c-card-ink: #071a4a;
+}
+
+.gh-hero.gh-sky {
+  --gh-sky-h: clamp(520px, 72vh, 760px);
+  position: relative;
+  height: var(--gh-sky-h);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #071a4a;
+  border-bottom: 0;
+}
+
+.gh-sky-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* the ground is the bottom sixth of the drawing, so the wordmark stands just above the horizon */
+.gh-sky .gh-hero-inner {
+  width: 100%;
+  padding: 0 1rem calc(var(--gh-sky-h) / 6 + 3rem);
+  text-align: center;
+}
+
+.gh-sky .gh-news {
+  max-width: min(34rem, 100%);
+  margin: 0 auto;
+}
+
+.gh-sky .gh-new {
+  justify-content: center;
+  text-shadow: 0 1px 10px rgb(3 7 24 / 80%);
+}
+
+.gh-sky .gh-new b {
+  border-color: var(--c-card);
+  text-shadow: none;
+}
+
+.gh-sky .gh-wordmark {
+  width: auto;
+  margin: 0.9rem 0 0;
+  align-items: center;
+}
+
+.gh-sky .gh-wordmark-en {
+  font-size: clamp(3.2rem, 9vw, 7.5rem);
+  color: #fff;
+  text-shadow: 0 0 36px rgb(127 220 255 / 60%);
+}
+
+.ghs-t1 { animation: ghs-twinkle 3.2s ease-in-out infinite; }
+.ghs-t2 { animation: ghs-twinkle 4.4s ease-in-out 0.9s infinite; }
+.ghs-t3 { animation: ghs-twinkle 5.6s ease-in-out 1.7s infinite; }
+.ghs-m1 { animation: ghs-streak 4s ease-in-out infinite; }
+.ghs-m2 { animation: ghs-streak 5s ease-in-out 1.2s infinite; }
+.ghs-m3 { animation: ghs-streak 6s ease-in-out 2.1s infinite; }
+
+@keyframes ghs-twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes ghs-streak {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ghs-t1, .ghs-t2, .ghs-t3, .ghs-m1, .ghs-m2, .ghs-m3 {
+    animation: none;
+  }
+}
+
+/* Research series cards */
+.gh-research {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding: 4.5rem clamp(1.5rem, 5.6vw, 7rem) 0;
+}
+
+.gh-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  border-bottom: 1px solid var(--c-line);
+}
+
+.gh-section-head .gh-latest-title {
+  border-bottom: 0;
+}
+
+.gh-section-note {
+  color: var(--c-dim);
+  font-size: 0.95rem;
+}
+
+.gh-series {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+a.gh-series-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--c-panel);
+  border: 1px solid var(--c-line) !important;
+  border-radius: 12px;
+  color: var(--c-text) !important;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+a.gh-series-card:hover,
+a.gh-series-card:focus-visible {
+  border-color: var(--c-pink) !important;
+  transform: translateY(-2px);
+}
+
+.gh-series-cat {
+  color: var(--c-pink);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.gh-series-title {
+  font-family: var(--site-display);
+  font-size: 1.75rem;
+  line-height: 1.2;
+  word-break: keep-all;
+}
+
+.gh-series-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.gh-series-count {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--site-mono);
+  font-size: 0.82rem;
+}
+
+.gh-series-bar {
+  display: block;
+  height: 8px;
+  border-radius: 4px;
+  background: var(--c-line);
+  overflow: hidden;
+}
+
+.gh-series-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--c-pink);
+}
+
+.gh-series-latest {
+  margin-top: auto;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--c-line);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+/* latest posts: one full-width column, with the top category beside the date */
+:root:has(.gh-sky) .gh-latest {
+  grid-template-columns: minmax(0, 1fr);
+  padding-bottom: 3rem;
+}
+
+:root:has(.gh-sky) .gh-latest-title {
+  color: #fff;
+}
+
+:root:has(.gh-sky) .gh-latest-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--c-panel);
+}
+
+.gh-latest-cat {
+  flex-shrink: 0;
+  width: 4.5rem;
+  color: var(--c-dim);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a.gh-series-card {
+    transition: none;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .gh-hero.gh-sky {
+    --gh-sky-h: clamp(440px, 64vh, 620px);
+  }
+
+  .gh-research {
+    padding: 2.5rem 1rem 0;
+  }
+
+  .gh-latest-cat {
+    width: auto;
+    line-height: 1.6;
+  }
+}

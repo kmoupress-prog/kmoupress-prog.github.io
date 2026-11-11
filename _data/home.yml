@@ -1,12 +1,28 @@
 # Home page (_layouts/home.html). Edit freely.
 
-# Hero: a full-width solid colour block with the news ticker and a wordmark.
+# Hero: a full-width night sky (_includes/home-sky.html) with the news ticker and a wordmark.
 hero_title: 규태의 노트
 
-# Latest posts list under the band
-latest_title: 최신 정보
-latest_count: 12
+# Research series cards under the hero. One card per category.
+#   category: the category name used in posts (the card links to that category page)
+#   title:    big text on the card; if left out, the newest post's title is shown
+#   total:    number of posts when the series is finished; draws a progress bar (leave out for no bar)
+#   unit:     word after the count, e.g. 강 → "23 / 23강"
+research_title: Research
+research_note: 시리즈별로 묶어 보기
+research:
+  - category: 머신비전
+    title: MIT 머신비전 강의 노트
+    total: 23
+    unit: 강
+  - category: SLAM
+  - category: 로보틱스
 
-# Button under the featured post: burumarchive online game. The tunnel address changes when the tunnel restarts; update it here.
+# Latest posts list at the bottom
+latest_title: 최신 글
+latest_count: 5
+
+# Burumarchive online game address (the home page no longer shows the button; kept here for reference).
+# The tunnel address changes when the tunnel restarts.
 game_label: 게임하러 가기
 game_url: https://freight-acquisitions-playing-julie.trycloudflare.com/

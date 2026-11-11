@@ -1,0 +1,139 @@
+<!-- Home hero backdrop: a night sky drawn in SVG (stars, meteors, a bright horizon). Decorative only.
+     The scene is 2880 wide so wide screens see more sky instead of a zoomed-in crop; the middle 1440 is the composed part. -->
+<svg class="gh-sky-art" aria-hidden="true" focusable="false" viewBox="-720 0 2880 720" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="ghs-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#030718"></stop>
+      <stop offset="0.38" stop-color="#071a4a"></stop>
+      <stop offset="0.68" stop-color="#0d3f8f"></stop>
+      <stop offset="0.88" stop-color="#2a8fd6"></stop>
+      <stop offset="1" stop-color="#a6e8ff"></stop>
+    </linearGradient>
+    <linearGradient id="ghs-ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c3273"></stop>
+      <stop offset="1" stop-color="#030718"></stop>
+    </linearGradient>
+    <linearGradient id="ghs-fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"></stop>
+      <stop offset="0.6" stop-color="#ffffff"></stop>
+      <stop offset="0.85" stop-color="#000000"></stop>
+    </linearGradient>
+    <linearGradient id="ghs-met" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5fe0ff" stop-opacity="0"></stop>
+      <stop offset="0.7" stop-color="#5fe0ff" stop-opacity="0.7"></stop>
+      <stop offset="1" stop-color="#eafcff"></stop>
+    </linearGradient>
+    <mask id="ghs-star-mask"><rect x="-720" width="2880" height="720" fill="url(#ghs-fade)"></rect></mask>
+    <pattern id="ghs-stars-a" width="360" height="360" patternUnits="userSpaceOnUse">
+      <circle cx="24" cy="40" r="1.1" fill="#ffffff"></circle>
+      <circle cx="96" cy="130" r="0.8" fill="#cfe3ff"></circle>
+      <circle cx="150" cy="22" r="1.4" fill="#ffffff"></circle>
+      <circle cx="210" cy="96" r="0.7" fill="#ffffff"></circle>
+      <circle cx="268" cy="48" r="1" fill="#bfe0ff"></circle>
+      <circle cx="330" cy="150" r="1.3" fill="#ffffff"></circle>
+      <circle cx="60" cy="230" r="0.9" fill="#ffffff"></circle>
+      <circle cx="130" cy="300" r="1.2" fill="#d8ecff"></circle>
+      <circle cx="196" cy="210" r="0.7" fill="#ffffff"></circle>
+      <circle cx="250" cy="280" r="1" fill="#ffffff"></circle>
+      <circle cx="310" cy="244" r="0.8" fill="#cfe3ff"></circle>
+      <circle cx="344" cy="330" r="1.1" fill="#ffffff"></circle>
+      <circle cx="18" cy="336" r="0.7" fill="#ffffff"></circle>
+      <circle cx="176" cy="160" r="0.6" fill="#ffffff"></circle>
+    </pattern>
+    <pattern id="ghs-stars-b" width="520" height="520" patternUnits="userSpaceOnUse" patternTransform="translate(130 70)">
+      <circle cx="40" cy="90" r="1.6" fill="#ffffff"></circle>
+      <circle cx="170" cy="40" r="0.9" fill="#ffffff"></circle>
+      <circle cx="290" cy="180" r="1.8" fill="#e6f4ff"></circle>
+      <circle cx="420" cy="80" r="1" fill="#ffffff"></circle>
+      <circle cx="480" cy="260" r="1.5" fill="#ffffff"></circle>
+      <circle cx="110" cy="310" r="1.1" fill="#cfe3ff"></circle>
+      <circle cx="230" cy="420" r="1.7" fill="#ffffff"></circle>
+      <circle cx="370" cy="360" r="0.9" fill="#ffffff"></circle>
+      <circle cx="60" cy="470" r="1.2" fill="#ffffff"></circle>
+      <circle cx="450" cy="470" r="0.8" fill="#d8ecff"></circle>
+    </pattern>
+    <filter id="ghs-blur40" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="40"></feGaussianBlur></filter>
+    <filter id="ghs-blur24" x="-50%" y="-200%" width="200%" height="500%"><feGaussianBlur stdDeviation="24"></feGaussianBlur></filter>
+    <filter id="ghs-blur8" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8"></feGaussianBlur></filter>
+  </defs>
+
+  <!-- sky, milky way, stars -->
+  <rect x="-720" width="2880" height="600" fill="url(#ghs-sky)"></rect>
+  <ellipse cx="760" cy="230" rx="540" ry="110" transform="rotate(-28 760 230)" fill="#6f9dff" opacity="0.3" filter="url(#ghs-blur40)"></ellipse>
+  <ellipse cx="770" cy="236" rx="270" ry="46" transform="rotate(-28 770 236)" fill="#d6e6ff" opacity="0.28" filter="url(#ghs-blur40)"></ellipse>
+  <g mask="url(#ghs-star-mask)">
+    <rect x="-720" width="2880" height="600" fill="url(#ghs-stars-a)"></rect>
+    <rect x="-720" width="2880" height="600" fill="url(#ghs-stars-b)"></rect>
+  </g>
+  <g fill="#020614" opacity="0.4" filter="url(#ghs-blur8)">
+    <ellipse cx="330" cy="250" rx="150" ry="16"></ellipse>
+    <ellipse cx="1120" cy="320" rx="190" ry="18"></ellipse>
+    <ellipse cx="620" cy="400" rx="130" ry="12"></ellipse>
+    <ellipse cx="-380" cy="300" rx="180" ry="16"></ellipse>
+    <ellipse cx="1820" cy="260" rx="170" ry="15"></ellipse>
+  </g>
+
+  <!-- a few stars that twinkle -->
+  <g fill="#ffffff">
+    <circle class="ghs-t1" cx="250" cy="110" r="2.2"></circle>
+    <circle class="ghs-t2" cx="480" cy="170" r="1.8"></circle>
+    <circle class="ghs-t3" cx="900" cy="70" r="2.4"></circle>
+    <circle class="ghs-t1" cx="1210" cy="190" r="2"></circle>
+    <circle class="ghs-t2" cx="1380" cy="60" r="2.2"></circle>
+    <circle class="ghs-t3" cx="100" cy="230" r="1.8"></circle>
+    <circle class="ghs-t1" cx="-300" cy="150" r="2.2"></circle>
+    <circle class="ghs-t2" cx="-560" cy="80" r="2"></circle>
+    <circle class="ghs-t3" cx="1700" cy="130" r="2.2"></circle>
+    <circle class="ghs-t1" cx="1980" cy="210" r="2"></circle>
+  </g>
+
+  <!-- camera path drawn as a small constellation -->
+  <polyline points="930,130 1010,96 1090,136 1180,104 1262,140" fill="none" stroke="#cfe9ff" stroke-width="1" opacity="0.55"></polyline>
+  <g fill="#ffffff">
+    <circle cx="930" cy="130" r="2.6"></circle>
+    <circle cx="1010" cy="96" r="2.6"></circle>
+    <circle cx="1090" cy="136" r="2.6"></circle>
+    <circle cx="1180" cy="104" r="2.6"></circle>
+    <circle cx="1262" cy="140" r="2.6"></circle>
+  </g>
+
+  <!-- meteors -->
+  <g stroke="url(#ghs-met)" stroke-linecap="round" fill="none">
+    <line class="ghs-m1" x1="470" y1="40" x2="190" y2="330" stroke-width="10" opacity="0.3" filter="url(#ghs-blur8)"></line>
+    <line class="ghs-m1" x1="470" y1="40" x2="190" y2="330" stroke-width="3"></line>
+    <line class="ghs-m2" x1="1330" y1="110" x2="1050" y2="400" stroke-width="10" opacity="0.3" filter="url(#ghs-blur8)"></line>
+    <line class="ghs-m2" x1="1330" y1="110" x2="1050" y2="400" stroke-width="3"></line>
+    <line class="ghs-m3" x1="1560" y1="60" x2="1396" y2="230" stroke-width="2.5"></line>
+    <line class="ghs-m3" x1="160" y1="14" x2="58" y2="120" stroke-width="2.5"></line>
+    <line class="ghs-m2" x1="-200" y1="90" x2="-440" y2="340" stroke-width="3"></line>
+    <line class="ghs-m1" x1="2010" y1="150" x2="1800" y2="368" stroke-width="3"></line>
+  </g>
+  <g stroke="#ffffff" stroke-width="1.5" stroke-linecap="round">
+    <line class="ghs-t1" x1="170" y1="330" x2="210" y2="330"></line>
+    <line class="ghs-t1" x1="190" y1="316" x2="190" y2="344"></line>
+    <line class="ghs-t2" x1="1030" y1="400" x2="1070" y2="400"></line>
+    <line class="ghs-t2" x1="1050" y1="386" x2="1050" y2="414"></line>
+  </g>
+  <g fill="#ffffff">
+    <circle cx="190" cy="330" r="3"></circle>
+    <circle cx="1050" cy="400" r="3"></circle>
+    <circle cx="1396" cy="230" r="2.2"></circle>
+    <circle cx="58" cy="120" r="2.2"></circle>
+    <circle cx="-440" cy="340" r="2.6"></circle>
+    <circle cx="1800" cy="368" r="2.6"></circle>
+  </g>
+
+  <!-- the bright star -->
+  <circle cx="700" cy="210" r="30" fill="#bfdcff" opacity="0.55" filter="url(#ghs-blur8)"></circle>
+  <g class="ghs-t3" stroke="#ffffff" stroke-linecap="round" stroke-width="1.5">
+    <line x1="630" y1="210" x2="770" y2="210"></line>
+    <line x1="700" y1="160" x2="700" y2="260"></line>
+  </g>
+  <circle cx="700" cy="210" r="4.5" fill="#ffffff"></circle>
+
+  <!-- horizon glow and the ground -->
+  <ellipse cx="720" cy="598" rx="1700" ry="44" fill="#c9f1ff" opacity="0.8" filter="url(#ghs-blur24)"></ellipse>
+  <rect x="-720" y="600" width="2880" height="120" fill="url(#ghs-ground)"></rect>
+  <rect x="-720" y="599" width="2880" height="2" fill="#eafcff" opacity="0.8"></rect>
+  <ellipse cx="720" cy="640" rx="520" ry="26" fill="#7fd0ff" opacity="0.22" filter="url(#ghs-blur24)"></ellipse>
+</svg>
