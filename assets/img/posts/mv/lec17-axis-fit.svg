@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 574" role="img" aria-labelledby="title desc">
+<title id="title">점 구름이 뻗은 방향으로 회전 후보 찾기</title>
+<desc id="desc">두 점 구름을 각각 중심에 놓고, 짧은 축과 긴 축까지의 수직거리를 비교한 뒤, B의 긴 축을 A의 긴 축에 맞춘다.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#334155"/></marker></defs>
+<style>text{font-family:system-ui,sans-serif;fill:#172b46}.title{font-size:20px;font-weight:700}.label{font-size:17px}</style>
+<rect x="5" y="4" width="590" height="133" rx="12" fill="#f8fafc" stroke="#c3cfdc"/>
+<text x="23" y="34" class="title">1. A와 B에서 같은 형상을 본다</text>
+<g transform="translate(156 80) rotate(0)">
+<circle cx="-66" cy="-3" r="3.4" fill="#1859ad"/>
+<circle cx="-46" cy="8" r="3.4" fill="#1859ad"/>
+<circle cx="-27" cy="-8" r="3.4" fill="#1859ad"/>
+<circle cx="-13" cy="6" r="3.4" fill="#1859ad"/>
+<circle cx="0" cy="0" r="3.4" fill="#1859ad"/>
+<circle cx="13" cy="-6" r="3.4" fill="#1859ad"/>
+<circle cx="27" cy="8" r="3.4" fill="#1859ad"/>
+<circle cx="46" cy="-8" r="3.4" fill="#1859ad"/>
+<circle cx="66" cy="3" r="3.4" fill="#1859ad"/>
+<circle r="6" fill="none" stroke="#172b46" stroke-width="1.5"/></g>
+<g transform="translate(445 80) rotate(-23)">
+<circle cx="-66" cy="-3" r="3.4" fill="#087061"/>
+<circle cx="-46" cy="8" r="3.4" fill="#087061"/>
+<circle cx="-27" cy="-8" r="3.4" fill="#087061"/>
+<circle cx="-13" cy="6" r="3.4" fill="#087061"/>
+<circle cx="0" cy="0" r="3.4" fill="#087061"/>
+<circle cx="13" cy="-6" r="3.4" fill="#087061"/>
+<circle cx="27" cy="8" r="3.4" fill="#087061"/>
+<circle cx="46" cy="-8" r="3.4" fill="#087061"/>
+<circle cx="66" cy="3" r="3.4" fill="#087061"/>
+<circle r="6" fill="none" stroke="#172b46" stroke-width="1.5"/></g>
+<text x="156" y="126" text-anchor="middle" class="label">A에서 본 점 구름</text>
+<text x="445" y="126" text-anchor="middle" class="label">B에서 본 점 구름</text>
+<rect x="5" y="147" width="590" height="133" rx="12" fill="#f8fafc" stroke="#c3cfdc"/>
+<text x="23" y="177" class="title">2. 각 중심을 지나는 직선을 그린다</text>
+<g transform="translate(156 223) rotate(0)">
+<line x1="-80" y1="0" x2="80" y2="0" stroke="#334155" stroke-width="2" />
+<circle cx="-66" cy="-3" r="3.4" fill="#1859ad"/>
+<circle cx="-46" cy="8" r="3.4" fill="#1859ad"/>
+<circle cx="-27" cy="-8" r="3.4" fill="#1859ad"/>
+<circle cx="-13" cy="6" r="3.4" fill="#1859ad"/>
+<circle cx="0" cy="0" r="3.4" fill="#1859ad"/>
+<circle cx="13" cy="-6" r="3.4" fill="#1859ad"/>
+<circle cx="27" cy="8" r="3.4" fill="#1859ad"/>
+<circle cx="46" cy="-8" r="3.4" fill="#1859ad"/>
+<circle cx="66" cy="3" r="3.4" fill="#1859ad"/>
+<circle r="6" fill="none" stroke="#172b46" stroke-width="1.5"/></g>
+<g transform="translate(445 223) rotate(-23)">
+<line x1="-80" y1="0" x2="80" y2="0" stroke="#334155" stroke-width="2" />
+<circle cx="-66" cy="-3" r="3.4" fill="#087061"/>
+<circle cx="-46" cy="8" r="3.4" fill="#087061"/>
+<circle cx="-27" cy="-8" r="3.4" fill="#087061"/>
+<circle cx="-13" cy="6" r="3.4" fill="#087061"/>
+<circle cx="0" cy="0" r="3.4" fill="#087061"/>
+<circle cx="13" cy="-6" r="3.4" fill="#087061"/>
+<circle cx="27" cy="8" r="3.4" fill="#087061"/>
+<circle cx="46" cy="-8" r="3.4" fill="#087061"/>
+<circle cx="66" cy="3" r="3.4" fill="#087061"/>
+<circle r="6" fill="none" stroke="#172b46" stroke-width="1.5"/></g>
+<text x="156" y="269" text-anchor="middle" class="label">A의 중심과 후보 직선</text>
+<text x="445" y="269" text-anchor="middle" class="label">B의 중심과 후보 직선</text>
+<rect x="5" y="290" width="590" height="133" rx="12" fill="#f8fafc" stroke="#c3cfdc"/>
+<text x="23" y="320" class="title">3. 직선까지의 수직거리의 제곱을 더한다</text>
+<g transform="translate(156 366) rotate(0)">
+<line x1="0" y1="-24" x2="0" y2="24" stroke="#334155" stroke-width="2" />
+<line x1="0" y1="-3" x2="-66" y2="-3" stroke="#b45309" stroke-width="2" stroke-dasharray="4 3"/>
+<line x1="0" y1="-8" x2="-27" y2="-8" stroke="#b45309" stroke-width="2" stroke-dasharray="4 3"/>
+<line x1="0" y1="0" x2="0" y2="0" stroke="#b45309" stroke-width="2" stroke-dasharray="4 3"/>
+<line x1="0" y1="8" x2="27" y2="8" stroke="#b45309" stroke-width="2" stroke-dasharray="4 3"/>
+<line x1="0" y1="3" x2="66" y2="3" stroke="#b45309" stroke-width="2" stroke-dasharray="4 3"/>
+<circle cx="-66" cy="-3" r="3.4" fill="#1859ad"/>
+<circle cx="-46" cy="8" r="3.4" fill="#1859ad"/>
+<circle cx="-27" cy="-8" r="3.4" fill="#1859ad"/>
+<circle cx="-13" cy="6" r="3.4" fill="#1859ad"/>
+<circle cx="0" cy="0" r="3.4" fill="#1859ad"/>
+<circle cx="13" cy="-6" r="3.4" fill="#1859ad"/>
+<circle cx="27" cy="8" r="3.4" fill="#1859ad"/>
+<circle cx="46" cy="-8" r="3.4" fill="#1859ad"/>
+<circle cx="66" cy="3" r="3.4" fill="#1859ad"/>
+<circle r="6" fill="none" stroke="#172b46" stroke-width="1.5"/></g>
+<g transform="translate(445 366) rotate(0)">
+<line x1="-80" y1="0" x2="80" y2="0" stroke="#334155" stroke-width="2" />
+<line x1="-66" y1="0" x2="-66" y2="-3" stroke="#b45309" stroke-width="2" />
+<line x1="-46" y1="0" x2="-46" y2="8" stroke="#b45309" stroke-width="2" />
+<line x1="-27" y1="0" x2="-27" y2="-8" stroke="#b45309" stroke-width="2" />
+<line x1="-13" y1="0" x2="-13" y2="6" stroke="#b45309" stroke-width="2" />
+<line x1="0" y1="0" x2="0" y2="0" stroke="#b45309" stroke-width="2" />
+<line x1="13" y1="0" x2="13" y2="-6" stroke="#b45309" stroke-width="2" />
+<line x1="27" y1="0" x2="27" y2="8" stroke="#b45309" stroke-width="2" />
+<line x1="46" y1="0" x2="46" y2="-8" stroke="#b45309" stroke-width="2" />
+<line x1="66" y1="0" x2="66" y2="3" stroke="#b45309" stroke-width="2" />
+<circle cx="-66" cy="-3" r="3.4" fill="#1859ad"/>
+<circle cx="-46" cy="8" r="3.4" fill="#1859ad"/>
+<circle cx="-27" cy="-8" r="3.4" fill="#1859ad"/>
+<circle cx="-13" cy="6" r="3.4" fill="#1859ad"/>
+<circle cx="0" cy="0" r="3.4" fill="#1859ad"/>
+<circle cx="13" cy="-6" r="3.4" fill="#1859ad"/>
+<circle cx="27" cy="8" r="3.4" fill="#1859ad"/>
+<circle cx="46" cy="-8" r="3.4" fill="#1859ad"/>
+<circle cx="66" cy="3" r="3.4" fill="#1859ad"/>
+<circle r="6" fill="none" stroke="#172b46" stroke-width="1.5"/></g>
+<text x="156" y="412" text-anchor="middle" class="label">가로지르는 축 · 합이 큼</text>
+<text x="445" y="412" text-anchor="middle" class="label">길게 뻗은 축 · 합이 작음</text>
+<rect x="5" y="433" width="590" height="133" rx="12" fill="#f8fafc" stroke="#c3cfdc"/>
+<text x="23" y="463" class="title">4. B의 긴 축을 A의 긴 축에 맞춘다</text>
+<g transform="translate(156 509) rotate(-23)">
+<line x1="-80" y1="0" x2="80" y2="0" stroke="#334155" stroke-width="2" />
+<circle cx="-66" cy="-3" r="3.4" fill="#087061"/>
+<circle cx="-46" cy="8" r="3.4" fill="#087061"/>
+<circle cx="-27" cy="-8" r="3.4" fill="#087061"/>
+<circle cx="-13" cy="6" r="3.4" fill="#087061"/>
+<circle cx="0" cy="0" r="3.4" fill="#087061"/>
+<circle cx="13" cy="-6" r="3.4" fill="#087061"/>
+<circle cx="27" cy="8" r="3.4" fill="#087061"/>
+<circle cx="46" cy="-8" r="3.4" fill="#087061"/>
+<circle cx="66" cy="3" r="3.4" fill="#087061"/>
+<circle r="6" fill="none" stroke="#172b46" stroke-width="1.5"/></g>
+<line x1="274" y1="509" x2="325" y2="509" stroke="#334155" stroke-width="2" marker-end="url(#arrow)"/>
+<g transform="translate(445 509) rotate(0)">
+<line x1="-80" y1="0" x2="80" y2="0" stroke="#334155" stroke-width="2" />
+<circle cx="-66" cy="-3" r="3.4" fill="#087061"/>
+<circle cx="-46" cy="8" r="3.4" fill="#087061"/>
+<circle cx="-27" cy="-8" r="3.4" fill="#087061"/>
+<circle cx="-13" cy="6" r="3.4" fill="#087061"/>
+<circle cx="0" cy="0" r="3.4" fill="#087061"/>
+<circle cx="13" cy="-6" r="3.4" fill="#087061"/>
+<circle cx="27" cy="8" r="3.4" fill="#087061"/>
+<circle cx="46" cy="-8" r="3.4" fill="#087061"/>
+<circle cx="66" cy="3" r="3.4" fill="#087061"/>
+<circle r="6" fill="none" stroke="#172b46" stroke-width="1.5"/></g>
+<text x="156" y="555" text-anchor="middle" class="label">B에서 찾은 긴 축</text>
+<text x="445" y="555" text-anchor="middle" class="label">A의 방향에 맞춘 B</text>
+</svg>
