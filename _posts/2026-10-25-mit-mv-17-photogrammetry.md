@@ -382,7 +382,7 @@ _▶ [49:11부터 보기](https://www.youtube.com/watch?v=R8O0vlHBeNc&t=2951s) �
 
 _▶ [51:30부터 보기](https://www.youtube.com/watch?v=R8O0vlHBeNc&t=3090s) · Axes of inertia method_
 
-![A와 B에서 본 점 구름, 각 중심을 지나는 후보 직선, 수직거리 제곱합 비교, B의 긴 방향을 A에 맞추기까지의 네 단계](/assets/img/posts/mv/lec17-axis-fit.svg)
+![A와 B에서 본 점 구름, 각 중심을 지나는 후보 직선, 수직거리 제곱합 비교, B의 긴 방향을 A에 맞추기까지의 네 단계](/assets/img/posts/mv/lec17-axis-fit.svg){: width="600" height="574" }
 _3D 정합의 원리를 평면에 그린 예입니다. 그림의 직선은 각 점 구름의 모양에서 구하는 보조 축입니다. 변환의 기준 프레임은 A입니다._
 
 ## 19. 점에서 후보 직선까지 얼마나 떨어져 있을까?
